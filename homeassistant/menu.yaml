@@ -1,0 +1,256 @@
+  - theme: Backend-selected
+    title: Brink
+    path: brink
+    icon: mdi:fan
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.bypass_status
+          - entity: sensor.filter_status
+          - entity: sensor.huidig_inlaatluchtvolume
+          - entity: sensor.huidig_uitlaatluchtvolume
+          - entity: sensor.vochtsensor
+          - entity: sensor.filter_reset_op
+          - entity: sensor.filter_dagen
+          - entity: sensor.filter_uren
+          - entity: sensor.filter_m3_h
+          - entity: sensor.status
+          - entity: sensor.druk_inblaas
+          - entity: sensor.druk_uitblaas
+          - entity: sensor.binnen_dauwpunt
+          - entity: sensor.buiten_aanzuig_temperatuur
+          - entity: sensor.bevriezing_status
+          - entity: sensor.bevriezing_heaterpower
+          - entity: sensor.bevriezing_fan_reductie
+        show_header_toggle: false
+      - type: vertical-stack
+        cards:
+          - type: picture-elements
+            image: local/images/wtw_icons2.png
+            elements:
+              - type: state-label
+                entity: sensor.huidig_inlaatluchtvolume
+                style:
+                  top: 59%
+                  left: 73%
+                  color: black
+              - type: state-label
+                entity: sensor.huidig_uitlaatluchtvolume
+                style:
+                  top: 59%
+                  left: 27%
+                  color: black
+              - type: state-label
+                entity: sensor.binnen_aanzuig_temperatuur
+                style:
+                  top: 20%
+                  left: 92%
+                  color: darkred
+              - type: state-label
+                entity: sensor.binnen_aanzuig_luchtvochtigheid
+                style:
+                  top: 30%
+                  left: 92%
+                  color: '#4171b1'
+              - type: state-label
+                entity: sensor.binnen_uitblaas_temperatuur
+                style:
+                  top: 77%
+                  left: 92%
+                  color: darkred
+              - type: state-label
+                entity: sensor.binnen_uitblaas_luchtvochtigheid
+                style:
+                  top: 85%
+                  left: 92%
+                  color: '#4171b1'
+              - type: state-label
+                entity: sensor.buiten_aanzuig_temperatuur
+                style:
+                  top: 20%
+                  left: 14.5%
+                  color: '#4171b1'
+              - type: state-label
+                entity: sensor.buiten_humidity
+                style:
+                  top: 28%
+                  left: 14.5%
+                  color: '#4171b1'
+              - type: state-label
+                entity: sensor.buiten_uitblaas_temperatuur
+                style:
+                  top: 77%
+                  left: 14.5%
+                  color: '#4171b1'
+              - type: state-label
+                entity: sensor.buiten_uitblaas_luchtvochtigheid
+                style:
+                  top: 85%
+                  left: 14.5%
+                  color: '#4171b1'
+              - type: state-label
+                entity: sensor.bypass_status
+                prefix: 'Bypass: '
+                style:
+                  top: 26%
+                  left: 50%
+                  color: black
+              - type: state-label
+                entity: sensor.rendement
+                prefix: 'η= '
+                style:
+                  top: 72%
+                  left: 50%
+                  color: black
+              - type: state-label
+                entity: sensor.filter_wissel_in
+                prefix: 'Filterwissel in '
+                suffix: agen
+                style:
+                  top: 92%
+                  left: 50%
+                  color: black
+              - type: state-label
+                entity: sensor.binnen_aanzuig_co2
+                prefix: 'Co2 '
+                style:
+                  top: 10%
+                  left: 90%
+                  color: grey
+          - type: entity
+            entity: sensor.power_14
+            state_color: false
+            name: power
+            icon: mdi:power-socket-eu
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                name: Afwezig
+                styles:
+                  card:
+                    - height: 150px
+                icon: mdi:fan-auto
+                size: 75%
+                show_state: true
+                state:
+                  - operator: template
+                    value: |
+                      [[[
+                        return states['number.ventilatie_stand'].state == "0.0"
+                      ]]]
+                    color: darkcyan
+                tap_action:
+                  action: call-service
+                  service: number.set_value
+                  service_data:
+                    value: 0
+                    entity_id: number.ventilatie_stand
+              - type: custom:button-card
+                name: Stand1
+                styles:
+                  card:
+                    - height: 150px
+                icon: mdi:fan-speed-1
+                size: 75%
+                show_state: true
+                state:
+                  - operator: template
+                    value: |
+                      [[[
+                        return states['number.ventilatie_stand'].state == "1.0"
+                      ]]]
+                    color: darkcyan
+                  - operator: default
+                tap_action:
+                  action: call-service
+                  service: number.set_value
+                  service_data:
+                    value: 1
+                    entity_id: number.ventilatie_stand
+              - type: custom:button-card
+                name: Stand2
+                styles:
+                  card:
+                    - height: 150px
+                icon: mdi:fan-speed-2
+                size: 75%
+                show_state: true
+                state:
+                  - operator: template
+                    value: |
+                      [[[
+                        return states['number.ventilatie_stand'].state == "2.0"
+                      ]]]
+                    color: darkcyan
+                tap_action:
+                  action: call-service
+                  service: number.set_value
+                  service_data:
+                    value: 2
+                    entity_id: number.ventilatie_stand
+              - type: custom:button-card
+                name: Stand3
+                styles:
+                  card:
+                    - height: 150px
+                icon: mdi:fan-speed-3
+                size: 75%
+                show_state: true
+                state:
+                  - operator: template
+                    value: |
+                      [[[
+                        return states['number.ventilatie_stand'].state == "3.0"
+                      ]]]
+                    color: darkcyan
+                tap_action:
+                  action: call-service
+                  service: number.set_value
+                  service_data:
+                    value: 3
+                    entity_id: number.ventilatie_stand
+          - type: entities
+            entities:
+              - entity: select.bypass_mode
+            show_header_toggle: false
+      - type: vertical-stack
+        cards:
+          - type: history-graph
+            hours_to_show: 24
+            entities:
+              - entity: sensor.binnen_aanzuig_temperatuur
+                name: Binnen aanzuig
+              - entity: sensor.buiten_uitblaas_temperatuur
+                name: Buiten uitblaas
+              - entity: sensor.buiten_aanzuig_temperatuur
+                name: Buiten aanzuig
+              - entity: sensor.binnen_aanzuig_luchtvochtigheid
+                name: Binnen RV
+              - entity: sensor.buiten_uitblaas_luchtvochtigheid
+                name: Buiten RV
+              - entity: sensor.vochtsensor
+          - type: history-graph
+            hours_to_show: 24
+            entities:
+              - entity: sensor.binnen_aanzuig_co2
+      - type: entities
+        entities:
+          - entity: select.modbus_control_mode
+          - entity: number.flow_1
+          - entity: number.flow_2
+          - entity: number.flow_3
+          - entity: number.ventilatie_stand
+          - entity: number.fan_onbalans_inlaat
+          - entity: number.fan_onbalans_uitlaat
+          - entity: switch.bypass_boost
+          - entity: number.bypass_temp_uit_woning
+          - entity: number.bypass_temp_van_buiten
+          - entity: number.bypass_hysterese
+          - entity: number.dagen_filter_wissel
+          - entity: button.filter_reset
+          - entity: switch.vochtsensor
+          - entity: button.step_modbus
+          - entity: number.bevriezing_controle_temperatuur
+          - entity: number.bevriezing_minimum_inlaat_temperatuur
+        show_header_toggle: false
