@@ -1,52 +1,87 @@
 substitutions:
-  en_external_humidity_sensor: "Humidity sensor (external)"
-  en_temp_to_outside: "Temperature to outside"
-  en_humidity_to_outside: "Humidity to outside"
-  en_temp_from_outside: "Temperature from outside"
-  en_supply_pressure: "Supply pressure"
-  en_exhaust_pressure: "Exhaust pressure"
-  en_setpoint_inlet_volume: "Setpoint inlet voulme"
-  en_current_inlet_volume: "Current intake air Volume"
-  en_setpoint_outlet_volume: "Setpoint exhaust air volume"
-  en_current_outlet_volume: "Current exhaust air volume"
-  en_frost_heater_power: "Frost heater power"
-  en_frost_fan_reduction: "Frost fan reduction"
-  en_current_filter_hours: "Current filter hours"
-  en_current_filter_days: "Current filter days"
-  en_exchange_filter_in: "Exchange filter in"
-  en_huidig_filter_m3_h: "Filter m3/h"
-  en_frost_status: "Frost status"
-  en_bypass_boost_fan_stand: "Bypass Boost fan speed"
-  en_vacation: "Vacation"
-  en_speed: "Speed"
-  en_auto: "Auto"
-  en_open: "Open"
-  en_closed: "Closed"
-  en_ventilatie_stand: "Ventilation speed"
-  en_brink_modbusflow_waarde: "Modbus flow step"
+  en_temp_to_inside: Temperature to inside
+  en_humidity_to_inside: Humidity to inside
+  en_dewpoint_to_inside: Dewpoint to inside
+  en_external_humidity_sensor: Humidity sensor (external)
+  en_temp_to_outside: Temperature to outside
+  en_humidity_to_outside: Humidity to outside
+  en_temp_from_outside: Temperature from outside
+  en_supply_pressure: Supply pressure
+  en_exhaust_pressure: Exhaust pressure
+  en_setpoint_inlet_volume: Setpoint inlet volume
+  en_current_inlet_volume: Current intake air Volume
+  en_setpoint_outlet_volume: Setpoint exhaust air volume
+  en_current_outlet_volume: Current exhaust air volume
+  en_frost_heater_power: Frost heater power
+  en_frost_fan_reduction: Frost fan reduction
+  en_current_filter_hours: Current filter hours
+  en_current_filter_days: Current filter days
+  en_exchange_filter_in: Exchange filter in
+  en_huidig_filter_m3_h: Filter m3/h
+  en_frost_status: Frost status
+  en_bypass_boost_fan_stand: Bypass Boost fan speed
+  en_vacation: Vacation
+  en_speed: Speed
+  en_auto: Auto
+  en_open: Open
+  en_closed: Closed
+  en_ventilatie_stand: Ventilation speed
+  en_brink_modbusflow_waarde: Modbus flow step
+  en_status: Status
+  en_rht_sensor: RHT sensor
+  en_brink_imbalance_intake: Brink imbalance intake
+  en_brink_bypass_from_dwelling: Bypass temp from home
+  en_brink_bypass_from_outside: Bypass temp from outside
+  en_brink_bypass_hysterese: Bypass hysteresis
+  en_brink_frost_control_temperature: Freezing control temperature
+  en_brink_frost_minimum_inlet_temperature: Freezing minimum inlet temperature
+  en_brink_imbalance_exhaust: Fan Imbalance Exhaust
+  en_brink_dagen_filter_wissel: Days filter change
+  # SCD41 sensor
+  en_co2_from_inside: CO2 from inside
+  en_humidity_from_inside: Humidity from inside
+  en_temp_from_inside: Temperature from inside
 
-  lu_external_humidity_sensor: "Vochtsensor"
-  lu_temp_to_outside: "Buiten uitblaas temperatuur"
-  lu_humidity_to_outside: "Buiten uitblaas luchtvochtigheid"
-  lu_temp_from_outside: "Buiten aanzuig temperatuur"
-  lu_supply_pressure: "Druk inblaas"
-  lu_exhaust_pressure: "Druk uitblaas"
-  lu_setpoint_inlet_volume: "Inlaatluchtvolume ingesteld"
-  lu_current_inlet_volume: "Uitlaatluchtvolume ingesteld"
+  lu_temp_to_inside: Binnen uitblaas temperatuur
+  lu_humidity_to_inside: Binnen uitblaas luchtvochtigheid
+  lu_dewpoint_to_inside: Binnen dauwpunt
+  lu_external_humidity_sensor: Vochtsensor
+  lu_temp_to_outside: Buiten uitblaas temperatuur
+  lu_humidity_to_outside: Buiten uitblaas luchtvochtigheid
+  lu_temp_from_outside: Buiten aanzuig temperatuur
+  lu_supply_pressure: Druk inblaas
+  lu_exhaust_pressure: Druk uitblaas
+  lu_setpoint_inlet_volume: Inlaatluchtvolume ingesteld
+  lu_current_inlet_volume: Uitlaatluchtvolume ingesteld
   lu_setpoint_outlet_volume: Uitlaatluchtvolume ingesteld
-  lu_current_outlet_volume: "Huidig uitlaatluchtvolume"
-  lu_frost_heater_power: "Bevriezing heaterpower"
-  lu_frost_fan_reduction: "Bevriezing fan reductie"
-  lu_current_filter_hours: "Filter uren"
-  lu_current_filter_days: "Filter dagen"
-  lu_exchange_filter_in: "Filter wissel in"
-  lu_huidig_filter_m3_h: "Filter m3/h"
-  lu_frost_status: "Bevriezing status"
-  lu_bypass_boost_fan_stand: "Bypass Boost fan stand"
-  lu_vacation: "Vakantie"
-  lu_speed: "Stand"
-  lu_auto: "Auto"
-  lu_open: "Open"
-  lu_closed: "Dicht"
-  lu_ventilatie_stand: "Ventilatie stand"
-  lu_brink_modbusflow_waarde: "Modbus flow waarde"
+  lu_current_outlet_volume: Huidig uitlaatluchtvolume
+  lu_frost_heater_power: Bevriezing heaterpower
+  lu_frost_fan_reduction: Bevriezing fan reductie
+  lu_current_filter_hours: Filter uren
+  lu_current_filter_days: Filter dagen
+  lu_exchange_filter_in: Filter wissel in
+  lu_huidig_filter_m3_h: Filter m3/h
+  lu_frost_status: Bevriezing status
+  lu_bypass_boost_fan_stand: Bypass Boost fan stand
+  lu_vacation: Vakantie
+  lu_speed: Stand
+  lu_auto: Auto
+  lu_open: Open
+  lu_closed: Dicht
+  lu_ventilatie_stand: Ventilatie stand
+  lu_brink_modbusflow_waarde: Modbus flow waarde
+  lu_status: Status
+  lu_rht_sensor: Vochtsensor
+  lu_brink_imbalance_intake: Brink imbalance intake
+  lu_brink_bypass_from_dwelling: Bypass temp uit woning
+  lu_brink_bypass_from_outside: Bypass temp van buiten
+  lu_brink_bypass_hysterese: bypass hysteresis
+  lu_brink_frost_control_temperature: Bevriezing controle temperatuur
+  lu_brink_frost_minimum_inlet_temperature: Bevriezing minimum inlaat temperatuur
+  lu_brink_imbalance_exhaust: Fan Onbalans Uitlaat
+  lu_brink_dagen_filter_wissel: Dagen filter wissel
+  # SCD41 sensor
+  lu_co2_from_inside: Binnen aanzuig CO2
+  lu_humidity_from_inside: Binnen aanzuig luchtvochtigheid
+  lu_temp_from_inside: Fan Onbalans Inlaat
+

@@ -3,6 +3,7 @@ substitutions:
   device_description: "Esphome component for Brink Flair with modbus"
   lang: 'en' 
   # lang: 'lu' 
+  timezone: "Europe/Amsterdam"
 
 packages:
   substitutions: !include .brink-labels.yaml
@@ -59,7 +60,7 @@ web_server:
 time:
   - platform: sntp
     id: sntp_time
-    timezone: "Europe/Amsterdam"
+    timezone: ${timezone}
     on_time_sync:
       then:
         - logger.log: "Synchronized sntp clock"
@@ -124,7 +125,7 @@ sensor:
   ## extra SCD41 sensor on the house suction side as it is not present in the Brink Flair. Remove if not used
   - platform: scd4x
     co2:
-      name: Binnen aanzuig CO2
+      name: ${${lang}_co2_from_inside}
       id: co2_from_inside
       on_value:
         then:
@@ -140,7 +141,7 @@ sensor:
                 else:
         
     humidity:
-      name: Binnen aanzuig luchtvochtigheid    
+      name: ${${lang}_humidity_from_inside}
       id: humidity_from_inside
       on_value:
         then:
@@ -156,7 +157,7 @@ sensor:
                 else:
 
     temperature:
-      name: Binnen aanzuig temperatuur    
+      name: ${${lang}_temp_from_inside}
       id: temp_from_inside
 
     temperature_offset: "2.0°C"
@@ -170,7 +171,7 @@ sensor:
    # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
 
   - id: temp_to_inside
-    name: Binnen uitblaas temperatuur
+    name: ${${lang}_temp_to_inside}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 4036
@@ -182,7 +183,7 @@ sensor:
       - multiply: 0.1
 
   - id: humidity_to_inside
-    name: Binnen uitblaas luchtvochtigheid
+    name: ${${lang}_humidity_to_inside}
     icon: "mdi:water-percent"
     platform: modbus_controller
     modbus_controller_id: brink
@@ -193,7 +194,7 @@ sensor:
     accuracy_decimals: 0
 
   - id: dewpoint_to_inside
-    name: Binnen dauwpunt
+    name: ${${lang}_dewpoint_to_inside}
     platform: template
     lambda: |-
         return (243.5*(log(id(humidity_to_inside).state/100)+((17.67*id(temp_to_inside).state)/
@@ -402,7 +403,7 @@ sensor:
 
 text_sensor:
   - id: status
-    name: Status
+    name: ${${lang}_status}
     platform: modbus_controller
     modbus_controller_id: brink
     register_type: read
@@ -455,7 +456,7 @@ text_sensor:
       return mode_str;
 
   - id: frost_status
-    name: Bevriezing status
+    name: ${${lang}_frost_status}
     platform: modbus_controller
     modbus_controller_id: brink
     register_type: read
@@ -559,7 +560,7 @@ select:
       ${${lang}_open}: 2
 
   - id: bypass_boost_fan_stand
-    name: ${lang}_bypass_boost_fan_stand}
+    name: ${${lang}_bypass_boost_fan_stand}
     platform: modbus_controller
     modbus_controller_id: brink  
     address: 6105
@@ -582,7 +583,7 @@ switch:
     icon: mdi:toggle-switch
 
   - id: rht_sensor
-    name: Vochtsensor
+    name: ${${lang}_rht_sensor}
     platform: modbus_controller
     modbus_controller_id: brink
     register_type: holding
@@ -703,7 +704,7 @@ number:
     icon: mdi:fan-speed-3
       
   - id: brink_imbalance_intake
-    name: Fan Onbalans Inlaat  
+    name: ${${lang}_brink_imbalance_intake}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 6035
@@ -727,7 +728,7 @@ number:
 ##    minus de ingestelde temperatuur bij de hysterese
 
   - id: brink_bypass_from_dwelling ## van binnen naar buitenuitblaas, default 24 °C
-    name: Bypass temp uit woning  
+    name: ${${lang}_brink_bypass_from_dwelling}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 6101
@@ -741,7 +742,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_bypass_from_outside ## van buiten naar binnen aanzuig, default 10 °C
-    name: Bypass temp van buiten  
+    name: ${${lang}_brink_bypass_from_outside}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 6102
@@ -755,7 +756,7 @@ number:
     icon: mdi:home-import-outline
 
   - id: brink_bypass_hysterese ## default 2 °C
-    name: Bypass hysterese  
+    name: ${${lang}_brink_bypass_hysterese}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 6103
@@ -770,7 +771,7 @@ number:
 
 ### Vorstbeveiliging
   - id: brink_frost_control_temperature ## default 0 °C
-    name: Bevriezing controle temperatuur
+    name: ${${lang}_brink_frost_control_temperature}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 6110
@@ -784,7 +785,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_frost_minimum_inlet_temperature  ## default 10 °C
-    name: Bevriezing minimum inlaat temperatuur
+    name: ${${lang}_brink_frost_minimum_inlet_temperature}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 6111
@@ -798,7 +799,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_imbalance_exhaust  ## default 0
-    name: Fan Onbalans Uitlaat
+    name: ${${lang}_brink_imbalance_exhaust}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 6036
@@ -811,7 +812,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_dagen_filter_wissel
-    name: Dagen filter wissel
+    name:  ${${lang}_brink_dagen_filter_wissel}
     platform: modbus_controller
     modbus_controller_id: brink
     register_type: holding
