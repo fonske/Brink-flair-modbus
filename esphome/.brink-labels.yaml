@@ -1,0 +1,21 @@
+substitutions:
+  en_current_inlet_volume: "Current intake air Volume"
+  en_current_outlet_volume: "Current exhaust air volume"
+  en_external_humidity_sensor: "Humidity sensor (external)"
+  en_temp_to_outside: "Temperature to outside"
+  en_humidity_to_outside: "Humidity to outside"
+  en_temp_from_outside: "Temperature from outside"
+  en_supply_pressure: "Supply pressure"
+  en_exhaust_pressure: "Exhaust pressure"
+  en_setpoint_inlet_volume: "Setpoint inlet voulme"
+  
+  lu_current_inlet_volume: "Current intake air Volume"
+  lu_current_outlet_volume: "Current exhaust air volume"
+  lu_external_humidity_sensor: "Humidity sensor (external)"
+  lu_temp_to_outside: "Buiten uitblaas temperatuur"
+  lu_humidity_to_outside: "Buiten uitblaas luchtvochtigheid"
+  lu_temp_from_outside: "Buiten aanzuig temperatuur"
+  lu_supply_pressure: "Druk inblaas"
+  lu_exhaust_pressure: "Druk uitblaas"
+  lu_setpoint_inlet_volume: "Inlaatluchtvolume ingesteld"
+

@@ -1,7 +1,12 @@
 substitutions:
   name: brink
   device_description: "Esphome component for Brink Flair with modbus"
-   
+  lang: 'en' 
+  # lang: 'lu' 
+
+packages:
+  substitutions: !include .brink-labels.yaml
+
 esphome:
   name: ${name}
   on_boot:
@@ -199,7 +204,7 @@ sensor:
     icon: 'mdi:thermometer-water'
 
   - id: temp_to_outside
-    name: Buiten uitblaas temperatuur
+    name: ${${lang}_temp_to_outside}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 4046
@@ -211,7 +216,7 @@ sensor:
       - multiply: 0.1
 
   - id: humidity_to_outside
-    name: Buiten uitblaas luchtvochtigheid
+    name: ${${lang}_humidity_to_outside}
     platform: modbus_controller
     modbus_controller_id: brink
     icon: mdi:water-percent
@@ -222,7 +227,7 @@ sensor:
     accuracy_decimals: 0
 
   - id: temp_from_outside  # NTC1
-    name: Buiten aanzuig temperatuur
+    name: ${${lang}_temp_from_outside}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 4081
@@ -234,7 +239,7 @@ sensor:
       - multiply: 0.1
 
   - id: supply_pressure
-    name: Druk inblaas  
+    name: ${${lang}_supply_pressure}
     platform: modbus_controller
     modbus_controller_id: brink
     icon: mdi:gauge
@@ -247,7 +252,7 @@ sensor:
       - multiply: 0.1
     
   - id: exhaust_pressure
-    name: Druk uitblaas    
+    name: ${${lang}_exhaust_pressure}    
     platform: modbus_controller
     modbus_controller_id: brink
     icon: mdi:gauge
@@ -260,7 +265,7 @@ sensor:
       - multiply: 0.1
 
   - id: setpoint_inlet_volume
-    name: Inlaatluchtvolume ingesteld
+    name: ${$lang}_setpoint_inlet_volume}
     platform: modbus_controller
     modbus_controller_id: brink
     icon: mdi:fan
