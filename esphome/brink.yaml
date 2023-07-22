@@ -2,7 +2,7 @@ substitutions:
   name: brink
   device_description: "Esphome component for Brink Flair with modbus"
   lang: 'en' 
-  # lang: 'lu' 
+  # lang: 'nl' 
   timezone: "Europe/Amsterdam"
 
 packages:
