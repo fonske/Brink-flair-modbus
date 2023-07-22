@@ -42,46 +42,45 @@ substitutions:
   en_humidity_from_inside: Humidity from inside
   en_temp_from_inside: Temperature from inside
 
-  lu_temp_to_inside: Binnen uitblaas temperatuur
-  lu_humidity_to_inside: Binnen uitblaas luchtvochtigheid
-  lu_dewpoint_to_inside: Binnen dauwpunt
-  lu_external_humidity_sensor: Vochtsensor
-  lu_temp_to_outside: Buiten uitblaas temperatuur
-  lu_humidity_to_outside: Buiten uitblaas luchtvochtigheid
-  lu_temp_from_outside: Buiten aanzuig temperatuur
-  lu_supply_pressure: Druk inblaas
-  lu_exhaust_pressure: Druk uitblaas
-  lu_setpoint_inlet_volume: Inlaatluchtvolume ingesteld
-  lu_current_inlet_volume: Uitlaatluchtvolume ingesteld
-  lu_setpoint_outlet_volume: Uitlaatluchtvolume ingesteld
-  lu_current_outlet_volume: Huidig uitlaatluchtvolume
-  lu_frost_heater_power: Bevriezing heaterpower
-  lu_frost_fan_reduction: Bevriezing fan reductie
-  lu_current_filter_hours: Filter uren
-  lu_current_filter_days: Filter dagen
-  lu_exchange_filter_in: Filter wissel in
-  lu_huidig_filter_m3_h: Filter m3/h
-  lu_frost_status: Bevriezing status
-  lu_bypass_boost_fan_stand: Bypass Boost fan stand
-  lu_vacation: Vakantie
-  lu_speed: Stand
-  lu_auto: Auto
-  lu_open: Open
-  lu_closed: Dicht
-  lu_ventilatie_stand: Ventilatie stand
-  lu_brink_modbusflow_waarde: Modbus flow waarde
-  lu_status: Status
-  lu_rht_sensor: Vochtsensor
-  lu_brink_imbalance_intake: Brink imbalance intake
-  lu_brink_bypass_from_dwelling: Bypass temp uit woning
-  lu_brink_bypass_from_outside: Bypass temp van buiten
-  lu_brink_bypass_hysterese: bypass hysteresis
-  lu_brink_frost_control_temperature: Bevriezing controle temperatuur
-  lu_brink_frost_minimum_inlet_temperature: Bevriezing minimum inlaat temperatuur
-  lu_brink_imbalance_exhaust: Fan Onbalans Uitlaat
-  lu_brink_dagen_filter_wissel: Dagen filter wissel
+  nl_temp_to_inside: Binnen uitblaas temperatuur
+  nl_humidity_to_inside: Binnen uitblaas luchtvochtigheid
+  nl_dewpoint_to_inside: Binnen dauwpunt
+  nl_external_humidity_sensor: Vochtsensor
+  nl_temp_to_outside: Buiten uitblaas temperatuur
+  nl_humidity_to_outside: Buiten uitblaas luchtvochtigheid
+  nl_temp_from_outside: Buiten aanzuig temperatuur
+  nl_supply_pressure: Druk inblaas
+  nl_exhaust_pressure: Druk uitblaas
+  nl_setpoint_inlet_volume: Inlaatluchtvolume ingesteld
+  nl_current_inlet_volume: Uitlaatluchtvolume ingesteld
+  nl_setpoint_outlet_volume: Uitlaatluchtvolume ingesteld
+  nl_current_outlet_volume: Huidig uitlaatluchtvolume
+  nl_frost_heater_power: Bevriezing heaterpower
+  nl_frost_fan_reduction: Bevriezing fan reductie
+  nl_current_filter_hours: Filter uren
+  nl_current_filter_days: Filter dagen
+  nl_exchange_filter_in: Filter wissel in
+  nl_huidig_filter_m3_h: Filter m3/h
+  nl_frost_status: Bevriezing status
+  nl_bypass_boost_fan_stand: Bypass Boost fan stand
+  nl_vacation: Vakantie
+  nl_speed: Stand
+  nl_auto: Auto
+  nl_open: Open
+  nl_closed: Dicht
+  nl_ventilatie_stand: Ventilatie stand
+  nl_brink_modbusflow_waarde: Modbus flow waarde
+  nl_status: Status
+  nl_rht_sensor: Vochtsensor
+  nl_brink_imbalance_intake: Brink imbalance intake
+  nl_brink_bypass_from_dwelling: Bypass temp uit woning
+  nl_brink_bypass_from_outside: Bypass temp van buiten
+  nl_brink_bypass_hysterese: bypass hysteresis
+  nl_brink_frost_control_temperature: Bevriezing controle temperatuur
+  nl_brink_frost_minimum_inlet_temperature: Bevriezing minimum inlaat temperatuur
+  nl_brink_imbalance_exhaust: Fan Onbalans Uitlaat
+  nl_brink_dagen_filter_wissel: Dagen filter wissel
   # SCD41 sensor
-  lu_co2_from_inside: Binnen aanzuig CO2
-  lu_humidity_from_inside: Binnen aanzuig luchtvochtigheid
-  lu_temp_from_inside: Fan Onbalans Inlaat
-
+  nl_co2_from_inside: Binnen aanzuig CO2
+  nl_humidity_from_inside: Binnen aanzuig luchtvochtigheid
+  nl_temp_from_inside: Fan Onbalans Inlaat
