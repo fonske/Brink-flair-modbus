@@ -355,7 +355,7 @@ sensor:
       - multiply: 1
 
   - id: current_filter_hours
-    name: ${${lang}_{current_filter_hours}
+    name: ${${lang}_current_filter_hours}
     platform: modbus_controller
     modbus_controller_id: brink
     icon: mdi:clock-start
@@ -366,7 +366,7 @@ sensor:
     accuracy_decimals: 0
 
   - id: current_filter_days
-    name: ${${lang}_{current_filter_days}
+    name: ${${lang}_current_filter_days}
     platform: modbus_controller
     modbus_controller_id: brink
     icon: mdi:clock-start
