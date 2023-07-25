@@ -3,8 +3,10 @@ substitutions:
   device_description: "Esphome component for Brink Flair with modbus"
   timezone: "Europe/Amsterdam"
 
+# In order to use other language, fix include file name below:
+# Currently supported languages are en, nl.
 packages:
-  substitutions: !include .brink-labels-en.yaml
+  remote_package:  github://fonske/Brink-flair-modbus/esphome/.brink-labels-en.yaml@main
 
 esphome:
   name: ${name}
