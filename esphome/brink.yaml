@@ -6,7 +6,13 @@ substitutions:
 # In order to use other language, fix include file name below:
 # Currently supported languages are en, nl.
 packages:
-  remote_package:  github://fonske/Brink-flair-modbus/esphome/.brink-labels-en.yaml@main
+  remote_package:
+    url: https://github.com/egisz/Brink-flair-modbus
+    ref: chip-config
+    files: 
+      - esphome/.brink-labels.yaml
+      - esphome/board-esp32.yaml
+      - esphome/sensor-scd41.yaml
 
 esphome:
   name: ${name}
@@ -16,13 +22,6 @@ esphome:
     priority: 200
     then:
       - script.execute: on_boot
-
-### ESP32 used is a MH-ET-LIVE, also known as Wemos D32 Mini 
-### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
-esp32:
-  board: mhetesp32minikit
-  framework:
-    type: arduino
 
 # Enable/Disable logging
 logger:
@@ -85,12 +84,6 @@ script:
 
 ###  Settings Brink Flair (no need to change normally)
 ###  menu 14-Communication: TypeBus=Modbus, Slave Address=20, Baudrate=19200, Parity=Even
-uart:
-  id: mod_bus
-  tx_pin: 23
-  rx_pin: 19
-  baud_rate: 19200
-  parity: even
 
 modbus:
   id: modbus_brink
