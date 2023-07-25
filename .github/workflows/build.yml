@@ -1,0 +1,27 @@
+name: Build ESPHome firmware
+
+# Controls when the action will run. Triggers the workflow on push
+on: 
+  push:
+  pull_request:
+  release:
+        
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    name: "Build"
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Create secrets file"
+        run: |
+          touch esphome/secrets.yaml
+          cat <<EOF > esphome/secrets.yaml
+          wifi_ssid: TestWifi
+          wifi_password: TestWifiSecret
+          EOF
+      - name: "Build"
+        uses: esphome/build-action@v1
+        id: esphome-build
+        with:
+          yaml_file: esphome/brink.yaml
