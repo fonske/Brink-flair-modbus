@@ -10,7 +10,7 @@ packages:
     url: https://github.com/egisz/Brink-flair-modbus
     ref: chip-config
     files: 
-      - esphome/.brink-labels.yaml
+      - esphome/.brink-labels-en.yaml
       - esphome/board-esp32.yaml
       - esphome/sensor-scd41.yaml
 
@@ -97,76 +97,9 @@ modbus_controller:
     setup_priority: -10
     update_interval: 10s
 
-# ## i2c for DFROBOT GRAVITY SCD41, CO2 sensor - remove if not used
-i2c:  
-  sda: 21
-  scl: 22
-  scan: true
-  id: bus_a
-
 sensor:
-## extra DHT22 sensor on the house suction side as it is not present in the Brink Flair.
-#  - platform: dht
-#    model: DHT22
-#    pin: 22
-#    temperature:
-#      name: Binnen aanzuig temperatuur
-#      id: temp_from_inside
-#    humidity:
-#      name: Binnen aanzuig luchtvochtigheid
-#      id: humidity_from_inside
-#    update_interval: 15s
-
-  ## extra SCD41 sensor on the house suction side as it is not present in the Brink Flair. Remove if not used
-  - platform: scd4x
-    co2:
-      name: ${brink_co2_from_inside}
-      id: brink_co2_from_inside
-      on_value:
-        then:
-        - if:
-            condition:
-              lambda: 'return x < 1000;'
-            then:
-            else:
-            - if:
-                condition:
-                  lambda: 'return x > 1500;'
-                then:
-                else:
-        
-    humidity:
-      name: ${brink_humidity_from_inside}
-      id: brink_humidity_from_inside
-      on_value:
-        then:
-        - if:
-            condition:
-              lambda: 'return x < 30;'
-            then:
-            else:
-            - if:
-                condition:
-                  lambda: 'return x > 60;'
-                then:
-                else:
-
-    temperature:
-      name: ${brink_temp_from_inside}
-      id: brink_temp_from_inside
-
-    temperature_offset: "2.0°C"
-    
-  - id: brink_performance
-    name: ${brink_performance}
-    platform: template
-    unit_of_measurement: "%"
-    update_interval: 30s
-    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
-   # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
-
-  - id: brink_temp_to_inside
-    name: ${brink_temp_to_inside}
+  - id: temp_to_inside
+    name: ${${lang}_temp_to_inside}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 4036
