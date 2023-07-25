@@ -1,0 +1,49 @@
+substitutions:
+  brink_filter_status: Filter status
+  brink_temp_to_inside: Binnen uitblaas temperatuur
+  brink_humidity_to_inside: Binnen uitblaas luchtvochtigheid
+  brink_dewpoint_to_inside: Binnen dauwpunt
+  brink_external_humidity_sensor: Vochtsensor
+  brink_temp_to_outside: Buiten uitblaas temperatuur
+  brink_humidity_to_outside: Buiten uitblaas luchtvochtigheid
+  brink_temp_from_outside: Buiten aanzuig temperatuur
+  brink_supply_pressure: Druk inblaas
+  brink_exhaust_pressure: Druk uitblaas
+  brink_setpoint_inlet_volume: Inlaatluchtvolume ingesteld
+  brink_current_inlet_volume: Uitlaatluchtvolume ingesteld
+  brink_setpoint_outlet_volume: Uitlaatluchtvolume ingesteld
+  brink_current_outlet_volume: Huidig uitlaatluchtvolume
+  brink_frost_heater_power: Bevriezing heaterpower
+  brink_frost_fan_reduction: Bevriezing fan reductie
+  brink_current_filter_hours: Filter uren
+  brink_current_filter_days: Filter dagen
+  brink_exchange_filter_in: Filter wissel in
+  brink_filter_m3_h: Filter m3/h
+  brink_frost_status: Bevriezing status
+  brink_bypass_boost_fan_stand: Bypass Boost fan stand
+  brink_modbus_flow_step: Ventilatie stand
+  brink_modbus_flow_rate: Modbus flow waarde
+  brink_status: Status
+  brink_rht_sensor: Vochtsensor
+  brink_imbalance_intake: Brink imbalance intake
+  brink_bypass_from_dwelling: Bypass temp uit woning
+  brink_bypass_from_outside: Bypass temp van buiten
+  brink_bypass_hysteresis: Bypass hysteresis
+  brink_frost_control_temperature: Bevriezing controle temperatuur
+  brink_frost_minimum_inlet_temperature: Bevriezing minimum inlaat temperatuur
+  brink_imbalance_exhaust: Fan Onbalans Uitlaat
+  brink_filter_change_days: Dagen filter wissel
+  brink_filter_reset_op: Filter reset op
+  brink_co2_from_inside: Binnen aanzuig CO2
+  brink_humidity_from_inside: Binnen aanzuig luchtvochtigheid
+  brink_temp_from_inside: Fan Onbalans Inlaat
+  brink_performance: Rendement
+  auto: Auto
+  initialializating: Initialisatie
+  unknown: Onbekend
+  open: Open
+  closed: Dicht
+  hours: Uur
+  days: dagen
+  not_dirty: Niet vervuild
+  dirty: Vervuild

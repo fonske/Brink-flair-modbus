@@ -1,0 +1,49 @@
+substitutions:
+  brink_filter_status: Filter status
+  brink_temp_to_inside: Temperature to inside
+  brink_humidity_to_inside: Humidity to inside
+  brink_dewpoint_to_inside: Dewpoint to inside
+  brink_external_humidity_sensor: Humidity sensor (external)
+  brink_temp_to_outside: Temperature to outside
+  brink_humidity_to_outside: Humidity to outside
+  brink_temp_from_outside: Temperature from outside
+  brink_supply_pressure: Supply pressure
+  brink_exhaust_pressure: Exhaust pressure
+  brink_setpoint_inlet_volume: Setpoint inlet air volume
+  brink_current_inlet_volume: Current intake air Volume
+  brink_setpoint_outlet_volume: Setpoint exhaust air volume
+  brink_current_outlet_volume: Current exhaust air volume
+  brink_frost_heater_power: Frost heater power
+  brink_frost_fan_reduction: Frost fan reduction
+  brink_current_filter_hours: Current filter hours
+  brink_current_filter_days: Current filter days
+  brink_exchange_filter_in: Exchange filter in
+  brink_filter_m3_h: Filter used (m3/h)
+  brink_frost_status: Frost status
+  brink_bypass_boost_switch_position: Bypass Boost switch position
+  brink_modbus_flow_step: Modbus preset switch
+  brink_modbus_flow_rate: Modbus flow rate
+  brink_status: Status
+  brink_rht_sensor: RHT (humidity) sensor mode
+  brink_imbalance_intake: Brink imbalance intake
+  brink_bypass_from_dwelling: Bypass temp from home
+  brink_bypass_from_outside: Bypass temp from outside
+  brink_bypass_hysteresis: Bypass hysteresis
+  brink_frost_control_temperature: Freezing control temperature
+  brink_frost_minimum_inlet_temperature: Freezing minimum inlet temperature
+  brink_imbalance_exhaust: Fan imbalance exhaust
+  brink_filter_change_days: Days before filter warning
+  brink_filter_reset_op: Filter reset op
+  brink_co2_from_inside: CO2 from inside
+  brink_humidity_from_inside: Humidity from inside
+  brink_temp_from_inside: Temperature from inside
+  brink_performance: Performance
+  auto: Auto
+  initialize: Initialize
+  unknown: Unknown
+  open: Open
+  closed: Closed
+  hours: hours
+  days: days
+  not_dirty: Not dirty
+  dirty: Dirty
