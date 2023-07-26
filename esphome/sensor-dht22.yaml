@@ -1,0 +1,12 @@
+sensor:
+# extra DHT22 sensor on the house suction side as it is not present in the Brink Flair.
+ - platform: dht
+   model: DHT22
+   pin: 22
+   temperature:
+     name: ${brink_temp_from_inside}
+     id: brink_temp_from_inside
+   humidity:
+     name: ${brink_humidity_from_inside}
+     id: brink_humidity_from_inside
+   update_interval: 15s

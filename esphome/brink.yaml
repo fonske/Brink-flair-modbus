@@ -12,31 +12,16 @@ packages:
     files: 
       - esphome/.brink-labels-en.yaml
       - esphome/board-esp32.yaml
+      # - esphome/board-esp8266.yaml
       - esphome/sensor-scd41.yaml
+      # - esphome/sensor-dht22.yaml
 
 esphome:
   name: ${name}
-  # platform: ESP8266
-  # board: nodemcuv2
   on_boot:
     priority: 200
     then:
       - script.execute: on_boot
-
-# Enable/Disable logging
-logger:
-  logs:
-    modbus_controller.sensor: WARN
-    modbus_controller.output: WARN
-    modbus.number: WARN
-    esp32.preferences: WARN
-    sensor: WARN
-    text_sensor: WARN
-    dht.sensor: WARN
-    switch: WARN
-    button: WARN
-    number: WARN
-  # baud_rate: 0  # <--- super important! for ESP8266
 
 # Enable Home Assistant API
 api:
@@ -98,8 +83,8 @@ modbus_controller:
     update_interval: 10s
 
 sensor:
-  - id: temp_to_inside
-    name: ${${lang}_temp_to_inside}
+  - id: brink_temp_to_inside
+    name: ${rink_temp_to_inside}
     platform: modbus_controller
     modbus_controller_id: brink
     address: 4036

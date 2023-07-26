@@ -6,23 +6,11 @@ i2c:
   id: bus_a
 
 sensor:
-## extra DHT22 sensor on the house suction side as it is not present in the Brink Flair.
-#  - platform: dht
-#    model: DHT22
-#    pin: 22
-#    temperature:
-#      name: Binnen aanzuig temperatuur
-#      id: temp_from_inside
-#    humidity:
-#      name: Binnen aanzuig luchtvochtigheid
-#      id: humidity_from_inside
-#    update_interval: 15s
-
   ## extra SCD41 sensor on the house suction side as it is not present in the Brink Flair. Remove if not used
   - platform: scd4x
     co2:
-      name: ${${lang}_co2_from_inside}
-      id: co2_from_inside
+      name: ${brink_co2_from_inside}
+      id: brink_co2_from_inside
       on_value:
         then:
         - if:
@@ -37,8 +25,8 @@ sensor:
                 else:
         
     humidity:
-      name: ${${lang}_humidity_from_inside}
-      id: humidity_from_inside
+      name: ${brink_humidity_from_inside}
+      id: brink_humidity_from_inside
       on_value:
         then:
         - if:
@@ -53,16 +41,15 @@ sensor:
                 else:
 
     temperature:
-      name: ${${lang}_temp_from_inside}
-      id: temp_from_inside
+      name: ${brink_temp_from_inside}
+      id: brink_temp_from_inside
 
     temperature_offset: "2.0°C"
     
-  - id: performance
-    name: Rendement
+  - id: brink_performance
+    name: ${brink_performance}
     platform: template
     unit_of_measurement: "%"
     update_interval: 30s
-    lambda: 'return ((id(temp_to_inside).state - id(temp_from_outside).state)/(id(temp_from_inside).state - id(temp_from_outside).state)*100);'
+    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
    # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
-   
