@@ -1,0 +1,36 @@
+### ESP32 used is a MH-ET-LIVE, also known as Wemos D32 Mini 
+### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
+esp32:
+  board: mhetesp32minikit
+  framework:
+    type: arduino
+
+uart:
+  tx_pin: 23
+  rx_pin: 19
+
+# Enable/Disable logging
+logger:
+  logs:
+    modbus_controller.sensor: WARN
+    modbus_controller.output: WARN
+    modbus.number: WARN
+    esp32.preferences: WARN
+    sensor: WARN
+    text_sensor: WARN
+    dht.sensor: WARN
+    switch: WARN
+    button: WARN
+    number: WARN
+  # baud_rate: 0  # <--- super important! for ESP8266
+
+wifi:
+  ap:
+    ssid: "${name} hotspot"
+    password: "configesp"
+
+captive_portal:
+
+# Enable Web server.
+web_server:
+  port: 80

@@ -6,38 +6,22 @@ substitutions:
 # In order to use other language, fix include file name below:
 # Currently supported languages are en, nl.
 packages:
-  remote_package:  github://fonske/Brink-flair-modbus/esphome/.brink-labels-en.yaml@main
+  remote_package:
+    url: https://github.com/fonske/Brink-flair-modbus
+    ref: main
+    files: 
+      - esphome/.brink-labels-en.yaml
+      - esphome/board-esp32.yaml
+      # - esphome/board-esp8266.yaml
+      # - esphome/sensor-scd41.yaml
+      # - esphome/sensor-dht22.yaml
 
 esphome:
   name: ${name}
-  # platform: ESP8266
-  # board: nodemcuv2
   on_boot:
     priority: 200
     then:
       - script.execute: on_boot
-
-### ESP32 used is a MH-ET-LIVE, also known as Wemos D32 Mini 
-### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
-esp32:
-  board: mhetesp32minikit
-  framework:
-    type: arduino
-
-# Enable/Disable logging
-logger:
-  logs:
-    modbus_controller.sensor: WARN
-    modbus_controller.output: WARN
-    modbus.number: WARN
-    esp32.preferences: WARN
-    sensor: WARN
-    text_sensor: WARN
-    dht.sensor: WARN
-    switch: WARN
-    button: WARN
-    number: WARN
-  # baud_rate: 0  # <--- super important! for ESP8266
 
 # Enable Home Assistant API
 api:
@@ -49,16 +33,7 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   ## Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ssid: "${name} hotspot"
-    password: "configesp"
 
-captive_portal:
-
-# Enable Web server.
-web_server:
-  port: 80
-  
 # Sync time
 time:
   - platform: sntp
@@ -85,11 +60,11 @@ script:
 
 ###  Settings Brink Flair (no need to change normally)
 ###  menu 14-Communication: TypeBus=Modbus, Slave Address=20, Baudrate=19200, Parity=Even
+
 uart:
   id: mod_bus
-  tx_pin: 23
-  rx_pin: 19
   baud_rate: 19200
+  stop_bits: 1
   parity: even
 
 modbus:
@@ -104,74 +79,7 @@ modbus_controller:
     setup_priority: -10
     update_interval: 10s
 
-# ## i2c for DFROBOT GRAVITY SCD41, CO2 sensor - remove if not used
-i2c:  
-  sda: 21
-  scl: 22
-  scan: true
-  id: bus_a
-
 sensor:
-## extra DHT22 sensor on the house suction side as it is not present in the Brink Flair.
-#  - platform: dht
-#    model: DHT22
-#    pin: 22
-#    temperature:
-#      name: Binnen aanzuig temperatuur
-#      id: temp_from_inside
-#    humidity:
-#      name: Binnen aanzuig luchtvochtigheid
-#      id: humidity_from_inside
-#    update_interval: 15s
-
-  ## extra SCD41 sensor on the house suction side as it is not present in the Brink Flair. Remove if not used
-  - platform: scd4x
-    co2:
-      name: ${brink_co2_from_inside}
-      id: brink_co2_from_inside
-      on_value:
-        then:
-        - if:
-            condition:
-              lambda: 'return x < 1000;'
-            then:
-            else:
-            - if:
-                condition:
-                  lambda: 'return x > 1500;'
-                then:
-                else:
-        
-    humidity:
-      name: ${brink_humidity_from_inside}
-      id: brink_humidity_from_inside
-      on_value:
-        then:
-        - if:
-            condition:
-              lambda: 'return x < 30;'
-            then:
-            else:
-            - if:
-                condition:
-                  lambda: 'return x > 60;'
-                then:
-                else:
-
-    temperature:
-      name: ${brink_temp_from_inside}
-      id: brink_temp_from_inside
-
-    temperature_offset: "2.0°C"
-    
-  - id: brink_performance
-    name: ${brink_performance}
-    platform: template
-    unit_of_measurement: "%"
-    update_interval: 30s
-    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
-   # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
-
   - id: brink_temp_to_inside
     name: ${brink_temp_to_inside}
     platform: modbus_controller
