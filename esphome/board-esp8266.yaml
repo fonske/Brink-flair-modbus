@@ -4,8 +4,8 @@ esp8266:
   board: nodemcuv2
 
 uart:
-  tx_pin: D2
-  rx_pin: D1
+  tx_pin: D1
+  rx_pin: D2
 
 # Enable/Disable logging - ESP8266 is low on memory, so logger is disabled by default
 # logger:
