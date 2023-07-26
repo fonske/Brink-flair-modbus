@@ -7,13 +7,13 @@ substitutions:
 # Currently supported languages are en, nl.
 packages:
   remote_package:
-    url: https://github.com/egisz/Brink-flair-modbus
-    ref: chip-config
+    url: https://github.com/fonske/Brink-flair-modbus
+    ref: main
     files: 
       - esphome/.brink-labels-en.yaml
       - esphome/board-esp32.yaml
       # - esphome/board-esp8266.yaml
-      - esphome/sensor-scd41.yaml
+      # - esphome/sensor-scd41.yaml
       # - esphome/sensor-dht22.yaml
 
 esphome:
