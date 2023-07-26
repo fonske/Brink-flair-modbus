@@ -6,12 +6,8 @@ esp32:
     type: arduino
 
 uart:
-  id: mod_bus
   tx_pin: 23
   rx_pin: 19
-  baud_rate: 19200
-  stop_bits: 1
-  parity: even
 
 # Enable/Disable logging
 logger:
@@ -26,4 +22,15 @@ logger:
     switch: WARN
     button: WARN
     number: WARN
-  # baud_rate: 0  # <--- super important! for ESP8266  
+  # baud_rate: 0  # <--- super important! for ESP8266
+
+wifi:
+  ap:
+    ssid: "${name} hotspot"
+    password: "configesp"
+
+captive_portal:
+
+# Enable Web server.
+web_server:
+  port: 80
