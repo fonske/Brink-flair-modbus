@@ -6,7 +6,7 @@
     cards:
       - type: entities
         entities:
-          - entity: sensor.brink_bypass_status
+          - entity: sensor.bypass_status
           - entity: sensor.filter_status
           - entity: sensor.current_intake_air_volume
           - entity: sensor.current_exhaust_air_volume
@@ -90,7 +90,7 @@
                   left: 14.5%
                   color: '#4171b1'
               - type: state-label
-                entity: sensor.brink_bypass_status
+                entity: sensor.bypass_status
                 prefix: 'Bypass: '
                 style:
                   top: 26%
