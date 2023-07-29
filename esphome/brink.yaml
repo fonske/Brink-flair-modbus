@@ -344,7 +344,7 @@ text_sensor:
       return mode_str;
    
   - id: brink_bypass_status
-    name: Bypass status
+    name: ${brink_bypass_status}
     platform: modbus_controller
     modbus_controller_id: brink
     register_type: read

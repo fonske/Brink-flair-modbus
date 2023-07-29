@@ -1,5 +1,6 @@
 substitutions:
   brink_filter_status: Filter status
+  brink_bypass_status: Bypass status
   brink_temp_to_inside: Binnen uitblaas temperatuur
   brink_humidity_to_inside: Binnen uitblaas luchtvochtigheid
   brink_dewpoint_to_inside: Binnen dauwpunt

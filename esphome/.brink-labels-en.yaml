@@ -1,5 +1,6 @@
 substitutions:
   brink_filter_status: Filter status
+  brink_bypass_status: Bypass status
   brink_temp_to_inside: Temperature to inside
   brink_humidity_to_inside: Humidity to inside
   brink_dewpoint_to_inside: Dewpoint to inside
