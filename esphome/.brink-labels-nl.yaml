@@ -40,7 +40,7 @@ substitutions:
   brink_temp_from_inside: Fan Onbalans Inlaat
   brink_performance: Rendement
   auto: Auto
-  initialializating: Initialisatie
+  initialize: Initialisatie
   unknown: Onbekend
   open: Open
   closed: Dicht
