@@ -21,7 +21,7 @@ substitutions:
   brink_exchange_filter_in: Filter wissel in
   brink_filter_m3_h: Filter m3/h
   brink_frost_status: Bevriezing status
-  brink_bypass_boost_fan_stand: Bypass Boost fan stand
+  brink_bypass_boost_switch_position: Bypass Boost fan stand
   brink_modbus_flow_step: Ventilatie stand
   brink_modbus_flow_rate: Modbus flow waarde
   brink_status: Status
