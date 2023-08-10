@@ -11,6 +11,7 @@ packages:
     ref: main
     files: 
       - esphome/.brink-labels-en.yaml
+      # - esphome/.brink-labels-nl.yaml
       - esphome/board-esp32.yaml
       # - esphome/board-esp8266.yaml
       # - esphome/sensor-scd41.yaml
