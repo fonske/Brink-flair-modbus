@@ -32,7 +32,7 @@ i2c:
 # Comment with # if not used.
 sensor:
  - platform: dht
-   model: DHT22
+   model: DHT11
    pin: 8
    temperature:
      name: ${brink_temp_from_inside}
@@ -58,9 +58,9 @@ switch:
 # Enable/Disable logging
 logger:
   logs:
-    modbus_controller.sensor: WARN
-    modbus_controller.output: WARN
-    modbus.number: WARN
+#    modbus_controller.sensor: WARN
+#    modbus_controller.output: WARN
+#    modbus.number: WARN
     esp32.preferences: WARN
     sensor: WARN
     text_sensor: WARN
