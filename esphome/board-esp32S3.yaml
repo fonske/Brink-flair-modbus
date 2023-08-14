@@ -48,19 +48,20 @@ sensor:
       name: "Living Room Temperature"
     humidity:
       name: "Living Room Humidity"
+    i2c_id: bus_a
     address: 0x44
     update_interval: 60s
 
-  - platform: qmp6988
-    temperature:
-      name: "Living Room Temperature2"
-      oversampling: 16x
-    pressure:
-      name: "Living Room Pressure"
-      oversampling: 16x
-    address: 0x70
-    update_interval: 60s
-    iir_filter: 2x
+#  - platform: qmp6988
+#    temperature:
+#      name: "Living Room Temperature2"
+#      oversampling: 16x
+#    pressure:
+#      name: "Living Room Pressure"
+#      oversampling: 16x
+#    address: 0x70
+#    update_interval: 60s
+#    iir_filter: 2x
 
 
 # Option for Relay  ***experimental***
