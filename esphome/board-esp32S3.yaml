@@ -59,7 +59,7 @@ sensor:
     pressure:
       name: "Living Room Pressure ENVIII"
       oversampling: 16x
-#    i2c_id: bus_a
+    i2c_id: bus_a
     address: 0x70
     update_interval: 60s
     iir_filter: 2x
@@ -76,7 +76,7 @@ sensor:
       name: ${brink_temp_from_inside}
       id: brink_temp_from_inside
 #    temperature_offset: "2.0°C"
-#    i2c_id: bus_b
+    i2c_id: bus_b
     address: 0x62
     update_interval: 60s
 
