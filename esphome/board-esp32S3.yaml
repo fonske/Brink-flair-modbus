@@ -45,21 +45,21 @@ sensor:
 # Option for M5stack ENV III temperature, humidity and pressure sensor on i2c bus ***experimental***
   - platform: sht3xd
     temperature:
-      name: "Living Room Temperature"
+      name: "Living Room Temperature ENVIII"
     humidity:
-      name: "Living Room Humidity"
+      name: "Living Room Humidity ENVIII"
     i2c_id: bus_a
     address: 0x44
     update_interval: 60s
 
   - platform: qmp6988
     temperature:
-      name: "Living Room Temperature2"
+      name: "Living Room Temperature2 ENVIII"
       oversampling: 16x
     pressure:
-      name: "Living Room Pressure"
+      name: "Living Room Pressure ENVIII"
       oversampling: 16x
-    i2c_id: bus_a
+#    i2c_id: bus_a
     address: 0x70
     update_interval: 60s
     iir_filter: 2x
@@ -76,7 +76,7 @@ sensor:
       name: ${brink_temp_from_inside}
       id: brink_temp_from_inside
 #    temperature_offset: "2.0°C"
-    i2c_id: bus_b
+#    i2c_id: bus_b
     address: 0x62
     update_interval: 60s
 
