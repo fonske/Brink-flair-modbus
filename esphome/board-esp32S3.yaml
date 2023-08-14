@@ -78,6 +78,7 @@ sensor:
 #    temperature_offset: "2.0°C"
     i2c_id: bus_b
     address: 0x62
+    update_interval: 60s
 
 # Option for Relay  ***experimental***
 # Comment with # if not used.
