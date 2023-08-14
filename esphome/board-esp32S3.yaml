@@ -31,16 +31,16 @@ i2c:
 # Option for DHT11 or DHT22 on last 3 terminals -/Signal/+ ***experimental***
 # Comment with # if not used.
 sensor:
-  - platform: dht
-    model: DHT11
-    pin: 8
-    temperature:
-      name: ${brink_temp_from_inside}
-      id: brink_temp_from_inside
-    humidity:
-      name: ${brink_humidity_from_inside}
-      id: brink_humidity_from_inside
-    update_interval: 15s
+#  - platform: dht
+#    model: DHT11
+#    pin: 8
+#    temperature:
+#      name: ${brink_temp_from_inside}
+#      id: brink_temp_from_inside
+#    humidity:
+#      name: ${brink_humidity_from_inside}
+#      id: brink_humidity_from_inside
+#    update_interval: 15s
 
 # Option for M5stack ENV III temp, humidity, pressure sensor on i2c bus ***experimental***
   - platform: sht3xd
@@ -52,16 +52,17 @@ sensor:
     address: 0x44
     update_interval: 60s
 
-#  - platform: qmp6988
-#    temperature:
-#      name: "Living Room Temperature2"
-#      oversampling: 16x
-#    pressure:
-#      name: "Living Room Pressure"
-#      oversampling: 16x
-#    address: 0x70
-#    update_interval: 60s
-#    iir_filter: 2x
+  - platform: qmp6988
+    temperature:
+      name: "Living Room Temperature2"
+      oversampling: 16x
+    pressure:
+      name: "Living Room Pressure"
+      oversampling: 16x
+    i2c_id: bus_a
+    address: 0x70
+    update_interval: 60s
+    iir_filter: 2x
 
 
 # Option for Relay  ***experimental***
