@@ -1,12 +1,6 @@
-## i2c for DFROBOT GRAVITY SCD41, CO2 sensor - remove if not used
-i2c:  
-  sda: 21
-  scl: 22
-  scan: true
-  id: bus_a
-
+## i2c for DFROBOT GRAVITY SCD41, CO2 sensor. I2C must be enabled.
 sensor:
-  ## extra SCD41 sensor on the house suction side as it is not present in the Brink Flair. Remove if not used
+  ## extra SCD41 sensor on the house suction side as it is not present in the Brink Flair.
   - platform: scd4x
     co2:
       name: ${brink_co2_from_inside}
@@ -45,7 +39,8 @@ sensor:
       id: brink_temp_from_inside
 
     temperature_offset: "2.0°C"
-    
+
+## Performance now can be calculated with the extra temperature sensor.     
   - id: brink_performance
     name: ${brink_performance}
     platform: template

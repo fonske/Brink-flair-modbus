@@ -1,4 +1,4 @@
-### ESP32S3 used is a LILYGO ESP32S3-T7
+### ESP32S3 used is a LILYGO ESP32S3-T7  (tindie.com)
 ### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
 esp32:
   board: adafruit_feather_esp32s3_nopsram
@@ -41,28 +41,6 @@ sensor:
 #      name: ${brink_humidity_from_inside}
 #      id: brink_humidity_from_inside
 #    update_interval: 15s
-
-## Option for M5stack ENV III temperature, humidity and pressure sensor on i2c bus ***experimental***
-#  - platform: sht3xd
-#    temperature:
-#      name: "Living Room Temperature ENVIII"
-#    humidity:
-#      name: "Living Room Humidity ENVIII"
-#    i2c_id: bus_a
-#    address: 0x44
-#    update_interval: 60s
-
-#  - platform: qmp6988
-#    temperature:
-#      name: "Living Room Temperature2 ENVIII"
-#      oversampling: 16x
-#    pressure:
-#      name: "Living Room Pressure ENVIII"
-#      oversampling: 16x
-#    i2c_id: bus_a
-#    address: 0x70
-#    update_interval: 60s
-#    iir_filter: 2x
 
 ## Option for Relay  ***experimental***
 ## Comment with # if not used.

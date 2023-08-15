@@ -1,4 +1,5 @@
-## Option for M5stack SCD41, CO2, humidity and temperature sensor on i2c bus ***experimental***
+## Option for M5stack SCD41, CO2, humidity and temperature sensor on i2c bus. I2C must be enabled.
+sensor:
   - platform: scd4x
     co2:
      name: ${brink_co2_from_inside}
@@ -13,7 +14,8 @@
     i2c_id: bus_a  #or choose bus_b
     address: 0x62
     update_interval: 60s
-    
+
+## Performance now can be calculated with the extra temperature sensor.    
   - id: brink_performance
     name: ${brink_performance}
     platform: template

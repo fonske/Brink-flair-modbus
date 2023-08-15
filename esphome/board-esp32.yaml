@@ -5,9 +5,17 @@ esp32:
   framework:
     type: arduino
 
+# uart for modbus rtu
 uart:
   tx_pin: 23
   rx_pin: 19
+
+# i2c for extra sensor
+i2c:  
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
 
 # Enable/Disable logging
 logger:
