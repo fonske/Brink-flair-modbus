@@ -1,0 +1,23 @@
+## Option for M5stack SCD41, CO2, humidity and temperature sensor on i2c bus ***experimental***
+  - platform: scd4x
+    co2:
+     name: ${brink_co2_from_inside}
+     id: brink_co2_from_inside
+    humidity:
+      name: ${brink_humidity_from_inside}
+      id: brink_humidity_from_inside
+    temperature:
+      name: ${brink_temp_from_inside}
+      id: brink_temp_from_inside
+#    temperature_offset: "2.0°C"
+    i2c_id: bus_a  #or choose bus_b
+    address: 0x62
+    update_interval: 60s
+    
+  - id: brink_performance
+    name: ${brink_performance}
+    platform: template
+    unit_of_measurement: "%"
+    update_interval: 30s
+    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
+   # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
