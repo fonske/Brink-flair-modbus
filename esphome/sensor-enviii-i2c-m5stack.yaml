@@ -7,18 +7,19 @@ sensor:
     humidity:
       name: ${brink_humidity_from_inside}
       id: brink_humidity_from_inside
-    i2c_id: bus_a
+    i2c_id: bus_b
     address: 0x44
     update_interval: 60s
 
   - platform: qmp6988
-    temperature:
-      name: "Living Room Temperature2 ENVIII"
-      oversampling: 16x
+#    temperature:
+#      name: "Living Room Temperature2 ENVIII"
+#      oversampling: 16x
     pressure:
-      name: "Living Room Pressure ENVIII"
+      name: ${brink_pressure_from_inside}
+      id: brink_pressure_from_inside
       oversampling: 16x
-    i2c_id: bus_a
+    i2c_id: bus_b
     address: 0x70
     update_interval: 60s
     iir_filter: 2x

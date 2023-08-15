@@ -38,6 +38,7 @@ substitutions:
   brink_co2_from_inside: CO2 from inside
   brink_humidity_from_inside: Humidity from inside
   brink_temp_from_inside: Temperature from inside
+  brink_pressure_from_inside: Atm. pressure from inside
   brink_performance: Performance
   auto: Auto
   initialize: Initialize
