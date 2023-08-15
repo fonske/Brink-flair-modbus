@@ -65,20 +65,20 @@ sensor:
 #    iir_filter: 2x
 
 ## Option for M5stack SCD41, CO2, humidity and temperature sensor on i2c bus ***experimental***
-#  - platform: scd4x
-#    co2:
-#      name: ${brink_co2_from_inside}
-#      id: brink_co2_from_inside
-#    humidity:
-#      name: ${brink_humidity_from_inside}
-#      id: brink_humidity_from_inside
-#    temperature:
-#      name: ${brink_temp_from_inside}
-#      id: brink_temp_from_inside
-##    temperature_offset: "2.0°C"
-#    i2c_id: bus_b
-#    address: 0x62
-#    update_interval: 60s
+  - platform: scd4x
+    co2:
+      name: ${brink_co2_from_inside}
+     id: brink_co2_from_inside
+    humidity:
+      name: ${brink_humidity_from_inside}
+      id: brink_humidity_from_inside
+    temperature:
+      name: ${brink_temp_from_inside}
+      id: brink_temp_from_inside
+#    temperature_offset: "2.0°C"
+    i2c_id: bus_b
+    address: 0x62
+    update_interval: 60s
 
 ## Option for Relay  ***experimental***
 ## Comment with # if not used.
