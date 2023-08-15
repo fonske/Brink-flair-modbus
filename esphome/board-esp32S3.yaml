@@ -67,7 +67,7 @@ sensor:
 ## Option for M5stack SCD41, CO2, humidity and temperature sensor on i2c bus ***experimental***
   - platform: scd4x
     co2:
-      name: ${brink_co2_from_inside}
+     name: ${brink_co2_from_inside}
      id: brink_co2_from_inside
     humidity:
       name: ${brink_humidity_from_inside}
