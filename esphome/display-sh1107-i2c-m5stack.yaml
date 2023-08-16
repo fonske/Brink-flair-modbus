@@ -1,8 +1,23 @@
+## M5 stack oled display SH1107
+## see https://github.com/esphome/issues/issues/2913
+external_components:
+  - source: github://nikitakuklev/esphome@sh1107_fix
+    components: [ ssd1306_base, ssd1306_i2c, ssd1306_spi ]
+    refresh: 60s
+
 display:
   - platform: ssd1306_i2c
-    model: "SH1107 128x64"
-    reset_pin: D0
-    i2c_id: bus_b
-    address: 0x3C
+    model: 'SH1107_128x128'
+    rotation: 0
+    flip_x: false
+    flip_y: false
+    offset_y: 0
+    offset_x: 0
+    external_vcc: true
+    update_interval: 1.0s
     lambda: |-
-      it.print(0, 0, id(font), "Hello World!");
+      it.line(0, 0, 128, 128);
+      it.rectangle(5, 5, 10, 10);
+      it.circle(118, 54, 5);
+      it.rectangle(0, 0, 128, 128);
+      it.filled_circle(((int)id(uptime_sensor).state)*10 % 128, it.get_height() / 2, 10);
