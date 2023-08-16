@@ -1,0 +1,8 @@
+display:
+  - platform: ssd1306_i2c
+    model: "SH1107 128x64"
+    reset_pin: D0
+    i2c_id: bus_b
+    address: 0x3C
+    lambda: |-
+      it.print(0, 0, id(font), "Hello World!");
