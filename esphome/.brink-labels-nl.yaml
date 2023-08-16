@@ -20,6 +20,7 @@ substitutions:
   brink_current_filter_days: Filter dagen
   brink_exchange_filter_in: Filter wissel in
   brink_filter_m3_h: Filter m3/h
+  brink_device_type: Model flair
   brink_frost_status: Bevriezing status
   brink_bypass_boost_switch_position: Bypass Boost fan stand
   brink_modbus_flow_step: Ventilatie stand
