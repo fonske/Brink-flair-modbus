@@ -20,6 +20,7 @@ substitutions:
   brink_current_filter_days: Current filter days
   brink_exchange_filter_in: Exchange filter in
   brink_filter_m3_h: Filter used (m3/h)
+  brink_device_type: Device type
   brink_frost_status: Frost status
   brink_bypass_boost_switch_position: Bypass Boost switch position
   brink_modbus_flow_step: Modbus preset switch
