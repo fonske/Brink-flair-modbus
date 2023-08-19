@@ -58,7 +58,7 @@ script:
           auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
             controller, 8000, new_value);
 
-          delay(200) ;
+          delay(20) ;
           controller->queue_command(set_value_cmd);
           ESP_LOGI("ModbusLambda", "Brink Modbus Step set");
 
@@ -315,15 +315,15 @@ sensor:
     value_type: U_DWORD
     accuracy_decimals: 0
 
-#  - id: brink_device_type
-#    name: ${brink_device_type}
-#    platform: modbus_controller
-#    modbus_controller_id: brink
-#    icon: mdi:penguin
-#    address: 4404
-#    unit_of_measurement: ""
-#    register_type: read
-#    value_type: U_WORD
+  - id: brink_device_type
+    name: ${brink_device_type}
+    platform: modbus_controller
+    modbus_controller_id: brink
+    icon: mdi:penguin
+    address: 4004
+    unit_of_measurement: ""
+    register_type: read
+    value_type: U_WORD
 
 text_sensor:
   - id: brink_status
@@ -356,7 +356,7 @@ text_sensor:
         case 14:  mode_str = "Auto Lan/ Wlan local"; break;                                                         
       }
       return mode_str;
-   
+  
   - id: brink_bypass_status
     name: ${brink_bypass_status}
     platform: modbus_controller
@@ -513,6 +513,26 @@ switch:
     icon: mdi:toggle-switch
     disabled_by_default: true
 
+  - id: brink_standby_switch
+    name: ${brink_standby_switch}
+    platform: template
+    optimistic: true
+    on_turn_on:
+      then:
+        - lambda: |-
+            esphome::modbus_controller::ModbusController *controller = id(${name});
+            auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
+              controller, 8003, 1);
+            delay(20) ;
+            controller->queue_command(set_value_cmd);    
+    on_turn_off:
+      then:
+        - lambda: |-
+            esphome::modbus_controller::ModbusController *controller = id(${name});
+            auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
+              controller, 8003, 2);
+            delay(20) ;
+            controller->queue_command(set_value_cmd);
 
 button:
   - id: brink_reset_filter_button
@@ -533,21 +553,21 @@ button:
 
 
 ## temporarely test button for Step modbus mode after reboot or powerloss
-  - id: brink_step_modbus
-    name: Set Modbus Control Mode - Switch
-    platform: template
-    on_press:
-      then:
-       - lambda: |-
-           auto new_value = 1;
-
-           esphome::modbus_controller::ModbusController *controller = id(${name});
-           auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
-             controller, 8000, new_value);
-
-           delay(200) ;
-           controller->queue_command(set_value_cmd);
-           ESP_LOGI("ModbusLambda", "Brink Modbus Step set");
+#  - id: brink_step_modbus
+#    name: Set Modbus Control Mode - Switch
+#    platform: template
+#    on_press:
+#      then:
+#       - lambda: |-
+#           auto new_value = 1;
+#
+#           esphome::modbus_controller::ModbusController *controller = id(${name});
+#           auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
+#             controller, 8000, new_value);
+#
+#           delay(20) ;
+#           controller->queue_command(set_value_cmd);
+#           ESP_LOGI("ModbusLambda", "Brink Modbus Step set");
 
 number:
   # If the bypass boost function is activated, the bypass opens and the fan will run at this preset setting.
