@@ -8,8 +8,8 @@
         entities:
           - entity: sensor.bypass_status
           - entity: sensor.filter_status
-          - entity: sensor.huidig_inlaatluchtvolume
-          - entity: sensor.huidig_uitlaatluchtvolume
+          - entity: sensor.huidig_inlaat_luchtvolume
+          - entity: sensor.huidig_uitlaat_luchtvolume
           - entity: sensor.vochtsensor
           - entity: sensor.filter_reset_op
           - entity: sensor.filter_dagen
@@ -30,13 +30,13 @@
             image: local/images/wtw_icons2.png
             elements:
               - type: state-label
-                entity: sensor.huidig_inlaatluchtvolume
+                entity: sensor.huidig_inlaat_luchtvolume
                 style:
                   top: 59%
                   left: 73%
                   color: black
               - type: state-label
-                entity: sensor.huidig_uitlaatluchtvolume
+                entity: sensor.huidig_uitlaat_luchtvolume
                 style:
                   top: 59%
                   left: 27%
@@ -50,7 +50,7 @@
               - type: state-label
                 entity: sensor.binnen_aanzuig_luchtvochtigheid
                 style:
-                  top: 30%
+                  top: 29%
                   left: 92%
                   color: '#4171b1'
               - type: state-label
@@ -106,7 +106,6 @@
               - type: state-label
                 entity: sensor.filter_wissel_in
                 prefix: 'Filterwissel in '
-                suffix: agen
                 style:
                   top: 92%
                   left: 50%
@@ -246,11 +245,11 @@
           - entity: switch.bypass_boost
           - entity: number.bypass_temp_uit_woning
           - entity: number.bypass_temp_van_buiten
-          - entity: number.bypass_hysterese
+          - entity: number.bypass_hysteresis
           - entity: number.dagen_filter_wissel
           - entity: button.filter_reset
           - entity: switch.vochtsensor
-          - entity: button.step_modbus
-          - entity: number.bevriezing_controle_temperatuur
-          - entity: number.bevriezing_minimum_inlaat_temperatuur
+          - entity: number.bevriezing_controle_temp
+          - entity: number.bevriezing_minimum_inlaat_temp
+          - entity: switch.standby_schakelaar
         show_header_toggle: false
