@@ -11,9 +11,9 @@ substitutions:
   brink_supply_pressure: Druk inblaas
   brink_exhaust_pressure: Druk uitblaas
   brink_setpoint_inlet_volume: Inlaatluchtvolume ingesteld
-  brink_current_inlet_volume: Uitlaatluchtvolume ingesteld
+  brink_current_inlet_volume: Huidig inlaat luchtvolume
   brink_setpoint_outlet_volume: Uitlaatluchtvolume ingesteld
-  brink_current_outlet_volume: Huidig uitlaatluchtvolume
+  brink_current_outlet_volume: Huidig uitlaat luchtvolume
   brink_frost_heater_power: Bevriezing heaterpower
   brink_frost_fan_reduction: Bevriezing fan reductie
   brink_current_filter_hours: Filter uren
