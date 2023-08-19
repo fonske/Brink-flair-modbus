@@ -28,7 +28,7 @@ substitutions:
   brink_status: Status
   brink_rht_sensor: Vochtsensor
   brink_standby_switch: Standby schakelaar
-  brink_imbalance_intake: Brink imbalance intake
+  brink_imbalance_intake: Fan onbalans inlaat
   brink_bypass_from_dwelling: Bypass temp uit woning
   brink_bypass_from_outside: Bypass temp van buiten
   brink_bypass_hysteresis: Bypass hysteresis
