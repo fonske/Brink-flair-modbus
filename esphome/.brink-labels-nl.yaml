@@ -32,8 +32,8 @@ substitutions:
   brink_bypass_from_dwelling: Bypass temp uit woning
   brink_bypass_from_outside: Bypass temp van buiten
   brink_bypass_hysteresis: Bypass hysteresis
-  brink_frost_control_temperature: Bevriezing controle temp.
-  brink_frost_minimum_inlet_temperature: Bevriezing min. inlaat temp.
+  brink_frost_control_temperature: Bevriezing controle temp
+  brink_frost_minimum_inlet_temperature: Bevriezing minimum inlaat temp
   brink_imbalance_exhaust: Fan onbalans uitlaat
   brink_filter_change_days: Dagen filter wissel
   brink_filter_reset_op: Filter reset op
