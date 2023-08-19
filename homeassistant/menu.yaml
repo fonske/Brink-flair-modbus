@@ -243,4 +243,5 @@
           - entity: switch.rht_humidity_sensor_mode
           - entity: number.freezing_control_temperature
           - entity: number.freezing_minimum_inlet_temperature
+          - entity: switch.standby_switch
         show_header_toggle: false
