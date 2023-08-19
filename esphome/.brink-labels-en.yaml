@@ -27,6 +27,7 @@ substitutions:
   brink_modbus_flow_rate: Modbus flow rate
   brink_status: Status
   brink_rht_sensor: RHT (humidity) sensor mode
+  brink_standby_switch: Standby switch
   brink_imbalance_intake: Brink imbalance intake
   brink_bypass_from_dwelling: Bypass temp from home
   brink_bypass_from_outside: Bypass temp from outside
