@@ -558,16 +558,16 @@ button:
 #    platform: template
 #    on_press:
 #      then:
-#       - lambda: |-
-#           auto new_value = 1;
+#        - lambda: |-
+#            auto new_value = 1;
 #
-#           esphome::modbus_controller::ModbusController *controller = id(${name});
-#           auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
-#             controller, 8000, new_value);
+#            esphome::modbus_controller::ModbusController *controller = id(${name});
+#            auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
+#              controller, 8000, new_value);
 #
-#           delay(20) ;
-#           controller->queue_command(set_value_cmd);
-#           ESP_LOGI("ModbusLambda", "Brink Modbus Step set");
+#            delay(20) ;
+#            controller->queue_command(set_value_cmd);
+#            ESP_LOGI("ModbusLambda", "Brink Modbus Step set");
 
 number:
   # If the bypass boost function is activated, the bypass opens and the fan will run at this preset setting.
