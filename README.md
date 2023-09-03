@@ -31,5 +31,5 @@ Project support additional sensors DHT22 or DFROBOT GRAVITY SCD41, CO2 sensor.
 In order to enable them, edit file `esphome/brink.yaml` and uncomment include file for sensor.
 
 ## Contact
-Contact me: alphonsuijtdehaag at gmail dot com, if you are interested in a PCB with a ESP32 (mh-et-live or wemos s3 mini) and XY-017 ttl to rs485 mounted on with 3d printed housing.
+Contact me: alphonsuijtdehaag at gmail dot com, if you are interested in a PCB with a ESP32 (mh-et-live or lilygo esp32s3-T7) and XY-017 ttl to rs485 mounted on with 3d printed housing.
 See: /pictures
