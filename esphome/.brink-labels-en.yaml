@@ -45,8 +45,11 @@ substitutions:
   auto: Auto
   initialize: Initialize
   unknown: Unknown
+  opening: Opening
+  closing: Closing
   open: Open
   closed: Closed
+  error: Error
   hours: hours
   days: days
   not_dirty: Not dirty
