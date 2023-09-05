@@ -373,10 +373,11 @@ text_sensor:
       std::string mode_str;
       switch (int_mode) {
         case 0:  mode_str = "${initialize}"; break;
-        case 1:  mode_str = "${open}"; break;
-        case 2:  mode_str = "${closed}"; break;
+        case 1:  mode_str = "${opening}"; break;
+        case 2:  mode_str = "${closing}"; break;
         case 3:  mode_str = "${open}"; break;
         case 4:  mode_str = "${closed}"; break;
+        case 255:  mode_str = "${error}"; break;
         default: mode_str = "${unknown}"; break;
        }
       return mode_str;

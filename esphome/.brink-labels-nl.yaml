@@ -45,8 +45,11 @@ substitutions:
   auto: Auto
   initialize: Initialisatie
   unknown: Onbekend
+  opening: Gaat open
+  closing: Gaat dicht
   open: Open
   closed: Dicht
+  error: Storing
   hours: Uur
   days: dagen
   not_dirty: Niet vervuild
