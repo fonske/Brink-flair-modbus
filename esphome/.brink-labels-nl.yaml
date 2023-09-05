@@ -45,8 +45,8 @@ substitutions:
   auto: Auto
   initialize: Initialisatie
   unknown: Onbekend
-  opening: Gaat open
-  closing: Gaat dicht
+  opening: Openend
+  closing: Sluitend
   open: Open
   closed: Dicht
   error: Storing
