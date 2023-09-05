@@ -164,9 +164,9 @@ sensor:
     address: 4023
     unit_of_measurement: "Pa"
     value_type: S_WORD  
-    accuracy_decimals: 1
+    accuracy_decimals: 0
     filters:
-      - multiply: 0.1
+      - multiply: 1
     
   - id: brink_exhaust_pressure
     name: ${brink_exhaust_pressure}    
@@ -177,9 +177,9 @@ sensor:
     address: 4024
     unit_of_measurement: "Pa"
     value_type: S_WORD  
-    accuracy_decimals: 1
+    accuracy_decimals: 0
     filters:
-      - multiply: 0.1
+      - multiply: 1
 
   - id: brink_setpoint_inlet_volume
     name: ${brink_setpoint_inlet_volume}
@@ -457,7 +457,7 @@ text_sensor:
         - "Tue -> di"
         - "Wed -> wo"
         - "Thu -> do"
-        - "Fri -> vrij"
+        - "Fri -> vri"
         - "Sat -> zat"
         - "Sun -> zon"
 
