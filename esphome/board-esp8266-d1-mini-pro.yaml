@@ -1,0 +1,15 @@
+### ESP32 used is a MH-ET-LIVE, also known as Wemos D32 Mini 
+### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
+esp8266:
+  board: d1_mini_pro
+
+uart:
+  tx_pin: D4
+  rx_pin: D0
+
+# Enable/Disable logging - ESP8266 is low on memory, so logger is disabled by default
+# logger:
+#   baud_rate: 0  # <--- super important! for ESP8266
+
+# captative portal and webserver is disabled for ESP8266 due low RAM.
+# if enabled, it leads to unstable operation, Wifi disconnects, etc.
