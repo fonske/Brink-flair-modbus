@@ -9,7 +9,7 @@ sensor:
       id: brink_humidity_from_inside
     i2c_id: bus_b
     address: 0x44
-    update_interval: 60s
+    update_interval: 30s
 
   - platform: qmp6988
 #    temperature:
@@ -21,7 +21,7 @@ sensor:
       oversampling: 16x
     i2c_id: bus_b
     address: 0x70
-    update_interval: 60s
+    update_interval: 30s
     iir_filter: 2x
 
 ## Performance now can be calculated with extra temperature sensor.     
