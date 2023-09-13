@@ -1,10 +1,12 @@
 substitutions:
   brink_filter_status: Filter status
-  brink_bypass_status: Bypass status
+  brink_bypass_status: Bypass status  
+  brink_co2_status: CO2 sensor status
   brink_temp_to_inside: Temperature to inside
   brink_humidity_to_inside: Humidity to inside
   brink_dewpoint_to_inside: Dewpoint to inside
   brink_external_humidity_sensor: Humidity sensor (external)
+  brink_external_co2_sensor: CO2 sensor
   brink_temp_to_outside: Temperature to outside
   brink_humidity_to_outside: Humidity to outside
   brink_temp_from_outside: Temperature from outside
@@ -27,6 +29,7 @@ substitutions:
   brink_modbus_flow_rate: Modbus flow rate
   brink_status: Status
   brink_rht_sensor: RHT (humidity) sensor mode
+  brink_co2_sensor: CO2 sensor active
   brink_standby_switch: Standby switch
   brink_imbalance_intake: Brink imbalance intake
   brink_bypass_from_dwelling: Bypass temp from home
