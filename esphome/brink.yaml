@@ -25,7 +25,7 @@ packages:
 
 esphome:
   name: ${name}
-  friendly_name: ${friendly_name}
+#  friendly_name: ${friendly_name}
   on_boot:
     priority: 200
     then:
