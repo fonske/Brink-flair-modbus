@@ -5,7 +5,7 @@ substitutions:
   brink_temp_to_inside: Binnen uitblaas temperatuur
   brink_humidity_to_inside: Binnen uitblaas luchtvochtigheid
   brink_dewpoint_to_inside: Binnen dauwpunt
-  brink_external_humidity_sensor: Vocht sensor
+  brink_external_humidity_sensor: Vochtsensor
   brink_external_co2_sensor: CO2 sensor
   brink_temp_to_outside: Buiten uitblaas temperatuur
   brink_humidity_to_outside: Buiten uitblaas luchtvochtigheid
