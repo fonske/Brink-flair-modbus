@@ -10,7 +10,7 @@ sensor:
     temperature:
       name: ${brink_temp_from_inside}
       id: brink_temp_from_inside
-    temperature_offset: "6.2°C"
+    temperature_offset: "1.2°C"
     measurement_mode: low_power_periodic
     i2c_id: bus_a  #or choose bus_b
     address: 0x62
