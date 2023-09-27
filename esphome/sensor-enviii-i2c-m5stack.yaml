@@ -2,11 +2,11 @@
 sensor:
   - platform: sht3xd
     temperature:
-      name: envIII_temperature #${brink_temp_from_inside}
-      id: enviii_temperature #brink_temp_from_inside
+      name: ${brink_temp_from_inside} #envIII_temperature
+      id: brink_temp_from_inside #enviii_temperature 
     humidity:
-      name: envIII_humidity #${brink_humidity_from_inside}
-      id: enviii_humidity #brink_humidity_from_inside
+      name: ${brink_humidity_from_inside} #envIII_humidity 
+      id: brink_humidity_from_inside #enviii_humidity
     i2c_id: bus_b
     address: 0x44
     update_interval: 30s
@@ -25,10 +25,10 @@ sensor:
     iir_filter: 2x
 
 ## Performance now can be calculated with extra temperature sensor.     
-#  - id: brink_performance
-#    name: ${brink_performance}
-#    platform: template
-#    unit_of_measurement: "%"
-#    update_interval: 30s
-#    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
+  - id: brink_performance
+    name: ${brink_performance}
+    platform: template
+    unit_of_measurement: "%"
+    update_interval: 30s
+    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
    # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
