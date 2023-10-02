@@ -227,6 +227,7 @@
       - type: entities
         entities:
           - entity: select.modbus_control_mode
+          - entity: number.flow_0
           - entity: number.flow_1
           - entity: number.flow_2
           - entity: number.flow_3
