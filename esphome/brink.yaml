@@ -1,3 +1,4 @@
+## Based on a Flair 300, to changes max values for Flair 400 (or higher) change all max_value in lines 647 - 709
 substitutions:
   name: brink
   friendly_name: Brink
