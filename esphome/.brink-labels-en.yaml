@@ -39,7 +39,7 @@ substitutions:
   brink_frost_minimum_inlet_temperature: Freezing minimum inlet temperature
   brink_imbalance_exhaust: Fan imbalance exhaust
   brink_filter_change_days: Days before filter warning
-  brink_filter_reset_op: Filter reset op
+  brink_filter_reset_on: Filter reset on
   brink_co2_from_inside: CO2 from inside
   brink_humidity_from_inside: Humidity from inside
   brink_temp_from_inside: Temperature from inside

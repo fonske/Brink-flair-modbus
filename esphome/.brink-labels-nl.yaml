@@ -39,7 +39,7 @@ substitutions:
   brink_frost_minimum_inlet_temperature: Bevriezing minimum inlaat temp
   brink_imbalance_exhaust: Fan onbalans uitlaat
   brink_filter_change_days: Dagen filter wissel
-  brink_filter_reset_op: Filter reset op
+  brink_filter_reset_on: Filter reset op
   brink_co2_from_inside: Binnen aanzuig CO2
   brink_humidity_from_inside: Binnen aanzuig luchtvochtigheid
   brink_temp_from_inside: Binnen aanzuig temperatuur

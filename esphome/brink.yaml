@@ -471,8 +471,8 @@ text_sensor:
       }
       return mode_str;
 
-  - id: brink_filter_reset_op
-    name: ${brink_filter_reset_op}
+  - id: brink_filter_reset_on
+    name: ${brink_filter_reset_on}
     platform: template
     icon: mdi:clock-start
     update_interval: 600s
@@ -594,7 +594,7 @@ button:
         - delay: 2s
         - switch.turn_off: brink_reset_filter
         - text_sensor.template.publish:
-            id: brink_filter_reset_op
+            id: brink_filter_reset_on
             state: !lambda |-
               char str[22];
               time_t currTime = id(brink_sntp_time).now().timestamp;
