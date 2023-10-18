@@ -1,4 +1,4 @@
-## Based on a Flair 300, to changes max values for Flair 400 (or higher) change all max_value in lines 647 - 709
+## Based on a Flair 400, to changes max values for Flair 300 change all max_value in lines 725 - 774 to 325
 substitutions:
   name: brink
   friendly_name: Brink
@@ -8,7 +8,7 @@ substitutions:
 # In order to use other language or a different ESP chip, fix include file name below:
 # Currently supported languages are en, nl. 
 # ESP32 is a mh-et-live or wemos d32 mini, esp8266 is a wemos d1 mini, esp32s3 is a lilygo ESP32S3-T7
-# BE CAREFULL not to upload the wrong code to the wrong chip. This could brick your ESP chip.
+# Be carefull not to upload the wrong code to the wrong chip. This could brick your ESP chip.
 packages:
   remote_package:
     url: https://github.com/fonske/Brink-flair-modbus
@@ -16,8 +16,8 @@ packages:
     files: 
       - esphome/.brink-labels-en.yaml
       # - esphome/.brink-labels-nl.yaml
-      - esphome/board-esp32.yaml
-      # - esphome/board-esp32S3.yaml
+      # - esphome/board-esp32.yaml
+      - esphome/board-esp32S3.yaml
       # - esphome/board-esp8266.yaml
       # - esphome/sensor-scd41-i2c-dfrobot.yaml
       # - esphome/sensor-scd41-i2c-m5stack.yaml
@@ -67,6 +67,13 @@ script:
           controller->queue_command(set_value_cmd);
           ESP_LOGI("ModbusLambda", "Brink Modbus Step set");
 
+## Option for multiple DS18b20's on last 3 terminals -/S(ignal)/+ 
+## Comment with # if not used.
+### DS18b20's ###
+#dallas:
+#  - pin: 8
+#    update_interval: 30s
+
 ###  Settings Brink Flair (no need to change normally)
 ###  menu 14-Communication: TypeBus=Modbus, Slave Address=20, Baudrate=19200, Parity=Even
 
@@ -89,6 +96,42 @@ modbus_controller:
     update_interval: 10s
 
 sensor:
+
+## Option for multiple DS18b20 on last 3 terminals -/Signal/+ 
+## Comment with # if not used.
+## 2x ds18b20: 
+#  - platform: dallas
+#    address: 0x233c01f095e2ca28  ##find adress in esphome log
+#    name: "Temperature 1"
+#    id: temperature_1
+#    filters:
+#    - filter_out: NAN
+#    - offset: 0.3
+
+#  - platform: dallas
+#    address: 0x903c01f095ea8128  ##find adress in esphome log
+#    name: "Temperature 2"
+#    id: temperature_2
+#    filters:
+#   - filter_out: NAN
+#   - offset: 0.1
+
+#  - platform: dallas
+#    address: 0xcd3c01f095d5a128  ##find adress in esphome log
+#    name: "Temperature 3"
+#    id: temperature_3
+#    filters:
+#    - filter_out: NAN
+#    - offset: -0.1
+
+#  - platform: dallas
+#    address: 0x633c01f095619f28  ##find adress in esphome log
+#    name: "Temperature 4"
+#    id: temperature_4
+#    filters:
+#    - filter_out: NAN
+#    - offset: 0.0
+
   - id: brink_temp_to_inside
     name: ${brink_temp_to_inside}
     platform: modbus_controller
@@ -330,8 +373,8 @@ sensor:
     register_type: read
     value_type: U_WORD
 
-  - id: brink_external_co2_sensor
-    name: ${brink_external_co2_sensor}
+  - id: brink_external_co2_sensor1
+    name: ${brink_external_co2_sensor1}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:molecule-co2
@@ -340,6 +383,17 @@ sensor:
     unit_of_measurement: "ppm"
     value_type: U_WORD  
     accuracy_decimals: 0
+
+#  - id: brink_external_co2_sensor2
+#    name: ${brink_external_co2_sensor2}
+#    platform: modbus_controller
+#    modbus_controller_id: ${name}
+#    icon: mdi:molecule-co2
+#    register_type: read
+#   address: 4203
+#    unit_of_measurement: "ppm"
+#    value_type: U_WORD  
+#    accuracy_decimals: 0
 
 text_sensor:
   - id: brink_status
@@ -448,8 +502,8 @@ text_sensor:
       }
       return mode_str;
 
-  - id: brink_co2_status
-    name: ${brink_co2_status}
+  - id: brink_co2_status1
+    name: ${brink_co2_status1}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: read
@@ -471,11 +525,35 @@ text_sensor:
       }
       return mode_str;
 
+#  - id: brink_co2_status2
+#    name: ${brink_co2_status2}
+#    platform: modbus_controller
+#    modbus_controller_id: ${name}
+#    register_type: read
+#    address: 4202
+#    raw_encode: NONE
+#    icon: mdi:molecule-co2
+#    lambda: |-
+#      uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
+#      ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
+#      std::string mode_str;
+#      switch (int_mode) {
+#        case 0:  mode_str = "Error"; break;
+#        case 1:  mode_str = "Not Initialized"; break;        
+#        case 2:  mode_str = "Idle"; break;
+#        case 3:  mode_str = "Warming Up"; break;
+#        case 4:  mode_str = "Running"; break;
+#        case 5:  mode_str = "Calibrating"; break;
+#        case 6:  mode_str = "Self Test"; break;
+#      }
+#      return mode_str;
+
   - id: brink_filter_reset_on
     name: ${brink_filter_reset_on}
     platform: template
     icon: mdi:clock-start
     update_interval: 600s
+## for english version remove filter or place # in front
     filters:
       - substitute:
         - "Jan -> jan"
@@ -644,7 +722,7 @@ number:
     mode: slider
     icon: mdi:fan
 
-# Maximum value for Flair 300 is 300m3/h
+# Maximum value for Flair 400 is 400m3/h
   - id: brink_modbus_flow_rate
     name: ${brink_modbus_flow_rate}
     platform: modbus_controller
@@ -653,7 +731,7 @@ number:
     address: 8002
     value_type: S_WORD      
     min_value: 0
-    max_value: 300
+    max_value: 400
     mode: slider
 
   - id: brink_flow_0
@@ -665,7 +743,7 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD      
     min_value: 0
-    max_value: 325
+    max_value: 400
     mode: slider
     icon: mdi:fan-auto
 
@@ -678,7 +756,7 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD      
     min_value: 50
-    max_value: 325
+    max_value: 400
     mode: slider
     icon: mdi:fan-speed-1
 
@@ -691,7 +769,7 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD      
     min_value: 50
-    max_value: 325
+    max_value: 400
     mode: slider
     icon: mdi:fan-speed-2
 
@@ -704,7 +782,7 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD   
     min_value: 50
-    max_value: 325
+    max_value: 400
     mode: slider
     icon: mdi:fan-speed-3
       
