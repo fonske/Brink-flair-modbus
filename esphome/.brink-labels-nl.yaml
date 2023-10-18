@@ -1,7 +1,8 @@
 substitutions:
   brink_filter_status: Filter status
   brink_bypass_status: Bypass status
-  brink_co2_status: CO2 sensor status
+  brink_co2_status1: CO2 sensor1 status
+  brink_co2_status2: CO2 sensor2 status
   brink_temp_to_inside: Binnen uitblaas temperatuur
   brink_humidity_to_inside: Binnen uitblaas luchtvochtigheid
   brink_dewpoint_to_inside: Binnen dauwpunt
