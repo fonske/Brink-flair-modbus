@@ -6,7 +6,8 @@ substitutions:
   brink_humidity_to_inside: Binnen uitblaas luchtvochtigheid
   brink_dewpoint_to_inside: Binnen dauwpunt
   brink_external_humidity_sensor: Vochtsensor
-  brink_external_co2_sensor: CO2 sensor
+  brink_external_co2_sensor1: CO2 sensor1
+  brink_external_co2_sensor2: CO2 sensor2
   brink_temp_to_outside: Buiten uitblaas temperatuur
   brink_humidity_to_outside: Buiten uitblaas luchtvochtigheid
   brink_temp_from_outside: Buiten aanzuig temperatuur
@@ -29,7 +30,8 @@ substitutions:
   brink_modbus_flow_rate: Modbus flow waarde
   brink_status: Status
   brink_rht_sensor: Vocht sensor
-  brink_co2_sensor: CO2 sensor
+  brink_co2_sensor1: CO2 sensor1
+  brink_co2_sensor2: CO2 sensor2
   brink_standby_switch: Standby schakelaar
   brink_imbalance_intake: Fan onbalans inlaat
   brink_bypass_from_dwelling: Bypass temp uit woning
