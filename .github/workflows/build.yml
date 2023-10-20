@@ -20,6 +20,15 @@ jobs:
           wifi_ssid: TestWifi
           wifi_password: TestWifiSecret
           EOF
+      - name: "Test on local include files"
+        run: |
+          sed -i 's/# substitutions/substitutions/g' esphome/brink.yaml
+          sed -i 's/# device_base/device_base/g' esphome/brink.yaml
+          sed -i 's/remote_package/# remote_package/g' esphome/brink.yaml
+          sed -i 's/url:/# url:/g' esphome/brink.yaml
+          sed -i 's/ref: main/# ref: main/g' esphome/brink.yaml
+          sed -i 's/files:/# files:/g' esphome/brink.yaml
+          sed -i 's/- esphome/# - esphome/g' esphome/brink.yaml
       - name: "Build"
         uses: esphome/build-action@v1
         id: esphome-build
