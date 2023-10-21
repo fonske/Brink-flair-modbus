@@ -10,6 +10,9 @@ substitutions:
 # ESP32 is a mh-et-live or wemos d32 mini, esp8266 is a wemos d1 mini, esp32s3 is a lilygo ESP32S3-T7
 # Be carefull not to upload the wrong code to the wrong chip. This could brick your ESP chip.
 packages:
+  # for developing/testing, uncomment local includes and comment out remote_package part.
+  # substitutions: !include .brink-labels-en.yaml
+  # device_base: !include board-esp32S3.yaml
   remote_package:
     url: https://github.com/fonske/Brink-flair-modbus
     ref: main
