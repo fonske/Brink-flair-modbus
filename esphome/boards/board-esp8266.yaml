@@ -15,8 +15,19 @@ uart:
   parity: even
 
 # Enable/Disable logging - ESP8266 is low on memory, so logger is disabled by default
-# logger:
-#   baud_rate: 0  # <--- super important! for ESP8266
+logger:
+  logs:
+    modbus_controller.sensor: WARN
+    modbus_controller.output: WARN
+    modbus.number: WARN
+    esp32.preferences: WARN
+    sensor: WARN
+    text_sensor: WARN
+    dht.sensor: WARN
+    switch: WARN
+    button: WARN
+    number: WARN
+  # baud_rate: 0  # <--- super important! for ESP8266
 
 # captative portal and webserver is disabled for ESP8266 due low RAM.
 # if enabled, it leads to unstable operation, Wifi disconnects, etc.

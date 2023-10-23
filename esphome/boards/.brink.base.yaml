@@ -41,7 +41,6 @@ script:
 
           delay(20) ;
           controller->queue_command(set_value_cmd);
-          ESP_LOGI("ModbusLambda", "Brink Modbus Step set");
 
 ## Option for multiple DS18b20's on last 3 terminals -/S(ignal)/+ 
 ## Comment with # if not used.
@@ -407,7 +406,6 @@ text_sensor:
     icon: mdi:valve
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
-      ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
       std::string mode_str;
       switch (int_mode) {
         case 0:  mode_str = "${initialize}"; break;
