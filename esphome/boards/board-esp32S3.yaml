@@ -1,5 +1,8 @@
 ### ESP32S3 used is a LILYGO ESP32S3-T7  (tindie.com)
 ### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
+
+<<: !include .brink.base.yaml
+
 esp32:
   board: adafruit_feather_esp32s3_nopsram
   framework:
@@ -12,8 +15,12 @@ esphome:
 
 # Modbus uart
 uart:
+  id: mod_bus
+  baud_rate: 19200
+  stop_bits: 1
   tx_pin: 16
   rx_pin: 12
+  parity: even
 
 # Option for 2x I2C connectors  ***experimental***
 # Comment with # if not used.

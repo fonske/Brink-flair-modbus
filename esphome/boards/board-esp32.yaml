@@ -1,5 +1,8 @@
 ### ESP32 used is a MH-ET-LIVE, also known as Wemos D32 Mini 
 ### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
+
+<<: !include .brink.base.yaml
+
 esp32:
   board: mhetesp32minikit
   framework:
@@ -7,8 +10,12 @@ esp32:
 
 # uart for modbus rtu
 uart:
+  id: mod_bus
+  baud_rate: 19200
+  stop_bits: 1
   tx_pin: 23
   rx_pin: 19
+  parity: even  
 
 # i2c for extra sensor
 i2c:  
