@@ -17,6 +17,7 @@ packages:
   remote_package:
     url: https://github.com/fonske/Brink-flair-modbus
     ref: main
+    # ref: ${{github.sha}}
     files: 
       - esphome/labels/.brink-labels-en.yaml
       # - esphome/labels/.brink-labels-nl.yaml
