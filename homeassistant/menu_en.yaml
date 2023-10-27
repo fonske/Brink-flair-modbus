@@ -11,7 +11,7 @@
           - entity: sensor.current_intake_air_volume
           - entity: sensor.current_exhaust_air_volume
           - entity: sensor.humidity_sensor_external
-          - entity: sensor.filter_reset_op
+          - entity: sensor.filter_reset_on
           - entity: sensor.current_filter_days
           - entity: sensor.current_filter_hours
           - entity: sensor.filter_used_m3_h
