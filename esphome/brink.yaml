@@ -12,8 +12,8 @@ substitutions:
 
 packages:
   remote_package:
-    url: https://github.com/egisz/Brink-flair-modbus
-    ref: base-config
+    url: https://github.com/fonske/Brink-flair-modbus
+    ref: main
     files: 
       - esphome/labels/.brink-labels-en.yaml
       # - esphome/labels/.brink-labels-nl.yaml
