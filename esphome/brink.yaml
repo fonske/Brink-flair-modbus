@@ -16,13 +16,12 @@ substitutions:
 packages:
   remote_package:
     url: https://github.com/fonske/Brink-flair-modbus
-    ref: base-config
     files: 
       - esphome/labels/.brink-labels-en.yaml
       # - esphome/labels/.brink-labels-nl.yaml
       # - esphome/boards/board-esp32.yaml
-      # - esphome/boards/board-esp32S3.yaml
-      - esphome/boards/board-esp8266.yaml
+      - esphome/boards/board-esp32S3.yaml
+      # - esphome/boards/board-esp8266.yaml
       # - esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
       # - esphome/sensors/sensor-scd41-i2c-m5stack.yaml
       # - esphome/sensors/sensor-enviii-i2c-m5stack.yaml

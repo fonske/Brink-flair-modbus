@@ -13,14 +13,11 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v3
-      - name: Extract branch name
-        run: |
-          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
-          echo Branch name: $branch
-        id: extract_branch
       - name: "Test on local include files"
         run: |
-          sed -i 's#fonske/Brink-flair-modbus#${{ github.repository }}#g' esphome/brink.yaml
+          sed 's/- esphome\/boards/# - esphome\/boards/g' brink.yaml
+          sed 's/- esphome\/sensors/# - esphome\/sensors/g' brink.yaml
+          sed 's/# <<: !include/<<: !include/g' brink.yaml
       - name: "Build"
         uses: esphome/build-action@v1
         id: esphome-build
