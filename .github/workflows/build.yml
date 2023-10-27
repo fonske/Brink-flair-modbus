@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v3
       - name: "Test on local include files"
         run: |
-          sed 's/- esphome\/boards/# - esphome\/boards/g' esphome/brink.yaml
-          sed 's/- esphome\/sensors/# - esphome\/sensors/g' esphome/brink.yaml
-          sed 's/# <<: !include/<<: !include/g' esphome/brink.yaml
+          sed -i 's/- esphome\/boards/# - esphome\/boards/g' esphome/brink.yaml
+          sed -i 's/- esphome\/sensors/# - esphome\/sensors/g' esphome/brink.yaml
+          sed -i 's/# <<: !include/<<: !include/g' esphome/brink.yaml
       - name: "Build"
         uses: esphome/build-action@v1
         id: esphome-build
