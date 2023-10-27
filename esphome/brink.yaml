@@ -30,3 +30,8 @@ packages:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+
+# Put your API key here if you have one
+# api:
+#   encryption:
+#     key: !secret brink_api_key
