@@ -11,7 +11,7 @@ substitutions:
 # Be carefull not to upload the wrong code to the wrong chip. This could brick your ESP chip.
 
 # for developing/testing, uncomment local includes and comment out remote_package part.
-# <<: !include boards/board-esp8266.yaml
+# <<: !include boards/board-esp32S3.yaml
 
 packages:
   remote_package:
