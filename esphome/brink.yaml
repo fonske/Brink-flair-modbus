@@ -16,8 +16,8 @@ packages:
     ref: base-config
     files: 
       - esphome/labels/.brink-labels-en.yaml
-      - esphome/.brink.base.yaml
       # - esphome/labels/.brink-labels-nl.yaml
+      - esphome/.brink.base.yaml
       # - esphome/boards/board-esp32.yaml
       # - esphome/boards/board-esp32S3.yaml
       - esphome/boards/board-esp8266.yaml
