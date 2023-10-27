@@ -20,7 +20,7 @@ jobs:
         id: extract_branch
       - name: "Test on local include files"
         run: |
-          sed -i 's#fonske/Brink-flair-modbus#${{ github.repository }}@${{ steps.extract_branch.outputs.branch }}#g' esphome/brink.yaml
+          sed -i 's#fonske/Brink-flair-modbus#${{ github.repository }}#g' esphome/brink.yaml
       - name: "Build"
         uses: esphome/build-action@v1
         id: esphome-build
