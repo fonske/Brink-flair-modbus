@@ -19,7 +19,7 @@ jobs:
           sed -i 's/- esphome\/sensors/# - esphome\/sensors/g' esphome/brink.yaml
           sed -i 's/# <<: !include/<<: !include/g' esphome/brink.yaml
       - name: "Build"
-        uses: esphome/build-action@main
+        uses: esphome/build-action@v1.8.0
         id: esphome-build
         with:
           yaml_file: esphome/brink.yaml
