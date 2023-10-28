@@ -19,11 +19,12 @@ jobs:
         id: extract_branch        
       - name: "Test on local include files"
         run: |
-          sed -i 's#fonske/Brink-flair-modbus#${{ github.repository }}#g' esphome/brink.yaml
-          sed -i 's#ref: main#ref: ${{ steps.extract_branch.outputs.branch }}#g' esphome/brink.yaml
+          # sed -i 's#fonske/Brink-flair-modbus#${{ github.repository }}#g' esphome/brink.yaml
+          # sed -i 's#ref: main#ref: ${{ steps.extract_branch.outputs.branch }}#g' esphome/brink.yaml
           # sed -i 's/- esphome\/boards/# - esphome\/boards/g' esphome/brink.yaml
           # sed -i 's/- esphome\/sensors/# - esphome\/sensors/g' esphome/brink.yaml
           # sed -i 's/# <<: !include/<<: !include/g' esphome/brink.yaml
+          awk  '/^[ -]+esphome\/(boards|sensors|.brink)/ {sub("esphome", "device_base"++count":& ")} 1' esphome/brink.yaml 
       - name: "Build"
         uses: esphome/build-action@v1.8.0
         id: esphome-build
