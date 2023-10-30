@@ -1,15 +1,15 @@
 sensor:
 # extra DHT22 sensor on the house suction side as it is not present in the Brink Flair.
- - platform: dht
-   model: DHT22
-   pin: 22
-   temperature:
-     name: ${brink_temp_from_inside}
-     id: brink_temp_from_inside
-   humidity:
-     name: ${brink_humidity_from_inside}
-     id: brink_humidity_from_inside
-   update_interval: 30s
+  - platform: dht
+    model: DHT22
+    pin: 8  # on lilygo esp32s3  pin:22 on esp32
+    temperature:
+      name: ${brink_temp_from_inside}
+      id: brink_temp_from_inside
+    humidity:
+      name: ${brink_humidity_from_inside}
+      id: brink_humidity_from_inside
+    update_interval: 30s
 
 ## Performance now can be calculated with the extra temperature sensor.     
   - id: brink_performance
