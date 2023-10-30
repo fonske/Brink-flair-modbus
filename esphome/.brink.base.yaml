@@ -14,8 +14,8 @@ api:
 # Enable OTA updates  
 ota:
 
-dashboard_import:
-  package_import_url: https://github.com/fonske/Brink-flair-modbus
+# dashboard_import:
+#   package_import_url: https://github.com/fonske/Brink-flair-modbus
 
 # Sync time
 time:
