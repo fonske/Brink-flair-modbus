@@ -26,7 +26,7 @@ jobs:
       - name: "Patch config to test on esp32"
         run: |
           sed -i '/device_base2:/d' esphome/brink.yaml
-          sed -i '/device_base:/a\ \ device_base2: !include boards/board-esp32.yaml' esphome/brink.yaml' esphome/brink.yaml
+          sed -i '/device_base:/a\ \ device_base2: !include boards/board-esp32.yaml' esphome/brink.yaml
       - name: "Build esp32"
         uses: esphome/build-action@v1.8.0
         id: esphome-build-esp32
