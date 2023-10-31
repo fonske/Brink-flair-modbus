@@ -13,24 +13,23 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v3
-      - name: "Create secrets file"
+      - name: "Patch config to test on esp8266"
         run: |
-          touch esphome/secrets.yaml
-          cat <<EOF > esphome/secrets.yaml
-          wifi_ssid: TestWifi
-          wifi_password: TestWifiSecret
-          EOF
-      - name: "Test on local include files"
-        run: |
-          sed -i 's/# substitutions/substitutions/g' esphome/brink.yaml
-          sed -i 's/# device_base/device_base/g' esphome/brink.yaml
-          sed -i 's/remote_package/# remote_package/g' esphome/brink.yaml
-          sed -i 's/url:/# url:/g' esphome/brink.yaml
-          sed -i 's/ref: main/# ref: main/g' esphome/brink.yaml
-          sed -i 's/files:/# files:/g' esphome/brink.yaml
-          sed -i 's/- esphome/# - esphome/g' esphome/brink.yaml
-      - name: "Build"
-        uses: esphome/build-action@v1
-        id: esphome-build
+          # awk  '/^[ -]+esphome\/(boards|sensors|.brink)/ {sub("esphome", "device_base"++count":& ")} 1' esphome/brink.yaml 
+          sed -i '/remote_package:/,+15d' esphome/brink.yaml
+          sed -i '/^packages:/a\ \ substitutions: !include labels/.brink-labels-en.yaml\n\ \ device_base: !include .brink.base.yaml\n\ \ device_base2: !include boards/board-esp8266.yaml' esphome/brink.yaml
+      - name: "Build esp8266"
+        uses: esphome/build-action@v1.8.0
+        id: esphome-build-esp8266
         with:
           yaml_file: esphome/brink.yaml
+      - name: "Patch config to test on esp32"
+        run: |
+          sed -i '/device_base2:/d' esphome/brink.yaml
+          sed -i '/device_base:/a\ \ device_base2: !include boards/board-esp32.yaml' esphome/brink.yaml
+      - name: "Build esp32"
+        uses: esphome/build-action@v1.8.0
+        id: esphome-build-esp32
+        with:
+          yaml_file: esphome/brink.yaml
+  

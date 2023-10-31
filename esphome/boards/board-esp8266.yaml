@@ -1,15 +1,31 @@
 ### ESP32 used is a MH-ET-LIVE, also known as Wemos D32 Mini 
 ### The modbus TTL to RS485 interface used is a XY-017  (RS3485). No flow control needed and 3.3V powersupply
+
 esp8266:
   board: nodemcuv2
 
 uart:
   tx_pin: D1
   rx_pin: D2
+  id: mod_bus
+  baud_rate: 19200
+  stop_bits: 1
+  parity: even
 
 # Enable/Disable logging - ESP8266 is low on memory, so logger is disabled by default
-# logger:
-#   baud_rate: 0  # <--- super important! for ESP8266
+logger:
+  logs:
+    modbus_controller.sensor: WARN
+    modbus_controller.output: WARN
+    modbus.number: WARN
+    esp32.preferences: WARN
+    sensor: WARN
+    text_sensor: WARN
+    dht.sensor: WARN
+    switch: WARN
+    button: WARN
+    number: WARN
+  # baud_rate: 0  # <--- uncomment if you have issues with ESP8266 (wifi upload fails, etc.)
 
 # captative portal and webserver is disabled for ESP8266 due low RAM.
 # if enabled, it leads to unstable operation, Wifi disconnects, etc.
