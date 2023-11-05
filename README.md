@@ -11,15 +11,22 @@ packages:
     url: https://github.com/fonske/Brink-flair-modbus
     ref: main
     files: 
-      - esphome/.brink-labels-en.yaml
-      # - esphome/.brink-labels-nl.yaml
-      - esphome/board-esp32.yaml
-      # - esphome/board-esp32S3.yaml
-      # - esphome/board-esp8266.yaml
-      # - esphome/sensor-scd41-i2c-dfrobot.yaml
-      # - esphome/sensor-scd41-i2c-m5stack.yaml
-      # - esphome/sensor-enviii-i2c-m5stack.yaml
-      # - esphome/sensor-dht22.yaml
+      # - esphome/labels/.brink-labels-en.yaml
+      - esphome/labels/.brink-labels-nl.yaml
+      # - esphome/.brink.base.yaml
+      # - esphome/boards/board-esp32.yaml
+      - esphome/boards/board-esp32S3.yaml
+      # - esphome/boards/board-esp8266.yaml
+      # - esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
+      # - esphome/sensors/sensor-scd41-i2c-m5stack.yaml
+      # - esphome/sensors/sensor-enviii-i2c-m5stack.yaml
+      - esphome/sensors/sensor-dht22.yaml
+
+# for developing/testing, uncomment local includes and comment out remote_package part.
+# packages:
+#   substitutions: !include labels/.brink-labels-en.yaml
+  device_base1: !include .brink.base.yaml
+#  device_base2: !include boards/board-esp8266.yaml
 ```
 
 # Translations
