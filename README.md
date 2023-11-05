@@ -3,7 +3,7 @@ Modbus RTU communication with ESP32/ESP8266 and ttl to rs485 module, to use in h
 
 # Platforms
 Currently supported ESP32 and ESP8266 platforms.
-By default ESP32 is used. If you want to use ESP8266, edit file `esphome/brink.yaml`, comment out esp32 include and uncomment esp8266 include file.
+By default ESP32S3 is used. If you want to use ESP8266, edit file `esphome/brink.yaml`, comment out esp32 include and uncomment esp8266 include file.
 
 ```
 packages:
@@ -11,15 +11,22 @@ packages:
     url: https://github.com/fonske/Brink-flair-modbus
     ref: main
     files: 
-      - esphome/.brink-labels-en.yaml
-      # - esphome/.brink-labels-nl.yaml
-      - esphome/board-esp32.yaml
-      # - esphome/board-esp32S3.yaml
-      # - esphome/board-esp8266.yaml
-      # - esphome/sensor-scd41-i2c-dfrobot.yaml
-      # - esphome/sensor-scd41-i2c-m5stack.yaml
-      # - esphome/sensor-enviii-i2c-m5stack.yaml
-      # - esphome/sensor-dht22.yaml
+      # - esphome/labels/.brink-labels-en.yaml
+      - esphome/labels/.brink-labels-nl.yaml
+      # - esphome/.brink.base.yaml
+      # - esphome/boards/board-esp32.yaml
+      - esphome/boards/board-esp32S3.yaml
+      # - esphome/boards/board-esp8266.yaml
+      # - esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
+      # - esphome/sensors/sensor-scd41-i2c-m5stack.yaml
+      # - esphome/sensors/sensor-enviii-i2c-m5stack.yaml
+      - esphome/sensors/sensor-dht22.yaml
+
+## for developing/testing, uncomment local includes and comment out remote_package part.
+## packages:
+#  substitutions: !include labels/.brink-labels-en.yaml
+  device_base1: !include .brink.base.yaml
+#  device_base2: !include boards/board-esp8266.yaml
 ```
 
 # Translations
@@ -27,7 +34,7 @@ Currently supported languages are en, nl.
 In order to change language, edit file `esphome/brink.yaml`, and change include file (esphome-/.brink-labels-<language>.yaml)
 
 # Custom sensors
-Project support additional sensors DHT22 or DFROBOT GRAVITY SCD41, CO2 sensor.
+Project support additional sensors DHT22 or M5stack SCD40/41, CO2 sensor or M5stack ENVIII humidity, temperature, pressure sensor.
 In order to enable them, edit file `esphome/brink.yaml` and uncomment include file for sensor.
 
 ## Contact
