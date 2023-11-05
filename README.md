@@ -3,7 +3,7 @@ Modbus RTU communication with ESP32/ESP8266 and ttl to rs485 module, to use in h
 
 # Platforms
 Currently supported ESP32 and ESP8266 platforms.
-By default ESP32 is used. If you want to use ESP8266, edit file `esphome/brink.yaml`, comment out esp32 include and uncomment esp8266 include file.
+By default ESP32S3 is used. If you want to use ESP8266, edit file `esphome/brink.yaml`, comment out esp32 include and uncomment esp8266 include file.
 
 ```
 packages:
@@ -34,7 +34,7 @@ Currently supported languages are en, nl.
 In order to change language, edit file `esphome/brink.yaml`, and change include file (esphome-/.brink-labels-<language>.yaml)
 
 # Custom sensors
-Project support additional sensors DHT22 or DFROBOT GRAVITY SCD41, CO2 sensor.
+Project support additional sensors DHT22 or M5stack SCD40/41, CO2 sensor or M5stack ENVIII humidity, temperature, pressure sensor.
 In order to enable them, edit file `esphome/brink.yaml` and uncomment include file for sensor.
 
 ## Contact
