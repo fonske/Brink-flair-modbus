@@ -24,7 +24,7 @@ packages:
 
 ## for developing/testing, uncomment local includes and comment out remote_package part.
 ## packages:
-#   substitutions: !include labels/.brink-labels-en.yaml
+#  substitutions: !include labels/.brink-labels-en.yaml
   device_base1: !include .brink.base.yaml
 #  device_base2: !include boards/board-esp8266.yaml
 ```
