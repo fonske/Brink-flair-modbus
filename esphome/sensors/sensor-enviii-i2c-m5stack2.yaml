@@ -1,0 +1,25 @@
+## Option for M5stack ENV III temperature, humidity and pressure sensor on i2c bus. I2C must be enabled.
+sensor:
+  - platform: sht3xd
+    temperature:
+      name: Brink outside temperature #envIII_temperature
+      id: brink_temp_from_outside #enviii_temperature 
+    humidity:
+      name: Brink outside humidity #envIII_humidity 
+      id: brink_humidity_from_inside #enviii_humidity
+    i2c_id: bus_a
+    address: 0x44
+    update_interval: 30s
+
+  - platform: qmp6988
+#    temperature:
+#      name: "Living Room Temperature2 ENVIII"
+#      oversampling: 16x
+    pressure:
+      name: Brink outside pressure
+      id: brink_pressure_from_outside
+      oversampling: 16x
+    i2c_id: bus_a
+    address: 0x70
+    update_interval: 30s
+    iir_filter: 2x
