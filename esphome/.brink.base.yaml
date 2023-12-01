@@ -185,7 +185,7 @@ sensor:
     icon: mdi:gauge
     register_type: read
     address: 4023
-    device_class: pressure
+    device_class: atmospheric_pressure
     unit_of_measurement: "Pa"
     value_type: S_WORD  
     accuracy_decimals: 0
@@ -200,7 +200,7 @@ sensor:
     icon: mdi:gauge
     register_type: read
     address: 4024
-    device_class: pressure
+    device_class: atmospheric_pressure
     unit_of_measurement: "Pa"
     value_type: S_WORD  
     accuracy_decimals: 0
@@ -370,7 +370,7 @@ sensor:
     icon: mdi:molecule-co2
     register_type: read
     address: 4201
-    device_class: CO2
+    device_class: co2
     unit_of_measurement: "ppm"
     value_type: U_WORD  
     accuracy_decimals: 0
@@ -383,7 +383,7 @@ sensor:
 #    icon: mdi:molecule-co2
 #    register_type: read
 #    address: 4203
-#    device_class: CO2
+#    device_class: co2
 #    unit_of_measurement: "ppm"
 #    value_type: U_WORD  
 #    accuracy_decimals: 0
