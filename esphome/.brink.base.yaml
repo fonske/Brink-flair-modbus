@@ -104,10 +104,12 @@ sensor:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 4036
+    device_class: temperature
     unit_of_measurement: "°C"
     register_type: read
     value_type: S_WORD
     accuracy_decimals: 1
+    state_class: measurement
     filters:
       - multiply: 0.1
 
@@ -118,9 +120,11 @@ sensor:
     modbus_controller_id: ${name}
     register_type: read
     address: 4037
+    device_class: humidity
     unit_of_measurement: "%"
     value_type: U_WORD  
     accuracy_decimals: 0
+    state_class: measurement
 
   - id: brink_dewpoint_to_inside
     name: ${brink_dewpoint_to_inside}
@@ -138,10 +142,12 @@ sensor:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 4046
+    device_class: temperature
     unit_of_measurement: "°C"
     register_type: read
     value_type: S_WORD
     accuracy_decimals: 1
+    state_class: measurement
     filters:
       - multiply: 0.1
 
@@ -152,19 +158,23 @@ sensor:
     icon: mdi:water-percent
     register_type: read
     address: 4047
+    device_class: humidity
     unit_of_measurement: "%"
     value_type: U_WORD  
     accuracy_decimals: 0
+    state_class: measurement
 
   - id: brink_temp_from_outside  # NTC1
     name: ${brink_temp_from_outside}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 4081
+    device_class: temperature
     unit_of_measurement: "°C"
     register_type: read
     value_type: S_WORD
     accuracy_decimals: 1
+    state_class: measurement
     filters:
       - multiply: 0.1
 
@@ -175,11 +185,13 @@ sensor:
     icon: mdi:gauge
     register_type: read
     address: 4023
+    device_class: pressure
     unit_of_measurement: "Pa"
     value_type: S_WORD  
     accuracy_decimals: 0
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
     
   - id: brink_exhaust_pressure
     name: ${brink_exhaust_pressure}    
@@ -188,11 +200,13 @@ sensor:
     icon: mdi:gauge
     register_type: read
     address: 4024
+    device_class: pressure
     unit_of_measurement: "Pa"
     value_type: S_WORD  
     accuracy_decimals: 0
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
 
   - id: brink_setpoint_inlet_volume
     name: ${brink_setpoint_inlet_volume}
@@ -204,8 +218,9 @@ sensor:
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
 
   - id: brink_external_humidity_sensor
     name: ${brink_external_humidity_sensor}
@@ -214,9 +229,11 @@ sensor:
     icon: mdi:thermometer-water
     register_type: read
     address: 4083
+    device_class: humidity
     unit_of_measurement: "%"
     value_type: U_WORD  
     accuracy_decimals: 0
+    state_class: measurement
 
   - id: brink_current_inlet_volume
     name: ${brink_current_inlet_volume}
@@ -228,8 +245,9 @@ sensor:
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
 
   - id: brink_setpoint_outlet_volume
     name: ${brink_setpoint_outlet_volume}
@@ -241,8 +259,9 @@ sensor:
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
 
   - id: brink_current_outlet_volume
     name: ${brink_current_outlet_volume}
@@ -254,8 +273,9 @@ sensor:
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
 
   - id: brink_frost_heater_power
     name: ${brink_frost_heater_power}
@@ -267,8 +287,9 @@ sensor:
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 1
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
 
   - id: brink_frost_fan_reduction
     name: ${brink_frost_fan_reduction}
@@ -280,8 +301,9 @@ sensor:
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 1
+    state_class: measurement
     filters:
-      - multiply: 1
+      - multiply: 1.0
 
   - id: brink_current_filter_hours
     name: ${brink_current_filter_hours}
@@ -329,6 +351,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     accuracy_decimals: 0
+    state_class: total
 
   - id: brink_device_type
     name: ${brink_device_type}
@@ -347,9 +370,11 @@ sensor:
     icon: mdi:molecule-co2
     register_type: read
     address: 4201
+    device_class: CO2
     unit_of_measurement: "ppm"
     value_type: U_WORD  
     accuracy_decimals: 0
+    state_class: measurement
 
 #  - id: brink_external_co2_sensor2
 #    name: ${brink_external_co2_sensor2}
@@ -357,10 +382,12 @@ sensor:
 #    modbus_controller_id: ${name}
 #    icon: mdi:molecule-co2
 #    register_type: read
-#   address: 4203
+#    address: 4203
+#    device_class: CO2
 #    unit_of_measurement: "ppm"
 #    value_type: U_WORD  
 #    accuracy_decimals: 0
+#    state_class: measurement
 
 text_sensor:
   - id: brink_status
@@ -781,6 +808,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6101
+    device_class: temperature
     unit_of_measurement: "°C"
     value_type: S_WORD
     min_value: 15
@@ -795,6 +823,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6102
+    device_class: temperature
     unit_of_measurement: "°C"
     value_type: S_WORD
     min_value: 7
@@ -810,6 +839,7 @@ number:
     modbus_controller_id: ${name}
     address: 6103
     unit_of_measurement: "°C"
+    device_class: temperature
     value_type: S_WORD
     min_value: 0
     max_value: 5
@@ -825,6 +855,7 @@ number:
     modbus_controller_id: ${name}
     address: 6110
     unit_of_measurement: "°C"
+    device_class: temperature
     value_type: S_WORD      
     min_value: -1.5
     max_value: 1.5
@@ -838,6 +869,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6111
+    device_class: temperature
     unit_of_measurement: "°C"
     value_type: S_WORD      
     min_value: 7
