@@ -370,7 +370,7 @@ sensor:
     icon: mdi:molecule-co2
     register_type: read
     address: 4201
-    device_class: co2
+    device_class: carbon_dioxide
     unit_of_measurement: "ppm"
     value_type: U_WORD  
     accuracy_decimals: 0
@@ -383,7 +383,7 @@ sensor:
 #    icon: mdi:molecule-co2
 #    register_type: read
 #    address: 4203
-#    device_class: co2
+#    device_class: carbon_dioxide
 #    unit_of_measurement: "ppm"
 #    value_type: U_WORD  
 #    accuracy_decimals: 0
