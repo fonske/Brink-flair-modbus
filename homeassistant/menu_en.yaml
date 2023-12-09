@@ -241,7 +241,7 @@
           - entity: number.brink_bypass_hysteresis
           - entity: number.brink_days_before_filter_warning
           - entity: button.brink_filter_reset
-          - entity: switch.brink_rht_humidity_sensor_mode
+          - entity: switch.brink_rht_(humidity)_sensor_active
           - entity: number.brink_freezing_control_temperature
           - entity: number.brink_freezing_minimum_inlet_temperature
           - entity: switch.brink_standby_switch
