@@ -1,0 +1,52 @@
+###
+## M5 stack atom board powered by usb-c in combination with this base from m5stack:
+## https://shop.m5stack.com/products/atomic-rs485-base
+## NOTE: there are other RS485 boards from m5stack, these are not tested (like the tail-rs485)
+#
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+# uart for modbus rtu  NOT_TESTED_YET
+uart:
+  id: mod_bus
+  baud_rate: 9600
+  stop_bits: 1
+  tx_pin: 19
+  rx_pin: 22
+
+# i2c for extra sensor
+i2c:
+  - id: bus_a
+    sda: GPIO2
+    scl: GPIO1
+
+# Enable/Disable logging
+logger:
+  logs:
+    modbus_controller.sensor: WARN
+    modbus_controller.output: WARN
+    modbus.number: WARN
+    esp32.preferences: WARN
+    sensor: WARN
+    text_sensor: WARN
+    dht.sensor: WARN
+    switch: WARN
+    button: WARN
+    number: WARN
+  # baud_rate: 0  # <--- super important! for ESP8266
+
+wifi:
+  ap:
+    ssid: "${name}"
+    password: "configesp"
+
+esp32_improv:
+  authorizer: None 
+      
+captive_portal:
+
+# Enable Web server.
+web_server:
+  port: 80
