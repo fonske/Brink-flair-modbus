@@ -1,4 +1,3 @@
-## Based on a Flair 400, to changes max values for Flair 300 change all max_value in lines 725 - 774 to 325
 substitutions:
   name: brink
   friendly_name: Brink
@@ -9,6 +8,7 @@ substitutions:
 # Currently supported languages are en, nl. 
 # ESP32 is a mh-et-live or wemos d32 mini, esp8266 is a wemos d1 mini, esp32s3 is a lilygo ESP32S3-T7
 # Be carefull not to upload the wrong code to the wrong chip. This could brick your ESP chip.
+# Choose the correct type for your Brink model, so the correct max flow can be setup with a slider.
 
 packages:
   remote_package:
