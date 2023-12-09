@@ -51,6 +51,7 @@ substitutions:
   brink_temp_from_inside: Binnen aanzuig temperatuur
   brink_pressure_from_inside: Binnen aanzuig atm. druk
   brink_performance: Rendement
+  brink_relay: Relais
   auto: Auto
   initialize: Initialisatie
   unknown: Onbekend

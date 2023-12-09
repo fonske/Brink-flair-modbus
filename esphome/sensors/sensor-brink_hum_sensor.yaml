@@ -1,7 +1,7 @@
 ## Brink Excellent RV humidity sensor
 sensor:
   - id: brink_external_humidity_sensor
-    name: ${brink_external_humidity_sensor}
+    name: "${name} ${brink_external_humidity_sensor}"
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:thermometer-water
@@ -15,7 +15,7 @@ sensor:
 
 switch:
   - id: brink_rht_sensor
-    name: ${brink_rht_sensor}
+    name: "${name} ${brink_rht_sensor}"
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding

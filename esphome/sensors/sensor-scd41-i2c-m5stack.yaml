@@ -2,13 +2,13 @@
 sensor:
   - platform: scd4x
     co2:
-     name: ${brink_co2_from_inside}
+     name: "${name} ${brink_co2_from_inside}"
      id: brink_co2_from_inside
     humidity:
-      name: ${brink_humidity_from_inside}
+      name: "${name} ${brink_humidity_from_inside}"
       id: brink_humidity_from_inside
     temperature:
-      name: ${brink_temp_from_inside}
+      name: "${name} ${brink_temp_from_inside}"
       id: brink_temp_from_inside
 #    temperature_offset: "4.2°C"
 #    measurement_mode: low_power_periodic
@@ -18,7 +18,7 @@ sensor:
 
 ## Performance now can be calculated with the extra temperature sensor.    
   - id: brink_performance
-    name: ${brink_performance}
+    name: "${name} ${brink_performance}"
     platform: template
     unit_of_measurement: "%"
     update_interval: 30s

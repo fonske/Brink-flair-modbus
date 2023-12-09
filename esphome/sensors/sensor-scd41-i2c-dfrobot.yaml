@@ -3,7 +3,7 @@ sensor:
   ## extra SCD41 sensor on the house suction side as it is not present in the Brink Flair.
   - platform: scd4x
     co2:
-      name: ${brink_co2_from_inside}
+      name: "${name} ${brink_co2_from_inside}"
       id: brink_co2_from_inside
       on_value:
         then:
@@ -19,7 +19,7 @@ sensor:
                 else:
         
     humidity:
-      name: ${brink_humidity_from_inside}
+      name: "${name} ${brink_humidity_from_inside}"
       id: brink_humidity_from_inside
       on_value:
         then:
@@ -35,14 +35,14 @@ sensor:
                 else:
 
     temperature:
-      name: ${brink_temp_from_inside}
+      name: "${name} ${brink_temp_from_inside}"
       id: brink_temp_from_inside
 
     temperature_offset: "2.0°C"
 
 ## Performance now can be calculated with the extra temperature sensor.     
   - id: brink_performance
-    name: ${brink_performance}
+    name: "${name} ${brink_performance}"
     platform: template
     unit_of_measurement: "%"
     update_interval: 30s

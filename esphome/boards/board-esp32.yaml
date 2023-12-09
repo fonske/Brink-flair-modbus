@@ -39,7 +39,7 @@ logger:
 
 wifi:
   ap:
-    ssid: "${name} hotspot"
+    ssid: "${name}"
     password: "configesp"
 
 captive_portal:
