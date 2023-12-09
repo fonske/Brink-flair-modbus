@@ -13,7 +13,7 @@ sensor:
 
   - platform: qmp6988
 #    temperature:
-#      name: "Living Room Temperature2 ENVIII"
+#      name: "${name} Living Room Temperature2 ENVIII"
 #      oversampling: 16x
     pressure:
       name: "${name} ${brink_pressure_from_inside}"
