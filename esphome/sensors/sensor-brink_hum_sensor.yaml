@@ -1,0 +1,25 @@
+## Brink Excellent RV humidity sensor
+sensor:
+  - id: brink_external_humidity_sensor
+    name: ${brink_external_humidity_sensor}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:thermometer-water
+    register_type: read
+    address: 4083
+    device_class: humidity
+    unit_of_measurement: "%"
+    value_type: U_WORD  
+    accuracy_decimals: 0
+    state_class: measurement
+
+switch:
+  - id: brink_rht_sensor
+    name: ${brink_rht_sensor}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    register_type: holding
+    address: 6140
+    bitmask: 1
+    entity_category: config
+    icon: mdi:toggle-switch

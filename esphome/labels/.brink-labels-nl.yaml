@@ -3,12 +3,16 @@ substitutions:
   brink_bypass_status: Bypass status
   brink_co2_status1: CO2 sensor1 status
   brink_co2_status2: CO2 sensor2 status
+  brink_co2_status3: CO2 sensor3 status
+  brink_co2_status4: CO2 sensor4 status
   brink_temp_to_inside: Binnen uitblaas temperatuur
   brink_humidity_to_inside: Binnen uitblaas luchtvochtigheid
   brink_dewpoint_to_inside: Binnen dauwpunt
   brink_external_humidity_sensor: Vochtsensor
   brink_external_co2_sensor1: CO2 sensor1
   brink_external_co2_sensor2: CO2 sensor2
+  brink_external_co2_sensor3: CO2 sensor3
+  brink_external_co2_sensor4: CO2 sensor4
   brink_temp_to_outside: Buiten uitblaas temperatuur
   brink_humidity_to_outside: Buiten uitblaas luchtvochtigheid
   brink_temp_from_outside: Buiten aanzuig temperatuur
@@ -59,3 +63,32 @@ substitutions:
   days: dagen
   not_dirty: Niet vervuild
   dirty: Vervuild
+
+text_sensor:
+  - id: brink_filter_reset_on
+    name: ${brink_filter_reset_on}
+    platform: template
+    icon: mdi:clock-start
+    update_interval: 600s
+    ## dutch translation of date
+    filters:
+      - substitute:
+        - "Jan -> jan"
+        - "Feb -> feb"
+        - "Mar -> maart"
+        - "Apr -> april"
+        - "Mai -> mei"
+        - "Jun -> juni"
+        - "Jul -> juli"
+        - "Aug -> aug"
+        - "Sep -> sept"
+        - "Okt -> okt"
+        - "Nov -> nov"
+        - "Dec -> dec"
+        - "Mon -> ma"
+        - "Tue -> di"
+        - "Wed -> wo"
+        - "Thu -> do"
+        - "Fri -> vri"
+        - "Sat -> zat"
+        - "Sun -> zon"
