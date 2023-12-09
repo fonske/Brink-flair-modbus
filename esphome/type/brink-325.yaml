@@ -1,5 +1,5 @@
 number:
-# Maximum value for Flair 300 is 325m3/h
+# Maximum value for Flair 300 is 300m3/h
   - id: brink_modbus_flow_rate
     name: "${name} ${brink_modbus_flow_rate}"
     platform: modbus_controller
@@ -8,7 +8,7 @@ number:
     address: 8002
     value_type: S_WORD      
     min_value: 0
-    max_value: 325
+    max_value: 300
     mode: slider
 
   - id: brink_flow_0
@@ -20,7 +20,7 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD      
     min_value: 0
-    max_value: 325
+    max_value: 300
     mode: slider
     icon: mdi:fan-auto
 
@@ -33,7 +33,7 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD      
     min_value: 50
-    max_value: 325
+    max_value: 300
     mode: slider
     icon: mdi:fan-speed-1
 
@@ -46,7 +46,7 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD      
     min_value: 50
-    max_value: 325
+    max_value: 300
     mode: slider
     icon: mdi:fan-speed-2
 
@@ -59,6 +59,6 @@ number:
     unit_of_measurement: "m3/h"
     value_type: S_WORD   
     min_value: 50
-    max_value: 325
+    max_value: 300
     mode: slider
     icon: mdi:fan-speed-3
