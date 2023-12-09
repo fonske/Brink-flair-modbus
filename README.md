@@ -6,11 +6,11 @@ Currently supported ESP32 and ESP8266 platforms.
 By default ESP32S3 is used. If you want to use ESP8266, edit file `esphome/brink.yaml`, comment out esp32 include and uncomment esp8266 include file.
 
 ```
-# In order to use other language or a different ESP chip, fix include file name below:
+# Choose the correct type for your Brink model, so the correct max flow can be setup with a slider.
+# In order to use other language or a different ESP chip, fix file names below.
 # Currently supported languages are en, nl. 
 # ESP32 is a mh-et-live or wemos d32 mini, esp8266 is a wemos d1 mini, esp32s3 is a lilygo ESP32S3-T7
 # Be carefull not to upload the wrong code to the wrong chip. This could brick your ESP chip.
-# Choose the correct type for your Brink model, so the correct max flow can be setup with a slider.
 
 packages:
   remote_package:
