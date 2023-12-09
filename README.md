@@ -36,6 +36,7 @@ packages:
       # esphome/boards/board-esp32.yaml
       # esphome/boards/board-esp32S3.yaml
       # esphome/boards/board-esp8266.yaml
+      # esphome/boards/board-esp8266-d1-mini-pro.yaml
       # esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
       # esphome/sensors/sensor-scd41-i2c-m5stack.yaml
       # esphome/sensors/sensor-enviii-i2c-m5stack.yaml
