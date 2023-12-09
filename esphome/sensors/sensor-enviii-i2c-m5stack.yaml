@@ -5,7 +5,7 @@ sensor:
       name: "${name} ${brink_temp_from_inside}" #envIII_temperature
       id: brink_temp_from_inside #enviii_temperature 
     humidity:
-      name: "$(name} ${brink_humidity_from_inside}" #envIII_humidity 
+      name: "${name} ${brink_humidity_from_inside}" #envIII_humidity 
       id: brink_humidity_from_inside #enviii_humidity
     i2c_id: bus_b
     address: 0x44
