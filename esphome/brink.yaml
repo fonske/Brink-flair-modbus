@@ -20,7 +20,7 @@ packages:
              esphome/boards/board-esp32S3.yaml,
              esphome/sensors/sensor-enviii-i2c-m5stack.yaml,
              esphome/sensors/sensor-brink_hum_sensor.yaml,
-             esphome/sensors/sensor-brink_co2_1_sensor.yaml
+             esphome/sensors/sensor-brink_co2_4_sensor.yaml
            ]
     ## options are: 
       # esphome/labels/.brink-labels-en.yaml
