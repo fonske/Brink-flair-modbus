@@ -62,8 +62,5 @@ In order to change language, edit file `esphome/brink.yaml`, and change include 
 Project support additional sensors DHT22 or M5stack SCD40/41, CO2 sensor or M5stack ENVIII humidity, temperature, pressure sensor.
 In order to enable them, edit file `esphome/brink.yaml` and uncomment include file for sensor.
 
-## Contact
-Contact me: alphonsuijtdehaag at gmail dot com, if you are interested in a PCB with a ESP32 (mh-et-live or lilygo esp32s3-T7) and XY-017 ttl to rs485 mounted on with 3d printed housing.
-See: /pictures
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ebbenberg)
