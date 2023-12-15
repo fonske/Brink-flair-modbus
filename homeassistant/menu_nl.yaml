@@ -7,22 +7,39 @@
       - type: entities
         entities:
           - entity: sensor.brink_bypass_status
+            name: Bypass status
           - entity: sensor.brink_filter_status
+            name: Filter status
           - entity: sensor.brink_huidig_inlaat_luchtvolume
+            name: Huidig inlaat volume
           - entity: sensor.brink_huidig_uitlaat_luchtvolume
+            name: Huidig Uitlaat volume
           - entity: sensor.brink_vochtsensor
+            name: Vochtsensor
           - entity: sensor.brink_filter_reset_op
+            name: Filter reset op
           - entity: sensor.brink_filter_dagen
+            name: Filter dagen
           - entity: sensor.brink_filter_uren
+            name: Filter uren
           - entity: sensor.brink_filter_m3_h
+            name: Filter m3/h
           - entity: sensor.brink_status
+            name: Status
           - entity: sensor.brink_druk_inblaas
+            name: Druk inblaas
           - entity: sensor.brink_druk_uitblaas
+            name: Druk uitblaas
           - entity: sensor.brink_binnen_dauwpunt
+            name: Binnen dauwpunt
           - entity: sensor.brink_buiten_aanzuig_temperatuur
+            name: Aanzuig temperatuur
           - entity: sensor.brink_bevriezing_status
+            name: Bevriezing status
           - entity: sensor.brink_bevriezing_heaterpower
+            name: Bevriezing heaterpower
           - entity: sensor.brink_bevriezing_fan_reductie
+            name: Bevriezing fanreductie
         show_header_toggle: false
       - type: vertical-stack
         cards:
@@ -236,21 +253,39 @@
       - type: entities
         entities:
           - entity: select.brink_modbus_control_mode
+            name: Modbus control mode
           - entity: number.brink_flow_0
+            name: Flow 0
           - entity: number.brink_flow_1
+            name: Flow 1
           - entity: number.brink_flow_2
+            name: Flow 2
           - entity: number.brink_flow_3
+            name: Flow 3
           - entity: number.brink_ventilatie_stand
+            name: Ventilatie stand
           - entity: number.brink_fan_onbalans_inlaat
+            name: Fan onbalans inlaat
           - entity: number.brink_fan_onbalans_uitlaat
+            name: Fan onbalans uitlaat
           - entity: switch.brink_bypass_boost
+            name: Bypass boost
           - entity: number.brink_bypass_temp_uit_woning
+            name: Bypass temp uit woning
           - entity: number.brink_bypass_temp_van_buiten
+            name: Bypass temp van buiten
           - entity: number.brink_bypass_hysteresis
+            name: Bypass hysterese
           - entity: number.brink_dagen_filter_wissel
+            name: Dagen filter wissel
           - entity: button.brink_filter_reset
-          - entity: switch.brink_vochtsensor
+            name: Filter reset
+          - entity: switch.brink_vocht_sensor
+            name: Vochtsensor
           - entity: number.brink_bevriezing_controle_temp
+            name: Bevriezing controle temp
           - entity: number.brink_bevriezing_minimum_inlaat_temp
+            name: Bevriezing minimum inlaat temp
           - entity: switch.brink_standby_schakelaar
+            name: Standby schakelaar
         show_header_toggle: false
