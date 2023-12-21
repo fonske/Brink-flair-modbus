@@ -14,7 +14,7 @@ sensor:
     state_class: measurement
 
   - id: brink_external_co2_sensor2
-    name: "${brink_external_co2_sensor2}"
+    name: "${name} ${brink_external_co2_sensor2}"
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:molecule-co2
@@ -45,7 +45,7 @@ sensor:
     modbus_controller_id: ${name}
     icon: mdi:molecule-co2
     register_type: read
-    address: 4205
+    address: 4207
     device_class: carbon_dioxide
     unit_of_measurement: "ppm"
     value_type: U_WORD  
@@ -58,7 +58,7 @@ text_sensor:
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: read
-    address: 4207
+    address: 4200
     raw_encode: NONE
     icon: mdi:molecule-co2
     lambda: |-
