@@ -6,10 +6,10 @@ esp32:
   framework:
     type: arduino
 
-esphome:
-  platformio_options:
-    board_build.extra_flags:
-      - "-DARDUINO_USB_CDC_ON_BOOT=0"
+#esphome:
+#  platformio_options:
+#    board_build.extra_flags:
+#      - "-DARDUINO_USB_CDC_ON_BOOT=0"
 
 # Modbus uart
 uart:
