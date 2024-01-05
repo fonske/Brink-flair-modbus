@@ -37,6 +37,8 @@ packages:
       # esphome/boards/board-esp32S3.yaml
       # esphome/boards/board-esp8266.yaml
       # esphome/boards/board-esp8266-d1-mini-pro.yaml
+      # esphome/boards/board-m5stack-atom.yaml
+      # esphome/boards/board-m5stack-atoms3-lite.yaml
       # esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
       # esphome/sensors/sensor-scd41-i2c-m5stack.yaml
       # esphome/sensors/sensor-enviii-i2c-m5stack.yaml
@@ -47,11 +49,13 @@ packages:
       # esphome/sensors/sensor-brink_co2_3_sensors.yaml
       # esphome/sensors/sensor-brink_co2_4_sensors.yaml
 
-# for developing/testing, uncomment local includes and comment out remote_package part.
-# packages:
-#   substitutions: !include labels/.brink-labels-en.yaml
-#   device_base1: !include .brink.base.yaml
-#   device_base2: !include boards/board-esp8266.yaml
+# for local developing/testing, uncomment local includes and comment out remote_package part.
+#packages:
+#  substitutions: !include labels/.brink-labels-nl.yaml
+#  device_base1: !include .brink.base.yaml
+#  device_base2: !include boards/board-m5stack-atoms3-lite.yaml
+#  device_base3: !include type/brink-325.yaml
+#  device_base4: !include sensors/sensor-scd41-i2c-m5stack.yaml
 ```
 
 # Translations
