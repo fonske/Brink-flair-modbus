@@ -30,6 +30,7 @@ script:
 ###  On reboot or powerloss of the esp, set the command to Modbus Step instead of Device LCD which is the default.
   - id: on_boot
     then:
+      - delay: 300s  # Adjust the delay time based on your needs
       - lambda: |-
           auto new_value = 1;
 
