@@ -13,8 +13,8 @@ uart:
   id: mod_bus
   baud_rate: 9600
   stop_bits: 1
-  tx_pin: 19
-  rx_pin: 22
+  tx_pin: GPIO6
+  rx_pin: GPIO5
 
 # i2c for extra sensor
 i2c:
