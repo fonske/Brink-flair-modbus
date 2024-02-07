@@ -12,7 +12,7 @@ sensor:
       id: brink_temp_from_inside
 #    temperature_offset: "4.2°C"
 #    measurement_mode: low_power_periodic
-    i2c_id: bus_a  #or choose bus_b
+    i2c_id: bus_b  #or choose bus_a
     address: 0x62
     update_interval: 30s
 
