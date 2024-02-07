@@ -23,7 +23,8 @@ packages:
              esphome/sensors/sensor-brink_hum_sensor.yaml,
              esphome/sensors/sensor-brink_co2_1_sensor.yaml
            ]
-    ## options are: 
+    ## options are:
+      # esphome/type/.brink-300.yaml
       # esphome/type/.brink-325.yaml
       # esphome/type/.brink-400.yaml
       # esphome/type/.brink-450.yaml
