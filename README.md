@@ -42,6 +42,7 @@ packages:
       # esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
       # esphome/sensors/sensor-scd41-i2c-m5stack.yaml
       # esphome/sensors/sensor-enviii-i2c-m5stack.yaml
+      # esphome/sensors/sensor-enviv-i2c-m5stack.yaml
       # esphome/sensors/sensor-dht22.yaml
       # esphome/sensors/sensor-brink_hum_sensor.yaml
       # esphome/sensors/sensor-brink_co2_1_sensor.yaml
