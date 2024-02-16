@@ -45,9 +45,9 @@ packages:
       # esphome/sensors/sensor-dht22.yaml
       # esphome/sensors/sensor-brink_hum_sensor.yaml
       # esphome/sensors/sensor-brink_co2_1_sensor.yaml
-      # esphome/sensors/sensor-brink_co2_2_sensors.yaml
-      # esphome/sensors/sensor-brink_co2_3_sensors.yaml
-      # esphome/sensors/sensor-brink_co2_4_sensors.yaml
+      # esphome/sensors/sensor-brink_co2_2_sensor.yaml
+      # esphome/sensors/sensor-brink_co2_3_sensor.yaml
+      # esphome/sensors/sensor-brink_co2_4_sensor.yaml
 
 # for local developing/testing, uncomment local includes and comment out remote_package part.
 #packages:
