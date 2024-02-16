@@ -1,0 +1,34 @@
+## Option for M5stack ENV IV temperature, humidity and pressure sensor on i2c bus. I2C must be enabled.
+sensor:
+  - platform: sht4x
+    temperature:
+      name: "${name} ${brink_temp_from_inside}" #envIII_temperature
+      id: brink_temp_from_inside #enviii_temperature 
+    humidity:
+      name: "${name} ${brink_humidity_from_inside}" #envIII_humidity 
+      id: brink_humidity_from_inside #enviii_humidity
+    i2c_id: bus_a #or choose bus_b
+    address: 0x44
+    update_interval: 30s
+
+  - platform: bmp280
+#    temperature:
+#      name: "${name} Living Room Temperature2 ENVIV"
+#      oversampling: 16x
+    pressure:
+      name: "${name} ${brink_pressure_from_inside}"
+      id: brink_pressure_from_inside
+      oversampling: 16x
+    i2c_id: bus_a #or choose bus_b
+    address: 0x76
+    update_interval: 30s
+    iir_filter: 2x
+
+## Performance now can be calculated with extra temperature sensor.     
+  - id: brink_performance
+    name: "${name} ${brink_performance}"
+    platform: template
+    unit_of_measurement: "%"
+    update_interval: 30s
+    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
+   # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
