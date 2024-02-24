@@ -7,22 +7,39 @@
       - type: entities
         entities:
           - entity: sensor.brink_bypass_status
+            name: Bypass status
           - entity: sensor.brink_filter_status
+            name: Filter status
           - entity: sensor.brink_current_intake_air_volume
+            name: Current intake air volume
           - entity: sensor.brink_current_exhaust_air_volume
+            name: Current exhaust air volume
           - entity: sensor.brink_humidity_sensor_external
+            name: Humidity sensor external
           - entity: sensor.brink_filter_reset_on
+            name: Filter reset on
           - entity: sensor.brink_current_filter_days
+            name: Current filter days
           - entity: sensor.brink_current_filter_hours
+            name: Current filter hours
           - entity: sensor.brink_filter_used_m3_h
+            name: Filter used m3/h    
           - entity: sensor.brink_status
+            name: Status
           - entity: sensor.brink_supply_pressure
+            name: Supply pressure
           - entity: sensor.brink_exhaust_pressure
+            name: Exhaust pressure
           - entity: sensor.brink_dewpoint_to_inside
+            name: Dewpoint to inside
           - entity: sensor.brink_temperature_from_outside
+            name: Temperature from outside
           - entity: sensor.brink_frost_status
+            name: Frost status
           - entity: sensor.brink_frost_heater_power
+            name: Frost heater power
           - entity: sensor.brink_frost_fan_reduction
+            name: Frost fan reduction
         show_header_toggle: false
       - type: vertical-stack
         cards:
@@ -208,6 +225,7 @@
           - type: entities
             entities:
               - entity: select.brink_bypass_mode
+                name: Brink bypass mode
             show_header_toggle: false
       - type: vertical-stack
         cards:
@@ -215,11 +233,17 @@
             hours_to_show: 24
             entities:
               - entity: sensor.brink_temperature_from_inside
+                name: House to inlet
               - entity: sensor.brink_temperature_to_inside
+                name: House exhaust
               - entity: sensor.brink_temperature_from_outside
+                name: Outside to inlet
               - entity: sensor.brink_humidity_from_inside
+                name: House to inlet
               - entity: sensor.brink_humidity_to_inside
+                name: House exhaust
               - entity: sensor.brink_humidity_sensor_external
+                name: Humidity sensor brink
           - type: history-graph
             hours_to_show: 24
             entities:
@@ -227,22 +251,41 @@
       - type: entities
         entities:
           - entity: select.brink_modbus_control_mode
+            name: Modbus control mode
           - entity: number.brink_flow_0
+            name: Flow 0
           - entity: number.brink_flow_1
+            name: Flow 1
           - entity: number.brink_flow_2
+            name: Flow 2
           - entity: number.brink_flow_3
+            name: Flow 3
           - entity: number.brink_modbus_preset_switch
+            name: Modbus preset switch
           - entity: number.brink_modbus_flow_rate
+            name: Modbus flow rate
           - entity: number.brink_brink_imbalance_intake
+            name: Imbalance intake
           - entity: number.brink_fan_imbalance_exhaust
+            name: Imbalance exhaust
           - entity: switch.brink_bypass_boost
+            name: Bypass boost
           - entity: number.brink_bypass_temp_from_outside
+            name: Bypass temp from outside
           - entity: number.brink_bypass_temp_from_home
+            name: Bypass temp from home
           - entity: number.brink_bypass_hysteresis
+            name: Bypass hysteresis
           - entity: number.brink_days_before_filter_warning
+            name: Days before filter warning
           - entity: button.brink_filter_reset
-          - entity: switch.brink_rht_(humidity)_sensor_active
+            name: Filter reset
+          - entity: switch.brink_rht_sensor_active
+            name: RHT sensor active
           - entity: number.brink_freezing_control_temperature
+            name: Freezing control temperature
           - entity: number.brink_freezing_minimum_inlet_temperature
+            name: Freezing minimum inlet temperature
           - entity: switch.brink_standby_switch
+            name: Standby switch
         show_header_toggle: false
