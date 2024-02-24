@@ -2,7 +2,7 @@
 
 esphome:
   name: ${name}
-#  friendly_name: ${friendly_name}
+  friendly_name: ${friendly_name}
   on_boot:
     priority: 200
     then:
@@ -30,7 +30,6 @@ script:
 ###  On reboot or powerloss of the esp, set the command to Modbus Step instead of Device LCD which is the default.
   - id: on_boot
     then:
-      - delay: 300s  # Adjust the delay time based on your needs
       - lambda: |-
           auto new_value = 1;
 
@@ -70,7 +69,7 @@ sensor:
 ## 2x ds18b20: 
 #  - platform: dallas
 #    address: 0x233c01f095e2ca28  ##find adress in esphome log
-#    name: "${name} Temperature 1"
+#    name: Temperature 1
 #    id: temperature_1
 #    filters:
 #    - filter_out: NAN
@@ -78,7 +77,7 @@ sensor:
 
 #  - platform: dallas
 #    address: 0x903c01f095ea8128  ##find adress in esphome log
-#    name: "${name} Temperature 2"
+#    name: Temperature 2
 #    id: temperature_2
 #    filters:
 #   - filter_out: NAN
@@ -86,7 +85,7 @@ sensor:
 
 #  - platform: dallas
 #    address: 0xcd3c01f095d5a128  ##find adress in esphome log
-#    name: "${name} Temperature 3"
+#    name: Temperature 3
 #    id: temperature_3
 #    filters:
 #    - filter_out: NAN
@@ -94,14 +93,14 @@ sensor:
 
 #  - platform: dallas
 #    address: 0x633c01f095619f28  ##find adress in esphome log
-#    name: "${name} Temperature 4"
+#    name: Temperature 4
 #    id: temperature_4
 #    filters:
 #    - filter_out: NAN
 #    - offset: 0.0
 
   - id: brink_temp_to_inside
-    name: "${name} ${brink_temp_to_inside}"
+    name: ${brink_temp_to_inside}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 4036
@@ -115,7 +114,7 @@ sensor:
       - multiply: 0.1
 
   - id: brink_humidity_to_inside
-    name: "${name} ${brink_humidity_to_inside}"
+    name: ${brink_humidity_to_inside}
     icon: "mdi:water-percent"
     platform: modbus_controller
     modbus_controller_id: ${name}
@@ -128,7 +127,7 @@ sensor:
     state_class: measurement
 
   - id: brink_dewpoint_to_inside
-    name: "${name} ${brink_dewpoint_to_inside}"
+    name: ${brink_dewpoint_to_inside}
     platform: template
     lambda: |-
         return (243.5*(log(id(brink_humidity_to_inside).state/100)+((17.67*id(brink_temp_to_inside).state)/
@@ -139,7 +138,7 @@ sensor:
     icon: 'mdi:thermometer-water'
 
   - id: brink_temp_to_outside
-    name: "${name} ${brink_temp_to_outside}"
+    name: ${brink_temp_to_outside}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 4046
@@ -153,7 +152,7 @@ sensor:
       - multiply: 0.1
 
   - id: brink_humidity_to_outside
-    name: "${name} ${brink_humidity_to_outside}"
+    name: ${brink_humidity_to_outside}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:water-percent
@@ -166,7 +165,7 @@ sensor:
     state_class: measurement
 
   - id: brink_temp_from_outside  # NTC1
-    name: "${name} ${brink_temp_from_outside}"
+    name: ${brink_temp_from_outside}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 4081
@@ -180,7 +179,7 @@ sensor:
       - multiply: 0.1
 
   - id: brink_supply_pressure
-    name: "${name} ${brink_supply_pressure}"
+    name: ${brink_supply_pressure}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:gauge
@@ -195,7 +194,7 @@ sensor:
       - multiply: 1.0
     
   - id: brink_exhaust_pressure
-    name: "${name} ${brink_exhaust_pressure}"   
+    name: ${brink_exhaust_pressure}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:gauge
@@ -210,7 +209,7 @@ sensor:
       - multiply: 1.0
 
   - id: brink_setpoint_inlet_volume
-    name: "${name} ${brink_setpoint_inlet_volume}"
+    name: ${brink_setpoint_inlet_volume}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:fan
@@ -224,7 +223,7 @@ sensor:
       - multiply: 1.0
 
   - id: brink_current_inlet_volume
-    name: "${name} ${brink_current_inlet_volume}"
+    name: ${brink_current_inlet_volume}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:fan
@@ -238,7 +237,7 @@ sensor:
       - multiply: 1.0
 
   - id: brink_setpoint_outlet_volume
-    name: "${name} ${brink_setpoint_outlet_volume}"
+    name: ${brink_setpoint_outlet_volume}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:fan
@@ -252,7 +251,7 @@ sensor:
       - multiply: 1.0
 
   - id: brink_current_outlet_volume
-    name: "${name} ${brink_current_outlet_volume}"
+    name: ${brink_current_outlet_volume}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:fan
@@ -266,7 +265,7 @@ sensor:
       - multiply: 1.0
 
   - id: brink_frost_heater_power
-    name: "${name} ${brink_frost_heater_power}"
+    name: ${brink_frost_heater_power}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:penguin
@@ -280,7 +279,7 @@ sensor:
       - multiply: 1.0
 
   - id: brink_frost_fan_reduction
-    name: "${name} ${brink_frost_fan_reduction}"
+    name: ${brink_frost_fan_reduction}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:penguin
@@ -294,7 +293,7 @@ sensor:
       - multiply: 1.0
 
   - id: brink_current_filter_hours
-    name: "${name} ${brink_current_filter_hours}"
+    name: ${brink_current_filter_hours}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:clock-start
@@ -305,7 +304,7 @@ sensor:
     accuracy_decimals: 0
 
   - id: brink_current_filter_days
-    name: "${name} ${brink_current_filter_days}"
+    name: ${brink_current_filter_days}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:clock-start
@@ -324,13 +323,13 @@ sensor:
               return id(brink_filter_change_days).state - id(brink_current_filter_days).state;
 
   - id: brink_exchange_filter_in
-    name: "${name} ${brink_exchange_filter_in}"
+    name: ${brink_exchange_filter_in}
     platform: template
     unit_of_measurement: ${days}
     accuracy_decimals: 0
 
   - id: brink_filter_m3_h
-    name: "${name} ${brink_filter_m3_h}"
+    name: ${brink_filter_m3_h}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:clock-start
@@ -342,7 +341,7 @@ sensor:
     state_class: total
 
   - id: brink_device_type
-    name: "${name} ${brink_device_type}"
+    name: ${brink_device_type}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:penguin
@@ -353,7 +352,7 @@ sensor:
 
 text_sensor:
   - id: brink_status
-    name: "${name} ${brink_status}"
+    name: ${brink_status}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: read
@@ -384,7 +383,7 @@ text_sensor:
       return mode_str;
   
   - id: brink_bypass_status
-    name: "${name} ${brink_bypass_status}"
+    name: ${brink_bypass_status}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: read
@@ -406,7 +405,7 @@ text_sensor:
       return mode_str;
 
   - id: brink_frost_status
-    name: "${name} ${brink_frost_status}"
+    name: ${brink_frost_status}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: read
@@ -440,7 +439,7 @@ text_sensor:
       return mode_str;
 
   - id: brink_filter_status
-    name: "${name} ${brink_filter_status}"
+    name: ${brink_filter_status}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: read
@@ -459,7 +458,7 @@ text_sensor:
 
 select:
   - id: brink_modbus_control_mode
-    name: "${name} Modbus Control Mode"
+    name: Modbus Control Mode
     platform: modbus_controller
     modbus_controller_id: ${name} 
     address: 8000
@@ -471,7 +470,7 @@ select:
       "Modbus Flow": 2
 
   - id: brink_bypass_mode
-    name: "${name} Bypass Mode"
+    name: Bypass Mode
     platform: modbus_controller
     modbus_controller_id: ${name}  
     address: 6100
@@ -483,7 +482,7 @@ select:
 
 switch:
   - id: brink_bypass_boost
-    name: "${name} Bypass Boost"
+    name: Bypass Boost
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding
@@ -493,7 +492,7 @@ switch:
     icon: mdi:toggle-switch
 
   - id: brink_reset_filter
-    name: "${name} Reset Filter"
+    name: Reset Filter
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding  
@@ -503,7 +502,7 @@ switch:
     disabled_by_default: true
 
   - id: brink_standby_switch
-    name: "${name} ${brink_standby_switch}"
+    name: ${brink_standby_switch}
     platform: template
     optimistic: true
     on_turn_on:
@@ -525,7 +524,7 @@ switch:
 
 button:
   - id: brink_reset_filter_button
-    name: "${name} Filter reset"
+    name: Filter reset
     platform: template
     on_press:
       then:
@@ -543,7 +542,7 @@ button:
 
 ## temporarely test button for Step modbus mode after reboot or powerloss
 #  - id: brink_step_modbus
-#    name: "${name} Set Modbus Control Mode - Switch"
+#    name: Set Modbus Control Mode - Switch
 #    platform: template
 #    on_press:
 #      then:
@@ -561,7 +560,7 @@ button:
 number:
   # If the bypass boost function is activated, the bypass opens and the fan will run at this preset setting.
   - id: brink_bypass_boost_switch_position
-    name: "${name} ${brink_bypass_boost_switch_position}"
+    name: ${brink_bypass_boost_switch_position}
     platform: modbus_controller
     modbus_controller_id: ${name}  
     address: 6105
@@ -572,7 +571,7 @@ number:
     icon: mdi:fan
 
   - id: brink_modbus_flow_step
-    name: "${name} ${brink_modbus_flow_step}"
+    name: ${brink_modbus_flow_step}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding
@@ -584,7 +583,7 @@ number:
     icon: mdi:fan
  
   - id: brink_imbalance_intake
-    name: "${name} ${brink_imbalance_intake}"
+    name: ${brink_imbalance_intake}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6035
@@ -608,7 +607,7 @@ number:
 ##    minus de ingestelde temperatuur bij de hysterese
 
   - id: brink_bypass_from_dwelling ## van binnen naar buitenuitblaas, default 24 °C
-    name: "${name} ${brink_bypass_from_dwelling}"
+    name: ${brink_bypass_from_dwelling}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6101
@@ -623,7 +622,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_bypass_from_outside ## van buiten naar binnen aanzuig, default 10 °C
-    name: "${name} ${brink_bypass_from_outside}"
+    name: ${brink_bypass_from_outside}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6102
@@ -638,7 +637,7 @@ number:
     icon: mdi:home-import-outline
 
   - id: brink_bypass_hysteresis ## default 2 °C
-    name: "${name} ${brink_bypass_hysteresis}"
+    name: ${brink_bypass_hysteresis}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6103
@@ -654,7 +653,7 @@ number:
 
 ### Vorstbeveiliging
   - id: brink_frost_control_temperature ## default 0 °C
-    name: "${name} ${brink_frost_control_temperature}"
+    name: ${brink_frost_control_temperature}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6110
@@ -669,7 +668,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_frost_minimum_inlet_temperature  ## default 10 °C
-    name: "${name} ${brink_frost_minimum_inlet_temperature}"
+    name: ${brink_frost_minimum_inlet_temperature}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6111
@@ -684,7 +683,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_imbalance_exhaust  ## default 0
-    name: "${name} ${brink_imbalance_exhaust}"
+    name: ${brink_imbalance_exhaust}
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6036
@@ -697,7 +696,7 @@ number:
     icon: mdi:home-export-outline
 
   - id: brink_filter_change_days
-    name:  "${name} ${brink_filter_change_days}"
+    name:  ${brink_filter_change_days}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding

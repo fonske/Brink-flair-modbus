@@ -42,7 +42,7 @@ logger:
 
 wifi:
   ap:
-    ssid: "${name}"
+    ssid: "${friendly_name}"
     password: "configesp"
 
 esp32_improv:

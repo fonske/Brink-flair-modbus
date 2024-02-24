@@ -1,7 +1,7 @@
 number:
-# Maximum value for Flair 400 is 400m3/h
+# Maximum value for Flair 300 is 300m3/h
   - id: brink_modbus_flow_rate
-    name: "${name} ${brink_modbus_flow_rate}"
+    name: ${brink_modbus_flow_rate}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding
@@ -12,7 +12,7 @@ number:
     mode: slider
 
   - id: brink_flow_0
-    name: "${name} Flow 0"
+    name: Flow 0
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding
@@ -25,7 +25,7 @@ number:
     icon: mdi:fan-auto
 
   - id: brink_flow_1
-    name: "${name} Flow 1"
+    name: Flow 1
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding
@@ -38,7 +38,7 @@ number:
     icon: mdi:fan-speed-1
 
   - id: brink_flow_2
-    name: "${name} Flow 2"
+    name: Flow 2
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding
@@ -51,7 +51,7 @@ number:
     icon: mdi:fan-speed-2
 
   - id: brink_flow_3
-    name: "${name} Flow 3"
+    name: Flow 3
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding

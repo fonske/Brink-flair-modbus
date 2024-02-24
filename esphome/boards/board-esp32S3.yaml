@@ -55,7 +55,7 @@ switch:
     pin:
       number: 5
       inverted: false
-    name: ${name} ${brink_relay}"
+    name: ${brink_relay}"
     id: brink_relay
 #    internal: true
     icon: mdi:alarm-bell
@@ -77,7 +77,7 @@ logger:
 
 wifi:
   ap:
-    ssid: "${name}"
+    ssid: "${${friendly_name}}"
     password: "configesp"
 
 # enable IMPROV wifi, connection hotspot via bluetooth. see https://www.improv-wifi.com/

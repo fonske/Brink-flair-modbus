@@ -1,7 +1,7 @@
 ## 1x Brink CO2 sensor
 sensor:
   - id: brink_external_co2_sensor1
-    name: "${name} ${brink_external_co2_sensor1}"
+    name: ${brink_external_co2_sensor1}
     platform: modbus_controller
     modbus_controller_id: ${name}
     icon: mdi:molecule-co2
@@ -15,7 +15,7 @@ sensor:
 
 text_sensor:
   - id: brink_co2_status1
-    name: "${name} ${brink_co2_status1}"
+    name: ${brink_co2_status1}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: read
@@ -39,7 +39,7 @@ text_sensor:
 
 switch:
   - id: brink_co2_sensor
-    name: "${name} ${brink_co2_sensor}"
+    name: ${brink_co2_sensor}
     platform: modbus_controller
     modbus_controller_id: ${name}
     register_type: holding

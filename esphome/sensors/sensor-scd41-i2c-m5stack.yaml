@@ -2,25 +2,25 @@
 sensor:
   - platform: scd4x
     co2:
-     name: "${name} ${brink_co2_from_inside}"
+     name: ${brink_co2_from_inside}
      id: brink_co2_from_inside
-    humidity:
-      name: "${name} ${brink_humidity_from_inside}"
-      id: brink_humidity_from_inside
-    temperature:
-      name: "${name} ${brink_temp_from_inside}"
-      id: brink_temp_from_inside
+#    humidity:
+#      name: ${brink_humidity_from_inside}
+#      id: brink_humidity_from_inside
+#    temperature:
+#      name: ${brink_temp_from_inside}
+#      id: brink_temp_from_inside
 #    temperature_offset: "4.2°C"
 #    measurement_mode: low_power_periodic
-    i2c_id: bus_b  #or choose bus_a
+    i2c_id: bus_b  #or choose bus_b
     address: 0x62
     update_interval: 30s
 
 ## Performance now can be calculated with the extra temperature sensor.    
-  - id: brink_performance
-    name: "${name} ${brink_performance}"
-    platform: template
-    unit_of_measurement: "%"
-    update_interval: 30s
-    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
+#  - id: brink_performance
+#    name: ${brink_performance}
+#    platform: template
+#    unit_of_measurement: "%"
+#    update_interval: 30s
+#    lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
    # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)

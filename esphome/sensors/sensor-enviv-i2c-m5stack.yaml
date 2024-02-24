@@ -2,10 +2,10 @@
 sensor:
   - platform: sht4x
     temperature:
-      name: "${name} ${brink_temp_from_inside}" #envIII_temperature
+      name: ${brink_temp_from_inside} #envIII_temperature
       id: brink_temp_from_inside #enviii_temperature 
     humidity:
-      name: "${name} ${brink_humidity_from_inside}" #envIII_humidity 
+      name: ${brink_humidity_from_inside} #envIII_humidity 
       id: brink_humidity_from_inside #enviii_humidity
     i2c_id: bus_a #or choose bus_b
     address: 0x44
@@ -16,7 +16,7 @@ sensor:
 #      name: "${name} Living Room Temperature2 ENVIV"
 #      oversampling: 16x
     pressure:
-      name: "${name} ${brink_pressure_from_inside}"
+      name: ${brink_pressure_from_inside}
       id: brink_pressure_from_inside
       oversampling: 16x
     i2c_id: bus_a #or choose bus_b
@@ -26,7 +26,7 @@ sensor:
 
 ## Performance now can be calculated with extra temperature sensor.     
   - id: brink_performance
-    name: "${name} ${brink_performance}"
+    name: ${brink_performance}
     platform: template
     unit_of_measurement: "%"
     update_interval: 30s
