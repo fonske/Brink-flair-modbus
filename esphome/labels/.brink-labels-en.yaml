@@ -34,7 +34,7 @@ substitutions:
   brink_modbus_flow_step: Modbus preset switch
   brink_modbus_flow_rate: Modbus flow rate
   brink_status: Status
-  brink_rht_sensor: RHT (humidity) sensor active
+  brink_rht_sensor: RHT sensor active
   brink_co2_sensor: CO2 sensor active
   brink_standby_switch: Standby switch
   brink_imbalance_intake: Brink imbalance intake

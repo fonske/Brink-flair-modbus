@@ -118,9 +118,9 @@
                   left: 90%
                   color: grey
           - type: entity
-            entity: sensor.tz3000_2putqrmw_ts011f_active_power
+            entity: sensor.power_14
             state_color: false
-            name: Power
+            name: power
             icon: mdi:power-socket-eu
           - type: horizontal-stack
             cards:
