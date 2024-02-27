@@ -55,6 +55,12 @@ switch:
 #    internal: true
     icon: mdi:alarm-bell
 
+###  ESP restart button
+button:
+  - platform: restart
+    id: restart_button
+    name: Restart
+
 # Enable/Disable logging
 logger:
   logs:
