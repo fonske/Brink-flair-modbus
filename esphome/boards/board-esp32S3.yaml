@@ -6,11 +6,6 @@ esp32:
   framework:
     type: arduino
 
-#esphome:
-#  platformio_options:
-#    board_build.extra_flags:
-#      - "-DARDUINO_USB_CDC_ON_BOOT=0"
-
 # Modbus uart
 uart:
   id: mod_bus
@@ -77,7 +72,7 @@ logger:
 
 wifi:
   ap:
-    ssid: "${${friendly_name}}"
+    ssid: "${friendly_name}"
     password: "configesp"
 
 # enable IMPROV wifi, connection hotspot via bluetooth. see https://www.improv-wifi.com/
