@@ -23,6 +23,12 @@ i2c:
     sda: GPIO2
     scl: GPIO1
 
+###  ESP restart button
+button:
+  - platform: restart
+    id: restart_button
+    name: Restart
+    
 # Enable/Disable logging
 logger:
   logs:
