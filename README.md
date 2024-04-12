@@ -68,6 +68,10 @@ In order to change language, edit file `esphome/brink.yaml`, and change include 
 Project support additional sensors DHT22 or M5stack SCD40/41, CO2 sensor or M5stack ENVIII humidity, temperature, pressure sensor.
 In order to enable them, edit file `esphome/brink.yaml` and uncomment include file for sensor.
 
+# Modbus addres inside brink.yaml
+The modbus address is now configurable in brink.yaml.
+Because there are several Brink versions available on the market, like the Viessmann Vitovent 300w (H32e C400) which uses address 70
+
 ## Contact
 Contact me: alphonsuijtdehaag at gmail dot com, if you are interested in a PCB with an ESP32 (lilygo ESP32S3-T7) or M5stack RS485 with Atom s3 lite
 Both have I2C port(s) to connect a SCD40/41 or ENVIII sensor
