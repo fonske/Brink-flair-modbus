@@ -57,7 +57,7 @@ modbus:
 modbus_controller:
   - id: ${name}
     ## Brink Modbus slaveaddress 20
-    address: 20 
+    address: ${modbusaddress} 
     command_throttle: 200ms
     setup_priority: -10
     update_interval: 10s

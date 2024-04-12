@@ -3,6 +3,9 @@ substitutions:
   friendly_name: Brink
   device_description: "Esphome component for Brink Flair with modbus"
   timezone: "Europe/Amsterdam"
+###  Settings Brink Flair (no need to change normally)
+###  menu 14-Communication: TypeBus=Modbus, Slave modbusaddress=20, Baudrate=19200, Parity=Even
+  modbusaddress: "20"
 
 # In order to use other language or a different ESP chip, fix include file name below:
 # Currently supported languages are en, nl. 
