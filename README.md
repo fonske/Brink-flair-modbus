@@ -26,11 +26,11 @@ packages:
              esphome/sensors/sensor-brink_co2_1_sensor.yaml
            ]
     ## options are:
-      # esphome/type/.brink-300.yaml
-      # esphome/type/.brink-325.yaml
-      # esphome/type/.brink-400.yaml
-      # esphome/type/.brink-450.yaml
-      # esphome/type/.brink-600.yaml
+      # esphome/type/brink-300.yaml
+      # esphome/type/brink-325.yaml
+      # esphome/type/brink-400.yaml
+      # esphome/type/brink-450.yaml
+      # esphome/type/brink-600.yaml
       # esphome/labels/.brink-labels-en.yaml
       # esphome/labels/.brink-labels-nl.yaml
       # esphome/.brink.base.yaml
