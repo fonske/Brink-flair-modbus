@@ -62,7 +62,7 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
-# Put your API key here if you have one 
-api:
+# Put your API key here if you have one, if not leave it as it is.
+# api:
 #   encryption:
 #     key: !secret brink_api_key
