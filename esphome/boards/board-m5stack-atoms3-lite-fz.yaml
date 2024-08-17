@@ -13,7 +13,7 @@ uart:
   id: mod_bus
   baud_rate: 9600  
   stop_bits: 1
-  parity: none
+  parity: even
   tx_pin: GPIO6
   rx_pin: GPIO5
 
