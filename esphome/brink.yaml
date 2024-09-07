@@ -40,6 +40,7 @@ packages:
       # esphome/boards/board-esp8266.yaml
       # esphome/boards/board-esp8266-d1-mini-pro.yaml
       # esphome/boards/board-m5stack-atom
+      # esphome/boards/board-m5stack-atom-ttl.yaml
       # esphome/boards/board-m5stack-atoms3-lite
       # esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
       # esphome/sensors/sensor-scd41-i2c-m5stack.yaml
