@@ -13,8 +13,8 @@ uart:
   baud_rate: 19200
   stop_bits: 1
   parity: even
-  tx_pin: G32
-  rx_pin: G26
+  tx_pin: 32
+  rx_pin: 26
 
 # This board is so tiny there is no ping available on the botom
 #  But with a grove connector you could add GPIO on pin 26 and 32
