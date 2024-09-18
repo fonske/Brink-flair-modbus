@@ -13,7 +13,7 @@ api:
 
 # Enable OTA updates  
 ota:
-  platform: esphome
+  - platform: esphome
   
 # dashboard_import:
 #   package_import_url: https://github.com/fonske/Brink-flair-modbus
