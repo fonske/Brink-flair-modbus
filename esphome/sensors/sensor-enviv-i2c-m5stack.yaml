@@ -11,7 +11,7 @@ sensor:
     address: 0x44
     update_interval: 30s
 
-  - platform: bmp280
+  - platform: bmp280_i2c
 #    temperature:
 #      name: "${name} Living Room Temperature2 ENVIV"
 #      oversampling: 16x
