@@ -504,7 +504,7 @@ select:
               } else if (requested_mode_str == "${open}") {
                 requested_mode = 2;
               }
-              
+
               if (current_mode == requested_mode) {
                 ESP_LOGI("bypass", "Bypass mode already set, no switching needed.");
                 return;  // Prevent switching if the mode is already active
@@ -517,7 +517,12 @@ select:
               // }
 
               ESP_LOGI("bypass", "Switching bypass mode to: %d", requested_mode);
-              id(${name}).write_register(6100, requested_mode);
+              //id(${name}).write_register(6100, requested_mode);
+              esphome::modbus_controller::ModbusController *controller = id(${name});
+              auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
+                controller, 6100, requested_mode);
+              delay(20) ;
+              controller->queue_command(set_value_cmd); 
 
 switch:
   - id: brink_bypass_boost
