@@ -264,6 +264,8 @@
             name: Flow 3
           - entity: number.brink_ventilatie_stand
             name: Ventilatie stand
+          - entity: number.brink_modbus_flow_waarde
+            name: Ventilatie flow waarde
           - entity: number.brink_fan_onbalans_inlaat
             name: Fan onbalans inlaat
           - entity: number.brink_fan_onbalans_uitlaat
