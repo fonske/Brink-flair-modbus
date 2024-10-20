@@ -360,6 +360,7 @@ text_sensor:
     address: 4020
     raw_encode: NONE
     icon: mdi:home-heart
+    update_interval: 600s
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -391,6 +392,7 @@ text_sensor:
     address: 4050
     raw_encode: NONE
     icon: mdi:valve
+    update_interval: 600s
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       std::string mode_str;
@@ -413,6 +415,7 @@ text_sensor:
     address: 4070
     raw_encode: NONE
     icon: mdi:penguin
+    update_interval: 600s
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -447,6 +450,7 @@ text_sensor:
     address: 4100
     raw_encode: NONE
     icon: mdi:air-filter
+    update_interval: 600s
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -465,7 +469,6 @@ select:
     address: 8000
     value_type: S_WORD
     optimistic: true
-    update_interval: never
     optionsmap:
       "Device LCD": 0      
       "Modbus Step": 1
