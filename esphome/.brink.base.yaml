@@ -483,9 +483,28 @@ select:
     on_value:
         then:
           - lambda: |-
-              int current_mode = id(brink_bypass_mode).state;
-              int requested_mode = x;  // 'x' is the requested mode value
+              std::string current_mode_str = id(brink_bypass_mode).state;
+              std::string requested_mode_str = x;  // 'x' is the requested mode value
 
+              // Convert strings to integers using the options map
+              int current_mode = 0;
+              if (current_mode_str == "${auto}") {
+                current_mode = 0;
+              } else if (current_mode_str == "${closed}") {
+                current_mode = 1;
+              } else if (current_mode_str == "${open}") {
+                current_mode = 2;
+              }
+
+              int requested_mode = 0;
+              if (requested_mode_str == "${auto}") {
+                requested_mode = 0;
+              } else if (requested_mode_str == "${closed}") {
+                requested_mode = 1;
+              } else if (requested_mode_str == "${open}") {
+                requested_mode = 2;
+              }
+              
               if (current_mode == requested_mode) {
                 ESP_LOGI("bypass", "Bypass mode already set, no switching needed.");
                 return;  // Prevent switching if the mode is already active
