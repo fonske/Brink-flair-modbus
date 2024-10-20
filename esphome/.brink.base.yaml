@@ -465,6 +465,7 @@ select:
     address: 8000
     value_type: S_WORD
     optimistic: true
+    update_interval: never
     optionsmap:
       "Device LCD": 0      
       "Modbus Step": 1
