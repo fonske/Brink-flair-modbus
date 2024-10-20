@@ -498,7 +498,7 @@ select:
               // }
 
               ESP_LOGI("bypass", "Switching bypass mode to: %d", requested_mode);
-              id(modbus_controller).write_register(6100, requested_mode);
+              id(${name}).write_register(6100, requested_mode);
 
 switch:
   - id: brink_bypass_boost
