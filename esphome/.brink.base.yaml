@@ -469,6 +469,7 @@ select:
     address: 8000
     value_type: S_WORD
     optimistic: true
+    skip_updates: 5
     optionsmap:
       "Device LCD": 0      
       "Modbus Step": 1
@@ -509,6 +510,7 @@ select:
     modbus_controller_id: ${name}  
     address: 6100
     value_type: S_WORD
+    skip_updates: 5
     optionsmap:
       ${auto}: 0
       ${closed}: 1
