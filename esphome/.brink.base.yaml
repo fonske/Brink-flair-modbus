@@ -360,7 +360,7 @@ text_sensor:
     address: 4020
     raw_encode: NONE
     icon: mdi:home-heart
-    skip_updates: 10
+    skip_updates: 20
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -392,7 +392,7 @@ text_sensor:
     address: 4050
     raw_encode: NONE
     icon: mdi:valve
-    skip_updates: 10
+    skip_updates: 20
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       std::string mode_str;
@@ -415,7 +415,7 @@ text_sensor:
     address: 4070
     raw_encode: NONE
     icon: mdi:penguin
-    skip_updates: 10
+    skip_updates: 20
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -450,7 +450,7 @@ text_sensor:
     address: 4100
     raw_encode: NONE
     icon: mdi:air-filter
-    skip_updates: 10
+    skip_updates: 20
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -469,7 +469,7 @@ select:
     address: 8000
     value_type: S_WORD
     optimistic: true
-    skip_updates: 10
+    skip_updates: 20
     optionsmap:
       "Device LCD": 0      
       "Modbus Step": 1
@@ -504,13 +504,20 @@ select:
                 return;  // Prevent switching if the mode is already active
               }
 
+              ESP_LOGI("Control mode", "Control mode to: %d", requested_mode);
+              esphome::modbus_controller::ModbusController *controller = id(${name});
+              auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
+                controller, 8000, requested_mode);
+              delay(20) ;
+              controller->queue_command(set_value_cmd); 
+
   - id: brink_bypass_mode
     name: Bypass Mode
     platform: modbus_controller
     modbus_controller_id: ${name}  
     address: 6100
     value_type: S_WORD
-    skip_updates: 10
+    skip_updates: 20
     optionsmap:
       ${auto}: 0
       ${closed}: 1
@@ -552,7 +559,6 @@ select:
               // }
 
               ESP_LOGI("bypass", "Switching bypass mode to: %d", requested_mode);
-              //id(${name}).write_register(6100, requested_mode);
               esphome::modbus_controller::ModbusController *controller = id(${name});
               auto set_value_cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(
                 controller, 6100, requested_mode);
