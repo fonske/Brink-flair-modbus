@@ -480,6 +480,25 @@ select:
       ${auto}: 0
       ${closed}: 1
       ${open}: 2
+    on_value:
+        then:
+          - lambda: |-
+              int current_mode = id(brink_bypass_mode).state;
+              int requested_mode = x;  // 'x' is the requested mode value
+
+              if (current_mode == requested_mode) {
+                ESP_LOGI("bypass", "Bypass mode already set, no switching needed.");
+                return;  // Prevent switching if the mode is already active
+              }
+
+              // Add any other conditions to prevent switching, such as external states
+              // if (external_condition_is_true()) {
+              //   ESP_LOGI("bypass", "External condition met, switching is blocked.");
+              //   return;
+              // }
+
+              ESP_LOGI("bypass", "Switching bypass mode to: %d", requested_mode);
+              id(modbus_controller).write_register(6100, requested_mode);
 
 switch:
   - id: brink_bypass_boost
