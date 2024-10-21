@@ -553,7 +553,7 @@ select:
               }
 
               // Add any other conditions to prevent switching, such as external states
-              int volume = id(brink_current_inlet_volume;
+              int volume = id(brink_current_inlet_volume);
               if (volume > 200) {
                 ESP_LOGI("bypass", "External condition met, switching is blocked.");
                 return;
