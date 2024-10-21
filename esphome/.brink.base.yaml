@@ -525,6 +525,14 @@ select:
     on_value:
         then:
           - lambda: |-
+              // Add any other conditions to prevent switching, such as external states
+              int volume = id(brink_current_inlet_volume).state;
+              ESP_LOGI("bypass", "switching is blocked. Volume > %d", volume);
+              if (volume > 200) {
+                ESP_LOGI("bypass", "switching is blocked. Volume > %d", volume);
+                return;
+              }
+
               std::string current_mode_str = id(brink_bypass_mode).state;
               std::string requested_mode_str = x;  // 'x' is the requested mode value
 
@@ -552,13 +560,6 @@ select:
                 return;  // Prevent switching if the mode is already active
               }
 
-              // Add any other conditions to prevent switching, such as external states
-              int volume = id(brink_current_inlet_volume).state;
-              ESP_LOGI("bypass", "switching is blocked. Volume > %d", volume);
-              if (volume > 200) {
-                ESP_LOGI("bypass", "switching is blocked. Volume > %d", volume);
-                return;
-              }
 
               ESP_LOGI("bypass", "Switching bypass mode to: %d", requested_mode);
               esphome::modbus_controller::ModbusController *controller = id(${name});
