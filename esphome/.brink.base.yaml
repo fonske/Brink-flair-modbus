@@ -553,10 +553,11 @@ select:
               }
 
               // Add any other conditions to prevent switching, such as external states
-              // if (external_condition_is_true()) {
-              //   ESP_LOGI("bypass", "External condition met, switching is blocked.");
-              //   return;
-              // }
+              int volume = id(brink_current_inlet_volume;
+              if (volume > 200) {
+                ESP_LOGI("bypass", "External condition met, switching is blocked.");
+                return;
+              }
 
               ESP_LOGI("bypass", "Switching bypass mode to: %d", requested_mode);
               esphome::modbus_controller::ModbusController *controller = id(${name});
