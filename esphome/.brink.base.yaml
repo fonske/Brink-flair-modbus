@@ -527,9 +527,8 @@ select:
           - lambda: |-
               // Add any other conditions to prevent switching, such as external states
               int volume = id(brink_current_inlet_volume).state;
-              ESP_LOGI("bypass", "switching is blocked. Volume > %d", volume);
               if (volume > 200) {
-                ESP_LOGI("bypass", "switching is blocked. Volume > %d", volume);
+                ESP_LOGI("bypass", "switching is blocked. Inlet volume > 220 m3/h. Value: %d m3/h", volume);
                 return;
               }
 
