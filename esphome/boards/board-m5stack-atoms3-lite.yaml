@@ -7,8 +7,10 @@ esp32:
   board: esp32-s3-devkitc-1
   framework:
     type: arduino
+  variant: esp32s3
+  flash_size: 8MB
 
-# uart for modbus rtu  NOT_TESTED_YET
+# uart for modbus
 uart:
   id: mod_bus
   baud_rate: 19200
@@ -42,15 +44,15 @@ logger:
     switch: WARN
     button: WARN
     number: WARN
-  # baud_rate: 0  # <--- super important! for ESP8266
+    component: ERROR
 
 wifi:
   ap:
     ssid: "${friendly_name}"
     password: "configesp"
 
-esp32_improv:
-  authorizer: None 
+#esp32_improv:
+#  authorizer: None 
       
 captive_portal:
 
