@@ -1,0 +1,73 @@
+substitutions:
+  brink_filter_status: Filter Status
+  brink_bypass_status: Bypass Status
+  brink_co2_status1: CO2 Sensor1 Status
+  brink_co2_status2: CO2 Sensor2 Status
+  brink_co2_status3: CO2 Sensor3 Status
+  brink_co2_status4: CO2 Sensor4 Status
+  brink_temp_to_inside: Zuluft Temperatur
+  brink_humidity_to_inside: Zuluft Luftfeuchtigkeit
+  brink_dewpoint_to_inside: Zuluft Taupunkt
+  brink_external_humidity_sensor: Luftfeuchtigkeitssensor (extern)
+  brink_external_co2_sensor1: CO2 Sensor1
+  brink_external_co2_sensor2: CO2 Sensor2
+  brink_external_co2_sensor3: CO2 Sensor3
+  brink_external_co2_sensor4: CO2 Sensor4
+  brink_temp_to_outside: Fortluft Temparatur
+  brink_humidity_to_outside: Fortluft Luftfeuchtigkeit
+  brink_temp_from_outside: Außenluft Temparatur
+  brink_supply_pressure: Zuluft Druck
+  brink_exhaust_pressure: Abluft Druck
+  brink_setpoint_inlet_volume: Eingestelltes Zuluft Volumen
+  brink_current_inlet_volume: Aktuelles Zuluft Volumen
+  brink_setpoint_outlet_volume: Eingestelltes Abluft Volumen
+  brink_current_outlet_volume: Aktuelles Abluft Volumen
+  brink_frost_heater_power: Frost Vorheizer Power
+  brink_frost_fan_reduction: Frost Lüfter-Reduktion
+  brink_current_filter_hours: Aktuelle Filterstunden
+  brink_current_filter_days: Aktuelle Filtertage
+  brink_exchange_filter_in: Filter austauschen in
+  brink_filter_m3_h: Filternutzung (m³)
+  brink_device_type: Gerätetyp
+  brink_frost_status: Frost Status
+  brink_bypass_boost_switch_position: Bypass Boost Stufe
+  brink_modbus_flow_step: Modbus Lüfterstufe
+  brink_modbus_flow_rate: Modbus Lüftergeschwindigkeit
+  brink_status: Status
+  brink_rht_sensor: RHT Sensor aktiv
+  brink_co2_sensor: CO2 Sensor aktiv
+  brink_standby_switch: Standby Schalter
+  brink_imbalance_intake: Ungleichgewicht Zuluft
+  brink_bypass_from_dwelling: Bypass Wunschtemparatur
+  brink_bypass_from_outside: Bypass Außentemperatur
+  brink_bypass_hysteresis: Bypass Hysterese
+  brink_frost_control_temperature: Frostschutztemperatur
+  brink_frost_minimum_inlet_temperature: Mindest-Einblastemparatur # German is silly
+  brink_imbalance_exhaust: Ungleichgewicht Abluft
+  brink_filter_change_days: Tage vor Filterwarnung
+  brink_filter_reset_on: Filter Reset angeschaltet
+  brink_co2_from_inside: CO2 Abluft
+  brink_humidity_from_inside: Abluft Luftfeuchtigkeit
+  brink_temp_from_inside: Abluft Temperatur
+  brink_pressure_from_inside: Abluft Druck
+  brink_performance: Performance
+  brink_relay: Relay
+  auto: Auto
+  initialize: Initialisieren...
+  unknown: Unbekannt
+  opening: Öffnet...
+  closing: Schließt...
+  open: Geöffnet
+  closed: Geschlossen
+  error: Error
+  hours: Stunden
+  days: Tage
+  not_dirty: Nicht Dreckig
+  dirty: Dreckig
+
+text_sensor:
+  - id: brink_filter_reset_on
+    name: ${brink_filter_reset_on}
+    platform: template
+    icon: mdi:clock-start
+    update_interval: 600s
