@@ -4,9 +4,13 @@ sensor:
     temperature:
       name: ${brink_temp_from_inside} #envIII_temperature
       id: brink_temp_from_inside #enviii_temperature 
+      device_class: temperature
+      state_class: measurement 
     humidity:
       name: ${brink_humidity_from_inside} #envIII_humidity 
       id: brink_humidity_from_inside #enviii_humidity
+      device_class: humidity
+      state_class: measurement
     i2c_id: bus_a #or choose bus_b
     address: 0x44
     update_interval: 30s
@@ -19,6 +23,8 @@ sensor:
       name: ${brink_pressure_from_inside}
       id: brink_pressure_from_inside
       oversampling: 16x
+      device_class: atmospheric_pressure
+      state_class: measurement 
     i2c_id: bus_a #or choose bus_b
     address: 0x76
     update_interval: 30s
