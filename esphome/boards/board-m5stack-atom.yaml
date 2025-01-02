@@ -16,15 +16,19 @@ uart:
   tx_pin: 19
   rx_pin: 22
 
-# This board is so tiny there is no ping available on the botom
-#  But with a grove connector you could add GPIO on pin 26 and 32
 # i2c for extra sensor
-#i2c:  
-#  sda: 26
-#  scl: 32
-#  scan: true
-#  id: bus_a
+i2c:  
+  sda: 26
+  scl: 32
+  scan: true
+  id: bus_a
 
+###  ESP restart button
+button:
+  - platform: restart
+    id: restart_button
+    name: Restart
+    
 # Enable/Disable logging
 logger:
   logs:
@@ -38,15 +42,15 @@ logger:
     switch: WARN
     button: WARN
     number: WARN
-  # baud_rate: 0  # <--- super important! for ESP8266
+    component: ERROR
 
 wifi:
   ap:
     ssid: "${friendly_name}"
     password: "configesp"
 
-esp32_improv:
-  authorizer: None 
+#esp32_improv:
+#  authorizer: None 
       
 captive_portal:
 
