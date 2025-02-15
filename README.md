@@ -72,8 +72,5 @@ In order to enable them, edit file `esphome/brink.yaml` and uncomment include fi
 The modbus address is now configurable in brink.yaml.
 Because there are several Brink versions available on the market, like the Viessmann Vitovent 300w (H32e C400) which uses address 70
 
-## Contact
-Contact me: alphonsuijtdehaag at gmail dot com, if you are interested in a M5stack RS485 with Atom s3 lite
-It has I2C port to connect a SCD40/41 or ENVIII sensor
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ebbenberg)
