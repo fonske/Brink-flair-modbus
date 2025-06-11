@@ -20,6 +20,8 @@ substitutions:
   brink_exhaust_pressure: Exhaust pressure
   brink_setpoint_inlet_volume: Setpoint inlet air volume
   brink_current_inlet_volume: Current intake air Volume
+  brink_speed_supply_fan: Speed supply fan
+  brink_speed_exhaust_fan: Speed exhaust fan
   brink_setpoint_outlet_volume: Setpoint exhaust air volume
   brink_current_outlet_volume: Current exhaust air volume
   brink_frost_heater_power: Frost heater power
