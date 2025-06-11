@@ -239,8 +239,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: brink
-    id: RPM_supply_fan
-    name: ${speed_supply_fan}
+    id: brink_rpm_supply_fan
+    name: ${brink_speed_supply_fan}
     register_type: read
     address: 4034
     unit_of_measurement: "RPM"
@@ -249,8 +249,8 @@ sensor:
   
   - platform: modbus_controller
     modbus_controller_id: brink
-    id: RPM_exhaust_fan
-    name: ${speed_exhaust_fan}
+    id: brink_rpm_exhaust_fan
+    name: ${brink_speed_exhaust_fan}
     register_type: read
     address: 4044
     unit_of_measurement: "RPM"
