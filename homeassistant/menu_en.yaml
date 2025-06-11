@@ -134,6 +134,18 @@
                   top: 10%
                   left: 90%
                   color: grey
+              - type: state-label
+                entity: sensor.brink_speed_supply_fan
+                style:
+                  top: 50%
+                  left: 73%
+                  color: black
+              - type: state-label
+                entity: sensor.brink_speed_exhaust_fan
+                style:
+                  top: 50%
+                  left: 27%
+                  color: black
           - type: entity
             entity: sensor.power_14
             state_color: false
