@@ -249,7 +249,7 @@ sensor:
   
   - platform: modbus_controller
     modbus_controller_id: brink
-    id: brink_rpm_exhaust_fan
+    id: brink_rpm_supply_fan_exhaust_fan
     name: ${brink_speed_exhaust_fan}
     register_type: read
     address: 4044
