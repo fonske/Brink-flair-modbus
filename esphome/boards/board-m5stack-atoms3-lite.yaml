@@ -50,12 +50,115 @@ wifi:
   ap:
     ssid: "${friendly_name}"
     password: "configesp"
+    ap_timeout: 15s
 
 #esp32_improv:
 #  authorizer: None 
       
 captive_portal:
+  id: id_captive_portal
 
 # Enable Web server.
 web_server:
   port: 80
+
+###############################################################################
+## STATUS LED
+###############################################################################
+## Simple status led for Atom s3 (lite)
+## G35=RGB WS2812C-2020
+light:
+  - platform: esp32_rmt_led_strip
+    id: status_led
+    name: Status led
+    icon: mdi:lightbulb
+    internal: true # Hides from Home Assistant
+    rgb_order: GRB
+    pin: 35
+    num_leds: 4
+    chipset: ws2812
+#    rmt_channel: 0 #only on platform: arduino
+    restore_mode: ALWAYS_OFF
+    entity_category: diagnostic
+    effects:
+      - pulse:
+          name: slow_pulse
+          transition_length: 250ms
+          update_interval: 500ms
+          min_brightness: 10%
+          max_brightness: 50%
+      - pulse:
+          name: fast_pulse
+          transition_length: 100ms
+          update_interval: 100ms
+          min_brightness: 25%
+          max_brightness: 100%
+    web_server:
+      sorting_group_id: Diagnostic
+      sorting_weight: 12
+
+# 🟢 Green on => wifi connected- api connected/ Green blinking => wifi connected - api disconnected
+# 🟣 Purple => wifi disconnected
+# 🔵 Blue => AP mode
+
+interval:
+  - interval: 10s
+    then:
+      if:
+        condition:
+          wifi.connected:
+        then:
+          if:
+            condition:
+              api.connected:
+            then:
+              - light.turn_on:
+                  id: status_led
+                  brightness: 50%
+                  red: 0
+                  green: 100%
+                  blue: 0
+                  effect: None
+            else:
+              - light.turn_on:
+                  id: status_led
+                  brightness: 50%
+                  red: 0
+                  green: 100%
+                  blue: 0
+                  effect: slow_pulse              
+        else:
+          if:
+            condition:
+              - lambda: 'return id(id_captive_portal).is_active();'
+            then:
+              - light.turn_on:
+                  id: status_led
+                  brightness: 100%
+                  red: 0
+                  green: 0
+                  blue: 100%
+            else:
+              - light.turn_on:
+                  id: status_led
+                  brightness: 100%
+                  red: 100%
+                  green: 0
+                  blue: 0
+
+## knop op de atom ingedrukt houden = veranderen brightness
+script:
+  - id: adjust_brightness_loop
+    mode: restart
+    then:
+      - repeat:
+          count: 1000
+          then:
+            - lambda: |-
+                static float brightness = 0.0;
+                brightness += 0.1;
+                if (brightness > 1.0) brightness = 0.0;
+                auto call = id(status_led).make_call();
+                call.set_brightness(brightness);
+                call.perform();
+            - delay: 750ms
