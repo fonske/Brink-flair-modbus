@@ -93,9 +93,6 @@ light:
           update_interval: 100ms
           min_brightness: 25%
           max_brightness: 100%
-    web_server:
-      sorting_group_id: Diagnostic
-      sorting_weight: 12
 
 # 🟢 Green on => wifi connected- api connected/ Green blinking => wifi connected - api disconnected
 # 🟣 Purple => wifi disconnected
