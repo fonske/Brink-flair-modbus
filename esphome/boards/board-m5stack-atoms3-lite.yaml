@@ -5,10 +5,22 @@
 #
 esp32:
   board: esp32-s3-devkitc-1
-  framework:
-    type: arduino
-  variant: esp32s3
   flash_size: 8MB
+## Atom S3 lite  
+  framework:
+    type: esp-idf
+    version: recommended
+    # Custom sdkconfig options
+    sdkconfig_options:
+      COMPILER_OPTIMIZATION_SIZE: y
+      CONFIG_BT_ENABLED: n
+
+#esp32:
+#  board: esp32-s3-devkitc-1
+#  framework:
+#    type: arduino
+#  variant: esp32s3
+#  flash_size: 8MB
 
 # uart for modbus
 uart:
@@ -47,6 +59,9 @@ logger:
     component: ERROR
 
 wifi:
+  reboot_timeout: 0s
+  fast_connect: true
+  power_save_mode: high
   ap:
     ssid: "${friendly_name}"
     password: "configesp"
@@ -78,7 +93,7 @@ light:
     pin: 35
     num_leds: 4
     chipset: ws2812
-#    rmt_channel: 0 #only on platform: arduino
+#    rmt_channel: 1 #only on platform: arduino
     restore_mode: ALWAYS_OFF
     entity_category: diagnostic
     effects:
