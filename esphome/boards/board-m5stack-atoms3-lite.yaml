@@ -89,11 +89,10 @@ light:
     icon: mdi:lightbulb
     internal: true # Hides from Home Assistant
     rgb_order: GRB
-    rmt_channel: 0
     pin: 35
     num_leds: 4
     chipset: ws2812
-#    rmt_channel: 1 #only on platform: arduino
+#    rmt_channel: 0 #only on platform: arduino
     restore_mode: ALWAYS_OFF
     entity_category: diagnostic
     effects:
