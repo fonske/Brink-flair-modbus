@@ -29,7 +29,7 @@ substitutions:
   brink_current_filter_hours: Aktuelle Filterstunden
   brink_current_filter_days: Aktuelle Filtertage
   brink_exchange_filter_in: Filter austauschen in
-  brink_filter_m3_h: Filternutzung (m³)
+  brink_filter_m3_h: Filternutzung (m³⁄h)
   brink_device_type: Gerätetyp
   brink_frost_status: Frost Status
   brink_bypass_boost_switch_position: Bypass Boost Stufe
