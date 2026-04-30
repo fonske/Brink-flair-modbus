@@ -1,0 +1,75 @@
+###
+## M5Stack atom board: https://docs.m5stack.com/en/core/ATOM%20Lite
+## powered by 12VDC/GND connection to 24VDC/GND from Brink, in combination with this base from m5stack:
+## https://shop.m5stack.com/products/atomic-rs485-base
+
+esp32:
+  board: m5stack-atom
+  flash_size: 4MB
+  framework:
+    type: esp-idf
+    version: recommended
+    # Custom sdkconfig options
+    sdkconfig_options:
+      COMPILER_OPTIMIZATION_SIZE: y
+      CONFIG_BT_ENABLED: n
+
+# uart for modbus
+uart:
+  id: mod_bus
+  baud_rate: 19200
+  stop_bits: 1
+  parity: even
+  tx_pin: GPIO19
+  rx_pin: GPIO22
+
+# i2c for extra sensor
+#i2c:
+#  - id: bus_a
+#    sda: GPIO2
+#    scl: GPIO1
+
+###  ESP restart button
+button:
+  - platform: restart
+    id: restart_button
+    name: Restart
+
+# Enable/Disable logging
+logger:
+  logs:
+    modbus_controller.sensor: WARN
+    modbus_controller.output: WARN
+    modbus.number: WARN
+    esp32.preferences: WARN
+    sensor: WARN
+    text_sensor: WARN
+    dht.sensor: WARN
+    switch: WARN
+    button: WARN
+    number: WARN
+    component: ERROR
+
+wifi:
+  reboot_timeout: 0s
+  fast_connect: true
+  power_save_mode: high
+  #ap:
+  #  ssid: "m5x"
+  #  password: "configesp"
+  #  ap_timeout: 15s
+
+#esp32_improv:
+#  authorizer: None
+
+#captive_portal:
+#  id: id_captive_portal
+
+# Enable Web server.
+web_server:
+  port: 80
+  local: true
+  #auth:
+  #  username: !secret web_username
+  #  password: !secret web_password
+
