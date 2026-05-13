@@ -10,7 +10,7 @@ substitutions:
 # In order to use other language or a different ESP chip, fix include file name below:
 # Currently supported languages are en, nl. 
 # ESP32 is a mh-et-live or wemos d32 mini, esp8266 is a wemos d1 mini, esp32s3 is a lilygo ESP32S3-T7
-# Be carefull not to upload the wrong code to the wrong chip. This could brick your ESP chip.
+# Be careful not to upload the wrong code to the wrong chip. This could brick your ESP chip.
 # Choose the correct type for your Brink model, so the correct max flow can be setup with a slider.
 
 packages:
@@ -27,13 +27,13 @@ packages:
 #             esphome/sensors/sensor-brink_co2_1_sensor.yaml
            ]
     ## options are:
-      # esphome/type/.brink-200.yaml
-      # esphome/type/.brink-225.yaml
-      # esphome/type/.brink-300.yaml
-      # esphome/type/.brink-325.yaml
-      # esphome/type/.brink-400.yaml
-      # esphome/type/.brink-450.yaml
-      # esphome/type/.brink-600.yaml
+      # esphome/type/brink-200.yaml
+      # esphome/type/brink-225.yaml
+      # esphome/type/brink-300.yaml
+      # esphome/type/brink-325.yaml
+      # esphome/type/brink-400.yaml
+      # esphome/type/brink-450.yaml
+      # esphome/type/brink-600.yaml
       # esphome/labels/.brink-labels-en.yaml
       # esphome/labels/.brink-labels-nl.yaml
       # esphome/.brink.base.yaml
