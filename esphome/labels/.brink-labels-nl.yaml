@@ -54,6 +54,15 @@ substitutions:
   brink_temp_from_inside: Binnen aanzuig temperatuur
   brink_pressure_from_inside: Binnen aanzuig atm. druk
   brink_performance: Rendement
+  # namen van de luchtstromen voor externe sensoren (zie sensor-sht30/qmp6988/enviii.yaml)
+  brink_air_extract: Afvoerlucht
+  brink_air_supply: Toevoerlucht
+  brink_air_exhaust: Uitblaaslucht
+  brink_air_outside: Buitenlucht
+  # generieke, gelokaliseerde grootheden voor externe sensoren
+  label_temperature: Temperatuur
+  label_humidity: Luchtvochtigheid
+  label_pressure: Druk
   brink_relay: Relais
   brink_heater_mode: Heater modus
   brink_heater_setpoint: Heater instelpunt

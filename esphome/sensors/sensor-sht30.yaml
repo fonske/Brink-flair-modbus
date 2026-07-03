@@ -1,0 +1,31 @@
+## SHT30 / SHT3xD temperature + humidity sensor (@0x44) as a reusable, parameterized channel package.
+## This is the temperature/humidity chip of the M5Stack ENV III. Include it once per sensor.
+##
+## Works WITH and WITHOUT the PaHUB multiplexer:
+##   - without PaHUB: leave `channel` at its default (bus_a) -> sensor sits directly on the board bus.
+##                    Only ONE sensor of address 0x44 per physical bus.
+##   - with PaHUB:    set `channel` to pahub_ch0 ... pahub_ch5 -> run several in parallel.
+##
+## vars:
+##   channel      - the I2C bus id the sensor is on (physical bus like bus_a, or a PaHUB channel)
+##   id_prefix    - short, language-independent ASCII key for the entity ids (e.g. extract, supply,
+##                  exhaust, outside). Entity ids become brink_ext_<id_prefix>_temperature etc.
+##   sensor_name  - display name, may come from the label files (e.g. ${brink_air_extract})
+defaults:
+  channel: bus_a
+
+sensor:
+  - platform: sht3xd
+    temperature:
+      name: "${sensor_name} ${label_temperature}"
+      id: brink_ext_${id_prefix}_temperature
+      device_class: temperature
+      state_class: measurement
+    humidity:
+      name: "${sensor_name} ${label_humidity}"
+      id: brink_ext_${id_prefix}_humidity
+      device_class: humidity
+      state_class: measurement
+    i2c_id: ${channel}
+    address: 0x44
+    update_interval: 30s

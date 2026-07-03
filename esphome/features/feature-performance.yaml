@@ -1,0 +1,29 @@
+## Heat-recovery performance (efficiency) as a standalone, configurable package.
+## Formula: (supply_temp - outside_temp) / (extract_temp - outside_temp) * 100
+##
+## The three input temperatures are selectable via vars so you can compute the efficiency either from
+## the Brink modbus values (defaults) or from external sensors (e.g. a PaHUB ENV III channel).
+## Example: vars: { perf_extract_temp: brink_ext_extract_temperature }
+##
+## Include this package ONLY ONCE (there must be exactly one brink_performance entity). When using it,
+## make sure the sensor packages do not also define their own brink_performance.
+##
+## vars (all optional, see defaults):
+##   perf_supply_temp  - id of the supply-air temperature sensor (air blown into the dwelling)
+##   perf_outside_temp - id of the outside-air temperature sensor
+##   perf_extract_temp - id of the extract-air temperature sensor (air drawn from the dwelling)
+defaults:
+  perf_supply_temp: brink_temp_to_inside
+  perf_outside_temp: brink_temp_from_outside
+  perf_extract_temp: brink_temp_from_inside
+
+sensor:
+  - id: brink_performance
+    name: ${brink_performance}
+    platform: template
+    unit_of_measurement: "%"
+    accuracy_decimals: 1
+    state_class: measurement
+    update_interval: 30s
+    lambda: 'return ((id(${perf_supply_temp}).state - id(${perf_outside_temp}).state)/(id(${perf_extract_temp}).state - id(${perf_outside_temp}).state)*100);'
+   # (supply_temp - outside_temp) / (extract_temp - outside_temp)

@@ -54,6 +54,15 @@ substitutions:
   brink_temp_from_inside: Abluft Temperatur
   brink_pressure_from_inside: Abluft Druck
   brink_performance: Performance
+  # Namen der Luftströme für externe Sensoren (siehe sensor-sht30/qmp6988/enviii.yaml)
+  brink_air_extract: Abluft
+  brink_air_supply: Zuluft
+  brink_air_exhaust: Fortluft
+  brink_air_outside: Außenluft
+  # generische, lokalisierte Messgrößen für externe Sensoren
+  label_temperature: Temperatur
+  label_humidity: Luftfeuchtigkeit
+  label_pressure: Druck
   brink_relay: Relay
   brink_heater_mode: Heizung Modus
   brink_heater_setpoint: Heizung Solltemperatur

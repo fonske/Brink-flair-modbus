@@ -54,6 +54,15 @@ substitutions:
   brink_temp_from_inside: Temperature from inside
   brink_pressure_from_inside: Atm. pressure from inside
   brink_performance: Performance
+  # air-stream names for external sensors (see sensor-sht30/qmp6988/enviii.yaml)
+  brink_air_extract: Extract air
+  brink_air_supply: Supply air
+  brink_air_exhaust: Exhaust air
+  brink_air_outside: Outside air
+  # generic, localized quantities for external sensors
+  label_temperature: Temperature
+  label_humidity: Humidity
+  label_pressure: Pressure
   brink_relay: Relay
   brink_heater_mode: Heater mode
   brink_heater_setpoint: Heater setpoint
