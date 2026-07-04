@@ -63,6 +63,23 @@ substitutions:
   label_temperature: Temperatur
   label_humidity: Luftfeuchtigkeit
   label_pressure: Druck
+  # ENV Pro (BME688 / BSEC2)
+  label_gas_resistance: Gaswiderstand
+  label_iaq: IAQ
+  label_iaq_static: Statischer IAQ
+  label_iaq_accuracy: IAQ-Genauigkeit
+  label_co2_equivalent: CO2-Äquivalent
+  label_voc_equivalent: VOC-Äquivalent (Atem)
+  label_iaq_classification: IAQ-Klassifikation
+  label_iaq_static_classification: Statische IAQ-Klassifikation
+  # IAQ-Klassifikationsstufen
+  iaq_excellent: Ausgezeichnet
+  iaq_good: Gut
+  iaq_lightly_polluted: Leicht belastet
+  iaq_moderately_polluted: Mäßig belastet
+  iaq_heavily_polluted: Stark belastet
+  iaq_severely_polluted: Sehr stark belastet
+  iaq_extremely_polluted: Extrem belastet
   brink_relay: Relay
   brink_heater_mode: Heizung Modus
   brink_heater_setpoint: Heizung Solltemperatur

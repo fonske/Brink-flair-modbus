@@ -55,6 +55,7 @@ packages:
       # esphome/sensors/sensor-enviii.yaml
       # esphome/sensors/sensor-sht30.yaml
       # esphome/sensors/sensor-qmp6988.yaml
+      # esphome/sensors/sensor-envpro.yaml
 
 # for local developing/testing, uncomment local includes and comment out remote_package part.
 #packages:
@@ -106,6 +107,8 @@ enable pressure per channel from your own config by choosing the file:
 - `sensor-enviii.yaml` – SHT30 **and** QMP6988 (temperature, humidity, pressure)
 - `sensor-sht30.yaml`  – SHT30 only (temperature, humidity)
 - `sensor-qmp6988.yaml` – QMP6988 only (pressure)
+- `sensor-envpro.yaml` – ENV Pro (BME688 via BSEC2): temperature, humidity, pressure, gas resistance and
+  air quality (IAQ, static IAQ, CO2 equivalent, breath VOC equivalent, IAQ accuracy + classification text)
 
 Notes:
 - Entity ids become `brink_ext_<id_prefix>_temperature` / `_humidity` / `_pressure`, so external sensors are easy to spot.

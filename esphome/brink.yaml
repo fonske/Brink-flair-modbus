@@ -61,6 +61,7 @@ packages:
       # esphome/sensors/sensor-enviii.yaml   # ENV III = SHT30 + QMP6988 (temp+hum+pressure), any I2C bus
       # esphome/sensors/sensor-sht30.yaml    # only SHT30 (temp+hum, no pressure), any I2C bus
       # esphome/sensors/sensor-qmp6988.yaml  # only QMP6988 (pressure), any I2C bus
+      # esphome/sensors/sensor-envpro.yaml   # ENV Pro (BME688/BSEC2): temp+hum+pressure+air quality, any I2C bus
 
 # Example: PaHUB with several sensors, one per air stream.
 # Requires i2c enabled on the board (bus_a). Convert files: to a block list to pass per-file vars.
