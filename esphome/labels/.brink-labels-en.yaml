@@ -63,6 +63,7 @@ substitutions:
   label_temperature: Temperature
   label_humidity: Humidity
   label_pressure: Pressure
+  label_dewpoint: Dew point
   # ENV Pro (BME688 / BSEC2)
   label_gas_resistance: Gas resistance
   label_iaq: IAQ
