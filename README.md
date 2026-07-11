@@ -84,7 +84,7 @@ to the ESP over USB, and get the logs:
 ```
 
 # Translations
-Currently supported languages are en, nl.
+Currently supported languages are de, en, nl.
 In order to change language, edit file `esphome/brink.yaml`, and change include file (esphome-/.brink-labels-<language>.yaml)
 
 # Custom sensors
