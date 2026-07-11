@@ -2,7 +2,7 @@
 ## Lets you run up to 6 identical I2C sensors (same address) in parallel, each on its own channel.
 ## The parent I2C bus must be enabled on the board (see board-m5stack-atom-lite.yaml, bus_a).
 ##
-## Include this package ONCE. Then include a sensor package (e.g. sensor-enviii.yaml) per channel
+## Include this package ONCE. Then include a sensor package (e.g. sensor-m5stack-enviii.yaml) per channel
 ## and point its `channel` var at one of the bus_ids below (pahub_ch0 ... pahub_ch5).
 ##
 ## vars (all optional, see defaults):

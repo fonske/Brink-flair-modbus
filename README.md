@@ -108,8 +108,8 @@ files. Each file has a `defaults:` block that documents its variables.
 - [m5stack-pahub-tca9548a.yaml](/esphome/sensors/m5stack-pahub-tca9548a.yaml) — the PaHUB multiplexer (include once)
 - [sensor-sht30.yaml](/esphome/sensors/sensor-sht30.yaml) — SHT30: temperature, humidity
 - [sensor-qmp6988.yaml](/esphome/sensors/sensor-qmp6988.yaml) — QMP6988: pressure
-- [sensor-enviii.yaml](/esphome/sensors/sensor-enviii.yaml) — M5Stack ENV III = SHT30 + QMP6988
-- [sensor-envpro.yaml](/esphome/sensors/sensor-envpro.yaml) — M5Stack ENV Pro (BME688 / BSEC2): temperature, humidity, pressure, gas resistance and air quality (IAQ, static IAQ, CO2/VOC equivalent, accuracy + classification)
+- [sensor-m5stack-enviii.yaml](/esphome/sensors/sensor-m5stack-enviii.yaml) — M5Stack ENV III = SHT30 + QMP6988
+- [sensor-m5stack-envpro.yaml](/esphome/sensors/sensor-m5stack-envpro.yaml) — M5Stack ENV Pro (BME688 / BSEC2): temperature, humidity, pressure, gas resistance and air quality (IAQ, static IAQ, CO2/VOC equivalent, accuracy + classification)
 
 Every temperature + humidity sensor additionally gets the derived psychrometric values from
 [sensor-psychrometrics.yaml](/esphome/sensors/sensor-psychrometrics.yaml): dew point, absolute
@@ -135,11 +135,11 @@ Enable I2C on the board (`bus_a`; the M5Stack Atom Lite is preconfigured for GPI
       - path: esphome/sensors/m5stack-pahub-tca9548a.yaml
         vars: { pahub_address: "0x71" }
       # one sensor per channel; sensor_name may come from the label file:
-      - path: esphome/sensors/sensor-envpro.yaml
+      - path: esphome/sensors/sensor-m5stack-envpro.yaml
         vars: { channel: pahub_ch0, id_prefix: supply,  sensor_name: "${brink_air_supply}" }
-      - path: esphome/sensors/sensor-envpro.yaml
+      - path: esphome/sensors/sensor-m5stack-envpro.yaml
         vars: { channel: pahub_ch1, id_prefix: extract, sensor_name: "${brink_air_extract}" }
-      - path: esphome/sensors/sensor-envpro.yaml
+      - path: esphome/sensors/sensor-m5stack-envpro.yaml
         vars: { channel: pahub_ch2, id_prefix: outside, sensor_name: "${brink_air_outside}" }
       # enthalpy-based recovery efficiency across the streams:
       - path: esphome/features/feature-performance-enthalpy.yaml

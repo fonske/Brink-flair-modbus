@@ -3,7 +3,7 @@
 ##   eta = (supply_enthalpy - outside_enthalpy) / (extract_enthalpy - outside_enthalpy) * 100
 ##
 ## Enthalpy is only available from external sensors, so all three ids must point at enthalpy sensors
-## created by sensor-sht30/enviii/envpro (brink_ext_<id_prefix>_enthalpy). You therefore need an
+## created by sensor-sht30 / sensor-m5stack-enviii / sensor-m5stack-envpro (brink_ext_<id_prefix>_enthalpy). You therefore need an
 ## ENV III / ENV Pro on the supply, extract and outside air. Include this ONLY ONCE.
 ##
 ## vars (override to match your id_prefix; the defaults assume prefixes supply/extract/outside):

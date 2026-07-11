@@ -60,15 +60,15 @@ packages:
       # esphome/features/feature-performance.yaml          # heat-recovery efficiency (temperature based), selectable sensors
       # esphome/features/feature-performance-enthalpy.yaml # heat-recovery efficiency (enthalpy based), needs enthalpy sensors
       # esphome/sensors/m5stack-pahub-tca9548a.yaml  # M5Stack PaHUB (TCA9548A) I2C multiplexer
-      # esphome/sensors/sensor-enviii.yaml   # ENV III = SHT30 + QMP6988 (temp+hum+dewpoint+pressure), any I2C bus
+      # esphome/sensors/sensor-m5stack-enviii.yaml   # ENV III = SHT30 + QMP6988 (temp+hum+dewpoint+pressure), any I2C bus
       # esphome/sensors/sensor-sht30.yaml    # only SHT30 (temp+hum+dewpoint, no pressure), any I2C bus
       # esphome/sensors/sensor-qmp6988.yaml  # only QMP6988 (pressure), any I2C bus
-      # esphome/sensors/sensor-envpro.yaml   # ENV Pro (BME688/BSEC2): temp+hum+pressure+air quality, any I2C bus
+      # esphome/sensors/sensor-m5stack-envpro.yaml   # ENV Pro (BME688/BSEC2): temp+hum+pressure+air quality, any I2C bus
 
 # Example: PaHUB with several sensors, one per air stream.
 # Requires i2c enabled on the board (bus_a). Convert files: to a block list to pass per-file vars.
 # Pressure is enabled from here (from outside the repo) by choosing the file per channel:
-#   sensor-enviii.yaml = with pressure (SHT30 + QMP6988), sensor-sht30.yaml = without.
+#   sensor-m5stack-enviii.yaml = with pressure (SHT30 + QMP6988), sensor-sht30.yaml = without.
 #    files:
 #      - esphome/type/brink-325.yaml
 #      - esphome/labels/.brink-labels-de.yaml
@@ -76,7 +76,7 @@ packages:
 #      - esphome/boards/board-m5stack-atom-lite.yaml
 #      - path: esphome/sensors/m5stack-pahub-tca9548a.yaml
 #        vars: { pahub_address: "0x71" }
-#      - path: esphome/sensors/sensor-enviii.yaml   # extract air: temp + hum + pressure
+#      - path: esphome/sensors/sensor-m5stack-enviii.yaml   # extract air: temp + hum + pressure
 #        vars: { channel: pahub_ch0, id_prefix: extract, sensor_name: "${brink_air_extract}" }
 #      - path: esphome/sensors/sensor-sht30.yaml    # supply air: temp + hum only
 #        vars: { channel: pahub_ch1, id_prefix: supply,  sensor_name: "${brink_air_supply}" }

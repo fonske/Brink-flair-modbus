@@ -1,5 +1,5 @@
 ## M5Stack ENV III pressure sensor (QMP6988 @0x70) as a reusable, parameterized channel package.
-## Optional companion to sensor-sht30.yaml / sensor-enviii.yaml: include it once per channel where you
+## Optional companion to sensor-sht30.yaml / sensor-m5stack-enviii.yaml: include it once per channel where you
 ## also want atmospheric pressure, using the same channel / id_prefix / sensor_name vars.
 ##
 ## Works WITH and WITHOUT the PaHUB multiplexer (see sensor-sht30.yaml for details).

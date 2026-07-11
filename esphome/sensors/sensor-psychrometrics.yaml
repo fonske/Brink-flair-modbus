@@ -1,5 +1,5 @@
 ## Psychrometric values derived from a channel's temperature + humidity.
-## Included by sensor-sht30.yaml and sensor-envpro.yaml, so it applies to SHT30, ENV III and ENV Pro.
+## Included by sensor-sht30.yaml and sensor-m5stack-envpro.yaml, so it applies to SHT30, ENV III and ENV Pro.
 ## Requires brink_ext_<id_prefix>_temperature and brink_ext_<id_prefix>_humidity (from those sensors).
 ##
 ## Enthalpy uses a FIXED reference pressure of 1013.25 hPa: the error vs. the real pressure is small
