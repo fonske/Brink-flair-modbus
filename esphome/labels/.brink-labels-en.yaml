@@ -53,7 +53,7 @@ substitutions:
   brink_humidity_from_inside: Humidity from inside
   brink_temp_from_inside: Temperature from inside
   brink_pressure_from_inside: Atm. pressure from inside
-  brink_performance: Performance
+  brink_performance: Efficiency
   brink_performance_enthalpy: Enthalpy efficiency
   # air-stream names for external sensors (see sensor-sht30/qmp6988/enviii.yaml)
   brink_air_extract: Extract air

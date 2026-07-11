@@ -6,10 +6,15 @@
 ## created by sensor-sht30/enviii/envpro (brink_ext_<id_prefix>_enthalpy). You therefore need an
 ## ENV III / ENV Pro on the supply, extract and outside air. Include this ONLY ONCE.
 ##
-## vars (required, no sensible defaults exist):
+## vars (override to match your id_prefix; the defaults assume prefixes supply/extract/outside):
 ##   perf_supply_enthalpy   - id of the supply-air enthalpy sensor (air blown into the dwelling)
 ##   perf_outside_enthalpy  - id of the outside-air enthalpy sensor
 ##   perf_extract_enthalpy  - id of the extract-air enthalpy sensor (air drawn from the dwelling)
+defaults:
+  perf_supply_enthalpy: brink_ext_supply_enthalpy
+  perf_outside_enthalpy: brink_ext_outside_enthalpy
+  perf_extract_enthalpy: brink_ext_extract_enthalpy
+
 sensor:
   - id: brink_performance_enthalpy
     name: ${brink_performance_enthalpy}

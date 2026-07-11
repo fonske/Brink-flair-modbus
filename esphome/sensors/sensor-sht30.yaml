@@ -13,6 +13,8 @@
 ##   sensor_name  - display name, may come from the label files (e.g. ${brink_air_extract})
 defaults:
   channel: bus_a
+  id_prefix: sht30      # make this unique per include when you use several
+  sensor_name: SHT30
 
 sensor:
   - platform: sht3xd

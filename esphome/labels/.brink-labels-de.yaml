@@ -53,7 +53,7 @@ substitutions:
   brink_humidity_from_inside: Abluft Luftfeuchtigkeit
   brink_temp_from_inside: Abluft Temperatur
   brink_pressure_from_inside: Abluft Druck
-  brink_performance: Performance
+  brink_performance: Wirkungsgrad
   brink_performance_enthalpy: Enthalpie-Wirkungsgrad
   # Namen der Luftströme für externe Sensoren (siehe sensor-sht30/qmp6988/enviii.yaml)
   brink_air_extract: Abluft

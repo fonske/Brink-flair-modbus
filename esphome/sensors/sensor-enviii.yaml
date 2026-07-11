@@ -16,6 +16,8 @@
 ##   sensor_name  - display name, may come from the label files (e.g. ${brink_air_extract})
 defaults:
   channel: bus_a
+  id_prefix: enviii     # make this unique per include when you use several
+  sensor_name: ENV III
 
 packages:
   sht30: !include

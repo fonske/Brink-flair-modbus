@@ -9,6 +9,10 @@
 ## vars:
 ##   id_prefix    - same key as the temperature/humidity sensor on this channel
 ##   sensor_name  - display name, may come from the label files (e.g. ${brink_air_extract})
+defaults:
+  id_prefix: ext        # normally passed through from sensor-sht30 / sensor-envpro
+  sensor_name: Ext
+
 sensor:
   ## Dew point (Magnus formula).
   - platform: template
