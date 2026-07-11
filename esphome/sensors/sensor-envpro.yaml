@@ -28,56 +28,56 @@ sensor:
   - platform: bme68x_bsec2
     bme68x_bsec2_id: brink_ext_${id_prefix}_bme688
     temperature:
-      name: "${sensor_name} ${label_temperature}"
+      name: "${label_ext} ${sensor_name} ${label_temperature}"
       id: brink_ext_${id_prefix}_temperature
       filters:
         - median
     humidity:
-      name: "${sensor_name} ${label_humidity}"
+      name: "${label_ext} ${sensor_name} ${label_humidity}"
       id: brink_ext_${id_prefix}_humidity
       filters:
         - median
     pressure:
-      name: "${sensor_name} ${label_pressure}"
+      name: "${label_ext} ${sensor_name} ${label_pressure}"
       id: brink_ext_${id_prefix}_pressure
       filters:
         - median
     gas_resistance:
-      name: "${sensor_name} ${label_gas_resistance}"
+      name: "${label_ext} ${sensor_name} ${label_gas_resistance}"
       id: brink_ext_${id_prefix}_gas_resistance
       filters:
         - median
     iaq:
-      name: "${sensor_name} ${label_iaq}"
+      name: "${label_ext} ${sensor_name} ${label_iaq}"
       id: brink_ext_${id_prefix}_iaq
       filters:
         - median
       on_value:
         - component.update: brink_ext_${id_prefix}_iaq_classification
     iaq_static:
-      name: "${sensor_name} ${label_iaq_static}"
+      name: "${label_ext} ${sensor_name} ${label_iaq_static}"
       id: brink_ext_${id_prefix}_static_iaq
       filters:
         - median
       on_value:
         - component.update: brink_ext_${id_prefix}_static_iaq_classification
     iaq_accuracy:
-      name: "${sensor_name} ${label_iaq_accuracy}"
+      name: "${label_ext} ${sensor_name} ${label_iaq_accuracy}"
       id: brink_ext_${id_prefix}_iaq_accuracy
     co2_equivalent:
-      name: "${sensor_name} ${label_co2_equivalent}"
+      name: "${label_ext} ${sensor_name} ${label_co2_equivalent}"
       id: brink_ext_${id_prefix}_co2_equivalent
       filters:
         - median
     breath_voc_equivalent:
-      name: "${sensor_name} ${label_voc_equivalent}"
+      name: "${label_ext} ${sensor_name} ${label_voc_equivalent}"
       id: brink_ext_${id_prefix}_voc_equivalent
       filters:
         - median
 
   ## Dew point calculated from the BME688 temperature + humidity of this channel.
   - platform: template
-    name: "${sensor_name} ${label_dewpoint}"
+    name: "${label_ext} ${sensor_name} ${label_dewpoint}"
     id: brink_ext_${id_prefix}_dewpoint
     unit_of_measurement: "°C"
     device_class: temperature
@@ -92,7 +92,7 @@ sensor:
 
 text_sensor:
   - platform: template
-    name: "${sensor_name} ${label_iaq_classification}"
+    name: "${label_ext} ${sensor_name} ${label_iaq_classification}"
     id: brink_ext_${id_prefix}_iaq_classification
     icon: "mdi:checkbox-marked-circle-outline"
     update_interval: never
@@ -109,7 +109,7 @@ text_sensor:
       else { return {"${unknown}"}; }
 
   - platform: template
-    name: "${sensor_name} ${label_iaq_static_classification}"
+    name: "${label_ext} ${sensor_name} ${label_iaq_static_classification}"
     id: brink_ext_${id_prefix}_static_iaq_classification
     icon: "mdi:checkbox-marked-circle-outline"
     update_interval: never

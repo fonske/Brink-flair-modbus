@@ -30,19 +30,4 @@ packages:
       channel: ${channel}
       id_prefix: ${id_prefix}
       sensor_name: ${sensor_name}
-
-## Dew point calculated from the SHT30 temperature + humidity of this channel.
-sensor:
-  - platform: template
-    name: "${sensor_name} ${label_dewpoint}"
-    id: brink_ext_${id_prefix}_dewpoint
-    unit_of_measurement: "°C"
-    device_class: temperature
-    state_class: measurement
-    accuracy_decimals: 1
-    icon: "mdi:thermometer-water"
-    update_interval: 30s
-    lambda: |-
-      return (243.5*(log(id(brink_ext_${id_prefix}_humidity).state/100)+((17.67*id(brink_ext_${id_prefix}_temperature).state)/
-      (243.5+id(brink_ext_${id_prefix}_temperature).state)))/(17.67-log(id(brink_ext_${id_prefix}_humidity).state/100)-
-      ((17.67*id(brink_ext_${id_prefix}_temperature).state)/(243.5+id(brink_ext_${id_prefix}_temperature).state))));
+## Note: the dew point (brink_ext_<id_prefix>_dewpoint) comes from sensor-sht30.yaml included above.

@@ -16,7 +16,7 @@ defaults:
 sensor:
   - platform: qmp6988
     pressure:
-      name: "${sensor_name} ${label_pressure}"
+      name: "${label_ext} ${sensor_name} ${label_pressure}"
       id: brink_ext_${id_prefix}_pressure
       oversampling: 16x
       device_class: atmospheric_pressure

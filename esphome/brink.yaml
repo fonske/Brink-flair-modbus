@@ -58,8 +58,8 @@ packages:
       # esphome/features/feature-postheater.yaml  # uncomment if a pre- or post-heater is installed
       # esphome/features/feature-performance.yaml # heat-recovery efficiency, selectable temp sensors
       # esphome/sensors/m5stack-pahub-tca9548a.yaml  # M5Stack PaHUB (TCA9548A) I2C multiplexer
-      # esphome/sensors/sensor-enviii.yaml   # ENV III = SHT30 + QMP6988 (temp+hum+pressure), any I2C bus
-      # esphome/sensors/sensor-sht30.yaml    # only SHT30 (temp+hum, no pressure), any I2C bus
+      # esphome/sensors/sensor-enviii.yaml   # ENV III = SHT30 + QMP6988 (temp+hum+dewpoint+pressure), any I2C bus
+      # esphome/sensors/sensor-sht30.yaml    # only SHT30 (temp+hum+dewpoint, no pressure), any I2C bus
       # esphome/sensors/sensor-qmp6988.yaml  # only QMP6988 (pressure), any I2C bus
       # esphome/sensors/sensor-envpro.yaml   # ENV Pro (BME688/BSEC2): temp+hum+pressure+air quality, any I2C bus
 

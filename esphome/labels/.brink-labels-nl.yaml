@@ -59,6 +59,9 @@ substitutions:
   brink_air_supply: Toevoerlucht
   brink_air_exhaust: Uitblaaslucht
   brink_air_outside: Buitenlucht
+  # prefix voor externe (extra) sensoren; voorkomt naamconflict met de modbus-sensoren
+  # (bijv. "Zuluft Temperatur"). Zet op "" om uit te schakelen.
+  label_ext: Ext
   # generieke, gelokaliseerde grootheden voor externe sensoren
   label_temperature: Temperatuur
   label_humidity: Luchtvochtigheid

@@ -104,14 +104,19 @@ then convert the `files:` list to block form so per-file `vars:` can be passed:
 The ENV III is really two I2C chips: SHT30 (temp/humidity @0x44) and QMP6988 (pressure @0x70). They
 are available as separate packages, and `sensor-enviii.yaml` simply wires both together. So you
 enable pressure per channel from your own config by choosing the file:
-- `sensor-enviii.yaml` – SHT30 **and** QMP6988 (temperature, humidity, pressure)
-- `sensor-sht30.yaml`  – SHT30 only (temperature, humidity)
+- `sensor-enviii.yaml` – SHT30 **and** QMP6988 (temperature, humidity, dew point, pressure)
+- `sensor-sht30.yaml`  – SHT30 only (temperature, humidity, dew point)
 - `sensor-qmp6988.yaml` – QMP6988 only (pressure)
 - `sensor-envpro.yaml` – ENV Pro (BME688 via BSEC2): temperature, humidity, pressure, gas resistance and
   air quality (IAQ, static IAQ, CO2 equivalent, breath VOC equivalent, IAQ accuracy + classification text)
 
 Notes:
-- Entity ids become `brink_ext_<id_prefix>_temperature` / `_humidity` / `_pressure`, so external sensors are easy to spot.
+- Internal ids become `brink_ext_<id_prefix>_temperature` / `_humidity` / `_pressure` etc. (used for
+  lambdas and `feature-performance`); the id is NOT what Home Assistant shows.
+- The Home Assistant name/entity comes from `name:`, which is `${label_ext}${sensor_name} <quantity>`.
+  `label_ext` (default `Ext`, in the label files) is prepended so external sensors don't clash with
+  the modbus sensors — e.g. `sensor_name: "Zuluft"` shows as `Ext Zuluft Temperatur`, next to the
+  modbus `Zuluft Temperatur`. Set `label_ext: ""` to disable the prefix.
 - `id_prefix` must be a fixed, language-independent ASCII key (`extract`, `supply`, `exhaust`, `outside`);
   only the display `sensor_name` is localized (via the `brink_air_*` keys in the label files).
 - All packages also work **without** a PaHUB: omit `channel` and it defaults to `bus_a` (one sensor

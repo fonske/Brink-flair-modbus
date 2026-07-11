@@ -59,6 +59,9 @@ substitutions:
   brink_air_supply: Supply air
   brink_air_exhaust: Exhaust air
   brink_air_outside: Outside air
+  # prefix for external (add-on) sensors; avoids a name clash with the modbus sensors
+  # (e.g. "Zuluft Temperatur"). Set to "" to disable it.
+  label_ext: Ext
   # generic, localized quantities for external sensors
   label_temperature: Temperature
   label_humidity: Humidity
