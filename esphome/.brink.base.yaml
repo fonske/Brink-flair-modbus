@@ -548,7 +548,7 @@ select:
     modbus_controller_id: ${name}  
     address: 6100
     value_type: S_WORD
-    skip_updates: 20
+    skip_updates: 10
     optionsmap:
       ${auto}: 0
       ${closed}: 1
