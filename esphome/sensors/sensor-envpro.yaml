@@ -75,21 +75,6 @@ sensor:
       filters:
         - median
 
-  ## Dew point calculated from the BME688 temperature + humidity of this channel.
-  - platform: template
-    name: "${label_ext} ${sensor_name} ${label_dewpoint}"
-    id: brink_ext_${id_prefix}_dewpoint
-    unit_of_measurement: "°C"
-    device_class: temperature
-    state_class: measurement
-    accuracy_decimals: 1
-    icon: "mdi:thermometer-water"
-    update_interval: 30s
-    lambda: |-
-      return (243.5*(log(id(brink_ext_${id_prefix}_humidity).state/100)+((17.67*id(brink_ext_${id_prefix}_temperature).state)/
-      (243.5+id(brink_ext_${id_prefix}_temperature).state)))/(17.67-log(id(brink_ext_${id_prefix}_humidity).state/100)-
-      ((17.67*id(brink_ext_${id_prefix}_temperature).state)/(243.5+id(brink_ext_${id_prefix}_temperature).state))));
-
 text_sensor:
   - platform: template
     name: "${label_ext} ${sensor_name} ${label_iaq_classification}"
@@ -124,3 +109,12 @@ text_sensor:
       else if (iaq_ <= 350) { return {"${iaq_severely_polluted}"}; }
       else if (iaq_ <= 500) { return {"${iaq_extremely_polluted}"}; }
       else { return {"${unknown}"}; }
+
+## Derived psychrometric values (dew point, absolute humidity, enthalpy, wet-bulb, humidex)
+## from this channel's temperature + humidity.
+packages:
+  psychrometrics: !include
+    file: sensor-psychrometrics.yaml
+    vars:
+      id_prefix: ${id_prefix}
+      sensor_name: ${sensor_name}

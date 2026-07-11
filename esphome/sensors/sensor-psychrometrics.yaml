@@ -1,0 +1,85 @@
+## Psychrometric values derived from a channel's temperature + humidity.
+## Included by sensor-sht30.yaml and sensor-envpro.yaml, so it applies to SHT30, ENV III and ENV Pro.
+## Requires brink_ext_<id_prefix>_temperature and brink_ext_<id_prefix>_humidity (from those sensors).
+##
+## Enthalpy uses a FIXED reference pressure of 1013.25 hPa: the error vs. the real pressure is small
+## and cancels out when comparing air streams (see feature-performance-enthalpy.yaml), so no pressure
+## sensor is needed and this also works for the standalone SHT30.
+##
+## vars:
+##   id_prefix    - same key as the temperature/humidity sensor on this channel
+##   sensor_name  - display name, may come from the label files (e.g. ${brink_air_extract})
+sensor:
+  ## Dew point (Magnus formula).
+  - platform: template
+    name: "${label_ext} ${sensor_name} ${label_dewpoint}"
+    id: brink_ext_${id_prefix}_dewpoint
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 1
+    icon: "mdi:thermometer-water"
+    update_interval: 30s
+    lambda: |-
+      const float t = id(brink_ext_${id_prefix}_temperature).state;
+      const float rh = id(brink_ext_${id_prefix}_humidity).state;
+      return (243.5*(log(rh/100)+((17.67*t)/(243.5+t)))/(17.67-log(rh/100)-((17.67*t)/(243.5+t))));
+
+  ## Absolute humidity in g/m3.
+  - platform: template
+    name: "${label_ext} ${sensor_name} ${label_absolute_humidity}"
+    id: brink_ext_${id_prefix}_absolute_humidity
+    unit_of_measurement: "g/m³"
+    state_class: measurement
+    accuracy_decimals: 2
+    icon: "mdi:water"
+    update_interval: 30s
+    lambda: |-
+      const float t = id(brink_ext_${id_prefix}_temperature).state;
+      const float rh = id(brink_ext_${id_prefix}_humidity).state;
+      return 216.7 * (rh/100.0 * 6.112 * expf(17.62*t/(243.12+t))) / (273.15+t);
+
+  ## Specific enthalpy of moist air in kJ/kg (dry air), at a fixed 1013.25 hPa.
+  - platform: template
+    name: "${label_ext} ${sensor_name} ${label_enthalpy}"
+    id: brink_ext_${id_prefix}_enthalpy
+    unit_of_measurement: "kJ/kg"
+    state_class: measurement
+    accuracy_decimals: 1
+    icon: "mdi:thermometer-lines"
+    update_interval: 30s
+    lambda: |-
+      const float t = id(brink_ext_${id_prefix}_temperature).state;
+      const float rh = id(brink_ext_${id_prefix}_humidity).state;
+      const float pw = rh/100.0 * 6.112 * expf(17.62*t/(243.12+t));
+      const float x = 0.62198 * pw / (1013.25 - pw);
+      return 1.006*t + x*(2501.0 + 1.86*t);
+
+  ## Wet-bulb temperature in °C (Stull approximation).
+  - platform: template
+    name: "${label_ext} ${sensor_name} ${label_wet_bulb}"
+    id: brink_ext_${id_prefix}_wet_bulb
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 1
+    icon: "mdi:thermometer-water"
+    update_interval: 30s
+    lambda: |-
+      const float t = id(brink_ext_${id_prefix}_temperature).state;
+      const float rh = id(brink_ext_${id_prefix}_humidity).state;
+      return t*atanf(0.151977*sqrtf(rh+8.313659)) + atanf(t+rh) - atanf(rh-1.676331)
+             + 0.00391838*powf(rh,1.5)*atanf(0.023101*rh) - 4.686035;
+
+  ## Humidex comfort index (uses the dew point above).
+  - platform: template
+    name: "${label_ext} ${sensor_name} ${label_humidex}"
+    id: brink_ext_${id_prefix}_humidex
+    state_class: measurement
+    accuracy_decimals: 1
+    icon: "mdi:thermometer"
+    update_interval: 30s
+    lambda: |-
+      const float t = id(brink_ext_${id_prefix}_temperature).state;
+      const float td = id(brink_ext_${id_prefix}_dewpoint).state;
+      return t + 0.5555*(6.11*expf(5417.7530*(1.0/273.16 - 1.0/(273.15+td))) - 10.0);

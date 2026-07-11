@@ -56,7 +56,8 @@ packages:
       # esphome/sensors/sensor-brink_co2_3_sensor.yaml
       # esphome/sensors/sensor-brink_co2_4_sensor.yaml
       # esphome/features/feature-postheater.yaml  # uncomment if a pre- or post-heater is installed
-      # esphome/features/feature-performance.yaml # heat-recovery efficiency, selectable temp sensors
+      # esphome/features/feature-performance.yaml          # heat-recovery efficiency (temperature based), selectable sensors
+      # esphome/features/feature-performance-enthalpy.yaml # heat-recovery efficiency (enthalpy based), needs enthalpy sensors
       # esphome/sensors/m5stack-pahub-tca9548a.yaml  # M5Stack PaHUB (TCA9548A) I2C multiplexer
       # esphome/sensors/sensor-enviii.yaml   # ENV III = SHT30 + QMP6988 (temp+hum+dewpoint+pressure), any I2C bus
       # esphome/sensors/sensor-sht30.yaml    # only SHT30 (temp+hum+dewpoint, no pressure), any I2C bus

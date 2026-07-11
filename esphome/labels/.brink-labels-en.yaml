@@ -54,6 +54,7 @@ substitutions:
   brink_temp_from_inside: Temperature from inside
   brink_pressure_from_inside: Atm. pressure from inside
   brink_performance: Performance
+  brink_performance_enthalpy: Enthalpy efficiency
   # air-stream names for external sensors (see sensor-sht30/qmp6988/enviii.yaml)
   brink_air_extract: Extract air
   brink_air_supply: Supply air
@@ -67,6 +68,10 @@ substitutions:
   label_humidity: Humidity
   label_pressure: Pressure
   label_dewpoint: Dew point
+  label_absolute_humidity: Absolute humidity
+  label_enthalpy: Enthalpy
+  label_wet_bulb: Wet-bulb temperature
+  label_humidex: Humidex
   # ENV Pro (BME688 / BSEC2)
   label_gas_resistance: Gas resistance
   label_iaq: IAQ

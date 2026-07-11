@@ -30,17 +30,11 @@ sensor:
     address: 0x44
     update_interval: 30s
 
-  ## Dew point calculated from this channel's temperature + humidity (Magnus formula).
-  - platform: template
-    name: "${label_ext} ${sensor_name} ${label_dewpoint}"
-    id: brink_ext_${id_prefix}_dewpoint
-    unit_of_measurement: "°C"
-    device_class: temperature
-    state_class: measurement
-    accuracy_decimals: 1
-    icon: "mdi:thermometer-water"
-    update_interval: 30s
-    lambda: |-
-      return (243.5*(log(id(brink_ext_${id_prefix}_humidity).state/100)+((17.67*id(brink_ext_${id_prefix}_temperature).state)/
-      (243.5+id(brink_ext_${id_prefix}_temperature).state)))/(17.67-log(id(brink_ext_${id_prefix}_humidity).state/100)-
-      ((17.67*id(brink_ext_${id_prefix}_temperature).state)/(243.5+id(brink_ext_${id_prefix}_temperature).state))));
+## Derived psychrometric values (dew point, absolute humidity, enthalpy, wet-bulb, humidex)
+## from this channel's temperature + humidity.
+packages:
+  psychrometrics: !include
+    file: sensor-psychrometrics.yaml
+    vars:
+      id_prefix: ${id_prefix}
+      sensor_name: ${sensor_name}

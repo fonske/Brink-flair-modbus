@@ -54,6 +54,7 @@ substitutions:
   brink_temp_from_inside: Binnen aanzuig temperatuur
   brink_pressure_from_inside: Binnen aanzuig atm. druk
   brink_performance: Rendement
+  brink_performance_enthalpy: Enthalpie rendement
   # namen van de luchtstromen voor externe sensoren (zie sensor-sht30/qmp6988/enviii.yaml)
   brink_air_extract: Afvoerlucht
   brink_air_supply: Toevoerlucht
@@ -67,6 +68,10 @@ substitutions:
   label_humidity: Luchtvochtigheid
   label_pressure: Druk
   label_dewpoint: Dauwpunt
+  label_absolute_humidity: Absolute vochtigheid
+  label_enthalpy: Enthalpie
+  label_wet_bulb: Natteboltemperatuur
+  label_humidex: Humidex
   # ENV Pro (BME688 / BSEC2)
   label_gas_resistance: Gasweerstand
   label_iaq: IAQ

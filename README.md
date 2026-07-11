@@ -51,6 +51,7 @@ packages:
       # esphome/sensors/sensor-brink_co2_3_sensor.yaml
       # esphome/sensors/sensor-brink_co2_4_sensor.yaml
       # esphome/features/feature-performance.yaml
+      # esphome/features/feature-performance-enthalpy.yaml
       # esphome/sensors/m5stack-pahub-tca9548a.yaml
       # esphome/sensors/sensor-enviii.yaml
       # esphome/sensors/sensor-sht30.yaml

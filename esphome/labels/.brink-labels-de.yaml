@@ -54,6 +54,7 @@ substitutions:
   brink_temp_from_inside: Abluft Temperatur
   brink_pressure_from_inside: Abluft Druck
   brink_performance: Performance
+  brink_performance_enthalpy: Enthalpie-Wirkungsgrad
   # Namen der Luftströme für externe Sensoren (siehe sensor-sht30/qmp6988/enviii.yaml)
   brink_air_extract: Abluft
   brink_air_supply: Zuluft
@@ -67,6 +68,10 @@ substitutions:
   label_humidity: Luftfeuchtigkeit
   label_pressure: Druck
   label_dewpoint: Taupunkt
+  label_absolute_humidity: Absolute Feuchte
+  label_enthalpy: Enthalpie
+  label_wet_bulb: Feuchtkugeltemperatur
+  label_humidex: Komfortindex
   # ENV Pro (BME688 / BSEC2)
   label_gas_resistance: Gaswiderstand
   label_iaq: IAQ
