@@ -7,19 +7,30 @@ substitutions:
 ###  menu 14-Communication: TypeBus=Modbus, Slave modbusaddress=20, Baudrate=19200, Parity=Even
   modbusaddress: "20"
 
+###  Set the two flow limits for your Brink/HRV model (replaces the old esphome/type/brink-*.yaml files):
+###    Model | type_flow_max | type_modbus_flow_rate_max
+###    200   |      200      |          200
+###    225   |      225      |          225
+###    300   |      300      |          280
+###    325   |      325      |          280
+###    400   |      400      |          400
+###    450   |      450      |          450
+###    600   |      600      |          600
+  type_flow_max: "325"
+  type_modbus_flow_rate_max: "280"
+
 # In order to use other language or a different ESP chip, fix include file name below:
 # Currently supported languages are en, nl. 
 # ESP32 is a mh-et-live or wemos d32 mini, esp8266 is a wemos d1 mini, esp32s3 is a lilygo ESP32S3-T7
 # Be careful not to upload the wrong code to the wrong chip. This could brick your ESP chip.
-# Choose the correct type for your Brink model, so the correct max flow can be setup with a slider.
+# Set the max flow for your Brink model via the type_flow_max / type_modbus_flow_rate_max substitutions above.
 
 packages:
   remote_package:
     url: https://github.com/fonske/Brink-flair-modbus
     ref: main
     refresh: 0s
-    files: [ esphome/type/brink-325.yaml,
-             esphome/labels/.brink-labels-en.yaml, 
+    files: [ esphome/labels/.brink-labels-en.yaml,
              esphome/.brink.base.yaml, 
              esphome/boards/board-m5stack-atoms3-lite.yaml,
 #             esphome/sensors/sensor-enviv-i2c-m5stack.yaml,
@@ -27,13 +38,6 @@ packages:
 #             esphome/sensors/sensor-brink_co2_1_sensor.yaml
            ]
     ## options are:
-      # esphome/type/brink-200.yaml
-      # esphome/type/brink-225.yaml
-      # esphome/type/brink-300.yaml
-      # esphome/type/brink-325.yaml
-      # esphome/type/brink-400.yaml
-      # esphome/type/brink-450.yaml
-      # esphome/type/brink-600.yaml
       # esphome/labels/.brink-labels-en.yaml
       # esphome/labels/.brink-labels-nl.yaml
       # esphome/.brink.base.yaml

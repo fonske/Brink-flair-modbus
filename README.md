@@ -28,7 +28,7 @@ It can connect to the configured WiFi network, or make its own WiFi AP.
 
 ## Supported HRV devices
 
-The supported HRVs can be found in [esphome/type](/esphome/type).
+The supported HRV models and their flow limits are listed in [esphome/brink.yaml](/esphome/brink.yaml) — set `type_flow_max` and `type_modbus_flow_rate_max` for your model.
 
 This project originally targeted Brink devices, but there are many
 brands selling the same (similar) device under different names.
@@ -50,8 +50,9 @@ See [pictures/connection.jpg](pictures/connection.jpg) for example.
 
 ## Configuration
 
-Edit [esphome/brink.yaml](/esphome/brink.yaml). Uncomment the right HRV (esphome/type) and board (esphome/boards).
-Do not leave multiple `type` or `board` files in. Select a language (en/nl), set the timezone.
+Edit [esphome/brink.yaml](/esphome/brink.yaml). Set your model's flow limits via the `type_flow_max` /
+`type_modbus_flow_rate_max` substitutions (see the model table in that file), and uncomment the right board (esphome/boards).
+Do not leave multiple `board` files in. Select a language (en/nl), set the timezone.
 
 By default, esphome exports everything publicly. It might be fine on a local network,
 but it is still recommended to lock-down the exported endpoints (Web UI, flash API, homeassistant API).
