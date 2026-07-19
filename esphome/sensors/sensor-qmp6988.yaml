@@ -23,6 +23,7 @@ sensor:
       oversampling: 16x
       device_class: atmospheric_pressure
       state_class: measurement
+      icon: "mdi:gauge"   # override HA's thermometer-lines default for atmospheric_pressure
     i2c_id: ${channel}
     address: 0x70
     update_interval: 30s

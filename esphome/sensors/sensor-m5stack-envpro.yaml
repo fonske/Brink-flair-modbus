@@ -44,6 +44,7 @@ sensor:
       id: brink_ext_${id_prefix}_pressure
       device_class: atmospheric_pressure
       state_class: measurement
+      icon: "mdi:gauge"   # override HA's thermometer-lines default for atmospheric_pressure
       filters:
         - median
     gas_resistance:
