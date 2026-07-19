@@ -50,7 +50,7 @@ sensor:
     unit_of_measurement: "kJ/kg"
     state_class: measurement
     accuracy_decimals: 1
-    icon: "mdi:thermometer-lines"
+    icon: "mdi:heat-wave"
     update_interval: 30s
     lambda: |-
       const float t = id(brink_ext_${id_prefix}_temperature).state;
