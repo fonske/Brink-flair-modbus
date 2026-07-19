@@ -88,8 +88,15 @@ Currently supported languages are de, en, nl.
 In order to change language, edit file `esphome/brink.yaml`, and change include file (esphome-/.brink-labels-<language>.yaml)
 
 # Custom sensors
-Project support additional sensors DHT22 or M5stack SCD40/41, CO2 sensor or M5stack ENVIII humidity, temperature, pressure sensor.
-In order to enable them, edit file `esphome/brink.yaml` and uncomment include file for sensor.
+The project supports additional sensors: DHT22, M5Stack SCD40/41 CO2, the modbus CO2/humidity sensors, and
+the M5Stack ENV III / ENV Pro modules. To enable one, edit `esphome/brink.yaml` and uncomment the include
+for that sensor.
+
+For ENV III / ENV Pro / SHT30 / QMP6988, prefer the parameterized packages described under
+[Multiple and external sensors via M5Stack PaHUB](#multiple-and-external-sensors-via-m5stack-pahub-tca9548a)
+— they work **with and without** a PaHUB. The older `sensor-enviii-i2c-m5stack*.yaml` packages have been
+removed; `sensor-enviv-i2c-m5stack.yaml` (ENV IV, SHT4x + BMP280) is kept as a **legacy** option until a
+modernized ENV IV package exists.
 
 # Multiple and external sensors via M5Stack PaHUB (TCA9548A)
 
@@ -111,14 +118,23 @@ files. Each file has a `defaults:` block that documents its variables.
 - [sensor-m5stack-enviii.yaml](/esphome/sensors/sensor-m5stack-enviii.yaml) — M5Stack ENV III = SHT30 + QMP6988
 - [sensor-m5stack-envpro.yaml](/esphome/sensors/sensor-m5stack-envpro.yaml) — M5Stack ENV Pro (BME688 / BSEC2): temperature, humidity, pressure, gas resistance and air quality (IAQ, static IAQ, CO2/VOC equivalent, accuracy + classification)
 
+> **ENV Pro note:** the BME688 sits at I2C address `0x77` (no conflict with the QMP6988 at `0x70`), and it
+> uses Bosch's closed-source BSEC2 library, which is RAM-heavy — running many ENV Pro instances on one ESP
+> is demanding.
+
 Every temperature + humidity sensor additionally gets the derived psychrometric values from
 [sensor-psychrometrics.yaml](/esphome/sensors/sensor-psychrometrics.yaml): dew point, absolute
-humidity, specific enthalpy, wet-bulb temperature and humidex.
+humidity, specific enthalpy, wet-bulb temperature and humidex. (It is pulled in automatically by the
+temp/humidity packages — you do not include it yourself.)
 
 Heat-recovery efficiency can be computed from external sensors:
 
 - [feature-performance.yaml](/esphome/features/feature-performance.yaml) — temperature based
 - [feature-performance-enthalpy.yaml](/esphome/features/feature-performance-enthalpy.yaml) — enthalpy based (also accounts for recovered moisture/latent energy)
+
+Include a performance feature **exactly once**, and do not combine it with a package that already defines
+`brink_performance` (the legacy ENV IV, DHT22 and SCD41-dfrobot packages do). While the bypass is open, the
+performance is reported as *unavailable* — no heat recovery takes place in that state.
 
 ## PaHUB wiring example
 
@@ -152,6 +168,29 @@ Notes:
 - Display names are prefixed with `label_ext` (default `Ext`) so external sensors don't clash with the
   modbus sensors — e.g. `Ext Zuluft Temperatur` next to the modbus `Zuluft Temperatur`. Set `label_ext: ""` to disable.
 - Without a PaHUB, omit `channel` (it defaults to `bus_a`) — one sensor directly on the board bus.
+
+# What's new & upgrade notes (migration)
+
+**New**
+- Multiple/external sensors via the M5Stack PaHUB (TCA9548A) — up to 6 identical sensors, one per air stream.
+- Parameterized sensor packages: `sensor-sht30`, `sensor-qmp6988`, `sensor-m5stack-enviii`, `sensor-m5stack-envpro`.
+- Derived psychrometric values (dew point, absolute humidity, specific enthalpy, wet-bulb, humidex) via `sensor-psychrometrics.yaml`.
+- Heat-recovery efficiency as configurable packages: `feature-performance.yaml` (temperature) and `feature-performance-enthalpy.yaml` (enthalpy). While the bypass is open the value is reported as *unavailable*.
+- Home Assistant metadata (`device_class` / `state_class` / `entity_category`) and web-server icons across the base and sensor entities.
+
+**Upgrade notes / breaking changes**
+- **Removed packages** — use the new ENV III package instead:
+
+  | Removed | Replacement |
+  |---|---|
+  | `sensor-enviii-i2c-m5stack.yaml` | `sensor-m5stack-enviii.yaml` with `vars: { channel, id_prefix, sensor_name }` |
+  | `sensor-enviii-i2c-m5stack2.yaml` (was broken) | `sensor-m5stack-enviii.yaml` with `id_prefix: outside` |
+
+  The entity-id scheme changed: `brink_temp/humidity/pressure_from_inside` → `brink_ext_<id_prefix>_temperature/humidity/pressure`, and heat-recovery efficiency now comes from `feature-performance.yaml` (not the sensor file). **Update any dashboards/automations that reference the old ids.**
+- **ENV IV**: `sensor-enviv-i2c-m5stack.yaml` is kept as a **legacy** package (no modernized replacement yet). Do not combine it with `feature-performance.yaml` — both define `brink_performance`.
+- **Home Assistant long-term statistics**: the airflow sensors changed unit `m3/h` → `m³/h` (plus `device_class: volume_flow_rate`), and `brink_filter_m3_h` changed `state_class: total` → `total_increasing`. Home Assistant does **not** auto-migrate a changed unit — it raises a fixable "units changed" repair per affected sensor; accept the conversion or reset that statistic once.
+- **Board**: `board-m5stack-atom-lite.yaml` now enables I2C by default (GPIO26 / GPIO32).
+- **Display name**: `brink_performance` is now *Wirkungsgrad* (de) / *Efficiency* (en); nl unchanged (*Rendement*). Entity ids are unchanged.
 
 # Modbus addres inside brink.yaml
 The modbus address is now configurable in brink.yaml.
