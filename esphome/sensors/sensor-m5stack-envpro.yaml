@@ -42,16 +42,22 @@ sensor:
     pressure:
       name: "${label_ext} ${sensor_name} ${label_pressure}"
       id: brink_ext_${id_prefix}_pressure
+      device_class: atmospheric_pressure
+      state_class: measurement
       filters:
         - median
     gas_resistance:
       name: "${label_ext} ${sensor_name} ${label_gas_resistance}"
       id: brink_ext_${id_prefix}_gas_resistance
+      state_class: measurement
+      icon: "mdi:gas-cylinder"
       filters:
         - median
     iaq:
       name: "${label_ext} ${sensor_name} ${label_iaq}"
       id: brink_ext_${id_prefix}_iaq
+      state_class: measurement
+      icon: "mdi:air-filter"
       filters:
         - median
       on_value:
@@ -59,6 +65,8 @@ sensor:
     iaq_static:
       name: "${label_ext} ${sensor_name} ${label_iaq_static}"
       id: brink_ext_${id_prefix}_static_iaq
+      state_class: measurement
+      icon: "mdi:air-filter"
       filters:
         - median
       on_value:
@@ -66,14 +74,20 @@ sensor:
     iaq_accuracy:
       name: "${label_ext} ${sensor_name} ${label_iaq_accuracy}"
       id: brink_ext_${id_prefix}_iaq_accuracy
+      entity_category: diagnostic
+      icon: "mdi:check-circle-outline"
     co2_equivalent:
       name: "${label_ext} ${sensor_name} ${label_co2_equivalent}"
       id: brink_ext_${id_prefix}_co2_equivalent
+      device_class: carbon_dioxide
+      state_class: measurement
       filters:
         - median
     breath_voc_equivalent:
       name: "${label_ext} ${sensor_name} ${label_voc_equivalent}"
       id: brink_ext_${id_prefix}_voc_equivalent
+      state_class: measurement
+      icon: "mdi:molecule"
       filters:
         - median
 
