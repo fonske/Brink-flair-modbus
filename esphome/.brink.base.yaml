@@ -346,27 +346,26 @@ sensor:
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
-
-  - id: brink_current_filter_days
-    name: ${brink_current_filter_days}
-    platform: modbus_controller
-    modbus_controller_id: ${name}
-    icon: mdi:clock-start
-    address: 4115
-    unit_of_measurement: ${days}
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 0
-    state_class: measurement
-    entity_category: diagnostic
-    filters:
-      - multiply: 0.041667
     on_value:
       then:
         - sensor.template.publish:
+            id: brink_current_filter_days
+            state: !lambda 'return x / 24.0;'
+        - sensor.template.publish:
             id: brink_exchange_filter_in
             state: !lambda |-
-              return id(brink_filter_change_days).state - id(brink_current_filter_days).state;
+              return id(brink_filter_change_days).state - (x / 24.0);
+
+  # Derived from brink_current_filter_hours (same register, 4115) instead of reading it again,
+  # which used to cause a "Duplicate modbus command" warning for address 4115.
+  - id: brink_current_filter_days
+    name: ${brink_current_filter_days}
+    platform: template
+    icon: mdi:clock-start
+    unit_of_measurement: ${days}
+    accuracy_decimals: 0
+    state_class: measurement
+    entity_category: diagnostic
 
   - id: brink_exchange_filter_in
     name: ${brink_exchange_filter_in}
