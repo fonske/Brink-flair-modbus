@@ -53,7 +53,42 @@ substitutions:
   brink_humidity_from_inside: Abluft Luftfeuchtigkeit
   brink_temp_from_inside: Abluft Temperatur
   brink_pressure_from_inside: Abluft Druck
-  brink_performance: Performance
+  brink_performance: Wirkungsgrad
+  brink_performance_enthalpy: Enthalpie-Wirkungsgrad
+  # Namen der Luftströme für externe Sensoren (siehe sensor-sht30/qmp6988/enviii.yaml)
+  brink_air_extract: Abluft
+  brink_air_supply: Zuluft
+  brink_air_exhaust: Fortluft
+  brink_air_outside: Außenluft
+  # Präfix für externe (Zusatz-)Sensoren; verhindert Namenskollision mit den Modbus-Sensoren
+  # (z. B. "Zuluft Temperatur"). Auf "" setzen, um es abzuschalten.
+  label_ext: Ext
+  # generische, lokalisierte Messgrößen für externe Sensoren
+  label_temperature: Temperatur
+  label_humidity: Luftfeuchtigkeit
+  label_pressure: Druck
+  label_dewpoint: Taupunkt
+  label_absolute_humidity: Absolute Feuchte
+  label_enthalpy: Enthalpie
+  label_wet_bulb: Feuchtkugeltemperatur
+  label_humidex: Komfortindex
+  # ENV Pro (BME688 / BSEC2)
+  label_gas_resistance: Gaswiderstand
+  label_iaq: IAQ
+  label_iaq_static: Statischer IAQ
+  label_iaq_accuracy: IAQ-Genauigkeit
+  label_co2_equivalent: CO2-Äquivalent
+  label_voc_equivalent: VOC-Äquivalent (Atem)
+  label_iaq_classification: IAQ-Klassifikation
+  label_iaq_static_classification: Statische IAQ-Klassifikation
+  # IAQ-Klassifikationsstufen
+  iaq_excellent: Ausgezeichnet
+  iaq_good: Gut
+  iaq_lightly_polluted: Leicht belastet
+  iaq_moderately_polluted: Mäßig belastet
+  iaq_heavily_polluted: Stark belastet
+  iaq_severely_polluted: Sehr stark belastet
+  iaq_extremely_polluted: Extrem belastet
   brink_relay: Relay
   brink_heater_mode: Heizung Modus
   brink_heater_setpoint: Heizung Solltemperatur

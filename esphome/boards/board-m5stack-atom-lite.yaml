@@ -23,11 +23,17 @@ uart:
   tx_pin: GPIO19
   rx_pin: GPIO22
 
-# i2c for extra sensor
-#i2c:
-#  - id: bus_a
-#    sda: GPIO2
-#    scl: GPIO1
+# i2c for extra sensor(s) on the Grove port. Needed for ENV III/IV, SCD4x and the PaHUB multiplexer.
+# Pins are overridable via substitutions (Grove port of the Atom Lite: SDA=GPIO26, SCL=GPIO32).
+substitutions:
+  i2c_sda: GPIO26
+  i2c_scl: GPIO32
+
+i2c:
+  - id: bus_a
+    sda: ${i2c_sda}
+    scl: ${i2c_scl}
+    scan: true
 
 ###  ESP restart button
 button:

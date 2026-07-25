@@ -135,6 +135,8 @@ sensor:
         (243.5+id(brink_temp_to_inside).state)))/(17.67-log(id(brink_humidity_to_inside).state/100)-
         ((17.67*id(brink_temp_to_inside).state)/(243.5+id(brink_temp_to_inside).state))));
     unit_of_measurement: °C
+    device_class: temperature
+    state_class: measurement
     update_interval: 15s
     icon: 'mdi:thermometer-water'
 
@@ -173,6 +175,8 @@ sensor:
         (243.5+id(brink_temp_to_outside).state)))/(17.67-log(id(brink_humidity_to_outside).state/100)-
         ((17.67*id(brink_temp_to_outside).state)/(243.5+id(brink_temp_to_outside).state))));
     unit_of_measurement: °C
+    device_class: temperature
+    state_class: measurement
     update_interval: 15s
     icon: 'mdi:thermometer-water'
 
@@ -226,7 +230,8 @@ sensor:
     modbus_controller_id: ${name}
     icon: mdi:fan
     address: 4031
-    unit_of_measurement: "m3/h"
+    unit_of_measurement: "m³/h"
+    device_class: volume_flow_rate
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
@@ -240,7 +245,8 @@ sensor:
     modbus_controller_id: ${name}
     icon: mdi:fan
     address: 4032
-    unit_of_measurement: "m3/h"
+    unit_of_measurement: "m³/h"
+    device_class: volume_flow_rate
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
@@ -255,6 +261,7 @@ sensor:
     register_type: read
     address: 4034
     unit_of_measurement: "RPM"
+    state_class: measurement
     value_type: U_WORD  
     accuracy_decimals: 0
   
@@ -265,6 +272,7 @@ sensor:
     register_type: read
     address: 4044
     unit_of_measurement: "RPM"
+    state_class: measurement
     value_type: U_WORD  
     accuracy_decimals: 0
 
@@ -274,7 +282,8 @@ sensor:
     modbus_controller_id: ${name}
     icon: mdi:fan
     address: 4041
-    unit_of_measurement: "m3/h"
+    unit_of_measurement: "m³/h"
+    device_class: volume_flow_rate
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
@@ -288,7 +297,8 @@ sensor:
     modbus_controller_id: ${name}
     icon: mdi:fan
     address: 4042
-    unit_of_measurement: "m3/h"
+    unit_of_measurement: "m³/h"
+    device_class: volume_flow_rate
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
@@ -331,34 +341,38 @@ sensor:
     icon: mdi:clock-start
     address: 4115
     unit_of_measurement: ${hours}
+    state_class: measurement
+    entity_category: diagnostic
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 0
-
-  - id: brink_current_filter_days
-    name: ${brink_current_filter_days}
-    platform: modbus_controller
-    modbus_controller_id: ${name}
-    icon: mdi:clock-start
-    address: 4115
-    unit_of_measurement: ${days}
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 0
-    filters:
-      - multiply: 0.041667
     on_value:
       then:
         - sensor.template.publish:
+            id: brink_current_filter_days
+            state: !lambda 'return x / 24.0;'
+        - sensor.template.publish:
             id: brink_exchange_filter_in
             state: !lambda |-
-              return id(brink_filter_change_days).state - id(brink_current_filter_days).state;
+              return id(brink_filter_change_days).state - (x / 24.0);
+
+  # Derived from brink_current_filter_hours (same register, 4115) instead of reading it again,
+  # which used to cause a "Duplicate modbus command" warning for address 4115.
+  - id: brink_current_filter_days
+    name: ${brink_current_filter_days}
+    platform: template
+    icon: mdi:clock-start
+    unit_of_measurement: ${days}
+    accuracy_decimals: 0
+    state_class: measurement
+    entity_category: diagnostic
 
   - id: brink_exchange_filter_in
     name: ${brink_exchange_filter_in}
     platform: template
     unit_of_measurement: ${days}
     accuracy_decimals: 0
+    entity_category: diagnostic
 
   - id: brink_filter_m3_h
     name: ${brink_filter_m3_h}
@@ -370,7 +384,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     accuracy_decimals: 0
-    state_class: total
+    state_class: total_increasing
 
   - id: brink_device_type
     name: ${brink_device_type}
@@ -378,6 +392,7 @@ sensor:
     modbus_controller_id: ${name}
     icon: mdi:penguin
     address: 4004
+    entity_category: diagnostic
     unit_of_measurement: ""
     register_type: read
     value_type: U_WORD
@@ -444,6 +459,7 @@ text_sensor:
     modbus_controller_id: ${name}
     register_type: read
     address: 4070
+    entity_category: diagnostic
     raw_encode: NONE
     icon: mdi:penguin
     skip_updates: 20
@@ -479,6 +495,7 @@ text_sensor:
     modbus_controller_id: ${name}
     register_type: read
     address: 4100
+    entity_category: diagnostic
     raw_encode: NONE
     icon: mdi:air-filter
     skip_updates: 20
@@ -547,6 +564,7 @@ select:
     platform: modbus_controller
     modbus_controller_id: ${name}  
     address: 6100
+    entity_category: config
     value_type: S_WORD
     skip_updates: 10
     optionsmap:
@@ -615,6 +633,7 @@ switch:
     modbus_controller_id: ${name}
     register_type: holding  
     address: 8010
+    entity_category: config
     bitmask: 1
     icon: mdi:toggle-switch
     disabled_by_default: true
@@ -758,6 +777,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}  
     address: 6105
+    entity_category: config
     value_type: S_WORD      
     min_value: 0
     max_value: 3
@@ -781,6 +801,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6035
+    entity_category: config
     unit_of_measurement: "%"
     value_type: S_WORD   
     multiply: 10    
@@ -805,6 +826,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6101
+    entity_category: config
     device_class: temperature
     unit_of_measurement: "°C"
     value_type: S_WORD
@@ -820,6 +842,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6102
+    entity_category: config
     device_class: temperature
     unit_of_measurement: "°C"
     value_type: S_WORD
@@ -835,6 +858,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6103
+    entity_category: config
     unit_of_measurement: "°C"
     device_class: temperature
     value_type: S_WORD
@@ -851,6 +875,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6110
+    entity_category: config
     unit_of_measurement: "°C"
     device_class: temperature
     value_type: S_WORD      
@@ -866,6 +891,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6111
+    entity_category: config
     device_class: temperature
     unit_of_measurement: "°C"
     value_type: S_WORD      
@@ -881,6 +907,7 @@ number:
     platform: modbus_controller
     modbus_controller_id: ${name}
     address: 6036
+    entity_category: config
     unit_of_measurement: "%"
     value_type: S_WORD      
     multiply: 10 
@@ -895,6 +922,7 @@ number:
     modbus_controller_id: ${name}
     register_type: holding
     address: 6120
+    entity_category: config
     unit_of_measurement: ""
     value_type: S_WORD      
     min_value: 0

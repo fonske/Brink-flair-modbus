@@ -1,0 +1,41 @@
+## Heat-recovery performance (efficiency) as a standalone, configurable package.
+## Formula: (supply_temp - outside_temp) / (extract_temp - outside_temp) * 100
+##
+## The three input temperatures are selectable via vars so you can compute the efficiency either from
+## the Brink modbus values (defaults) or from external sensors (e.g. a PaHUB ENV III channel).
+## Example: vars: { perf_extract_temp: brink_ext_extract_temperature }
+##
+## Include this package ONLY ONCE (there must be exactly one brink_performance entity). When using it,
+## make sure the sensor packages do not also define their own brink_performance.
+##
+## When the bypass is open the air stream bypasses the heat exchanger, so there is no heat recovery to
+## report. In that state the sensor publishes NaN (Home Assistant: "unavailable") instead of a
+## meaningless value. Bypass detection uses the perf_bypass_status text sensor.
+##
+## vars (all optional, see defaults):
+##   perf_supply_temp   - id of the supply-air temperature sensor (air blown into the dwelling)
+##   perf_outside_temp  - id of the outside-air temperature sensor
+##   perf_extract_temp  - id of the extract-air temperature sensor (air drawn from the dwelling)
+##   perf_bypass_status - id of the bypass status text sensor (used to blank the value while open)
+defaults:
+  perf_supply_temp: brink_temp_to_inside
+  perf_outside_temp: brink_temp_from_outside
+  perf_extract_temp: brink_temp_from_inside
+  perf_bypass_status: brink_bypass_status
+
+sensor:
+  - id: brink_performance
+    name: ${brink_performance}
+    platform: template
+    unit_of_measurement: "%"
+    accuracy_decimals: 1
+    state_class: measurement
+    update_interval: 30s
+    lambda: |-
+      // Bypass open: air bypasses the exchanger, no recovery -> report NaN (unavailable) instead of a bogus value.
+      if (id(${perf_bypass_status}).state == "${open}") {
+        return NAN;
+      }
+      // (supply_temp - outside_temp) / (extract_temp - outside_temp) * 100
+      return ((id(${perf_supply_temp}).state - id(${perf_outside_temp}).state)
+              / (id(${perf_extract_temp}).state - id(${perf_outside_temp}).state) * 100);
