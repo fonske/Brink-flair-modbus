@@ -1,0 +1,137 @@
+## M5Stack ENV Pro (Bosch BME688 via the BSEC2 library) as a reusable, parameterized channel package.
+## Provides temperature, humidity, pressure, gas resistance and the BSEC2 air-quality values
+## (IAQ, static IAQ, CO2 equivalent, breath VOC equivalent, IAQ accuracy) plus IAQ classification text.
+##
+## Works WITH and WITHOUT the PaHUB multiplexer:
+##   - without PaHUB: leave `channel` at its default (bus_a) -> sensor sits directly on the board bus.
+##   - with PaHUB:    set `channel` to pahub_ch0 ... pahub_ch5 -> run several in parallel.
+## NOTE: BSEC2 uses Bosch's closed-source library and needs significant RAM; running many instances
+##       on one ESP is heavy. Default I2C address is 0x77 (ENV Pro).
+##
+## vars:
+##   channel      - the I2C bus id the sensor is on (physical bus like bus_a, or a PaHUB channel)
+##   id_prefix    - short, language-independent ASCII key for the entity ids (brink_ext_<id_prefix>_...)
+##   sensor_name  - display name, may come from the label files (e.g. ${brink_air_extract})
+defaults:
+  channel: bus_a
+  id_prefix: envpro     # make this unique per include when you use several
+  sensor_name: ENV Pro
+
+bme68x_bsec2_i2c:
+  - id: brink_ext_${id_prefix}_bme688
+    i2c_id: ${channel}
+    model: bme688
+    address: 0x77
+    operating_age: 28d
+    sample_rate: lp
+    state_save_interval: 6h
+
+sensor:
+  - platform: bme68x_bsec2
+    bme68x_bsec2_id: brink_ext_${id_prefix}_bme688
+    temperature:
+      name: "${label_ext} ${sensor_name} ${label_temperature}"
+      id: brink_ext_${id_prefix}_temperature
+      filters:
+        - median
+    humidity:
+      name: "${label_ext} ${sensor_name} ${label_humidity}"
+      id: brink_ext_${id_prefix}_humidity
+      filters:
+        - median
+    pressure:
+      name: "${label_ext} ${sensor_name} ${label_pressure}"
+      id: brink_ext_${id_prefix}_pressure
+      device_class: atmospheric_pressure
+      state_class: measurement
+      icon: "mdi:gauge"   # override HA's thermometer-lines default for atmospheric_pressure
+      filters:
+        - median
+    gas_resistance:
+      name: "${label_ext} ${sensor_name} ${label_gas_resistance}"
+      id: brink_ext_${id_prefix}_gas_resistance
+      state_class: measurement
+      icon: "mdi:gas-cylinder"
+      filters:
+        - median
+    iaq:
+      name: "${label_ext} ${sensor_name} ${label_iaq}"
+      id: brink_ext_${id_prefix}_iaq
+      state_class: measurement
+      icon: "mdi:air-filter"
+      filters:
+        - median
+      on_value:
+        - component.update: brink_ext_${id_prefix}_iaq_classification
+    iaq_static:
+      name: "${label_ext} ${sensor_name} ${label_iaq_static}"
+      id: brink_ext_${id_prefix}_static_iaq
+      state_class: measurement
+      icon: "mdi:air-filter"
+      filters:
+        - median
+      on_value:
+        - component.update: brink_ext_${id_prefix}_static_iaq_classification
+    iaq_accuracy:
+      name: "${label_ext} ${sensor_name} ${label_iaq_accuracy}"
+      id: brink_ext_${id_prefix}_iaq_accuracy
+      entity_category: diagnostic
+      icon: "mdi:check-circle-outline"
+    co2_equivalent:
+      name: "${label_ext} ${sensor_name} ${label_co2_equivalent}"
+      id: brink_ext_${id_prefix}_co2_equivalent
+      device_class: carbon_dioxide
+      state_class: measurement
+      filters:
+        - median
+    breath_voc_equivalent:
+      name: "${label_ext} ${sensor_name} ${label_voc_equivalent}"
+      id: brink_ext_${id_prefix}_voc_equivalent
+      state_class: measurement
+      icon: "mdi:molecule"
+      filters:
+        - median
+
+text_sensor:
+  - platform: template
+    name: "${label_ext} ${sensor_name} ${label_iaq_classification}"
+    id: brink_ext_${id_prefix}_iaq_classification
+    icon: "mdi:checkbox-marked-circle-outline"
+    update_interval: never
+    lambda: |-
+      auto iaq_ = int(id(brink_ext_${id_prefix}_iaq).state);
+      if (iaq_ < 0) { return {"${unknown}"}; }
+      if (iaq_ <= 50) { return {"${iaq_excellent}"}; }
+      else if (iaq_ <= 100) { return {"${iaq_good}"}; }
+      else if (iaq_ <= 150) { return {"${iaq_lightly_polluted}"}; }
+      else if (iaq_ <= 200) { return {"${iaq_moderately_polluted}"}; }
+      else if (iaq_ <= 250) { return {"${iaq_heavily_polluted}"}; }
+      else if (iaq_ <= 350) { return {"${iaq_severely_polluted}"}; }
+      else if (iaq_ <= 500) { return {"${iaq_extremely_polluted}"}; }
+      else { return {"${unknown}"}; }
+
+  - platform: template
+    name: "${label_ext} ${sensor_name} ${label_iaq_static_classification}"
+    id: brink_ext_${id_prefix}_static_iaq_classification
+    icon: "mdi:checkbox-marked-circle-outline"
+    update_interval: never
+    lambda: |-
+      auto iaq_ = int(id(brink_ext_${id_prefix}_static_iaq).state);
+      if (iaq_ < 0) { return {"${unknown}"}; }
+      if (iaq_ <= 50) { return {"${iaq_excellent}"}; }
+      else if (iaq_ <= 100) { return {"${iaq_good}"}; }
+      else if (iaq_ <= 150) { return {"${iaq_lightly_polluted}"}; }
+      else if (iaq_ <= 200) { return {"${iaq_moderately_polluted}"}; }
+      else if (iaq_ <= 250) { return {"${iaq_heavily_polluted}"}; }
+      else if (iaq_ <= 350) { return {"${iaq_severely_polluted}"}; }
+      else if (iaq_ <= 500) { return {"${iaq_extremely_polluted}"}; }
+      else { return {"${unknown}"}; }
+
+## Derived psychrometric values (dew point, absolute humidity, enthalpy, wet-bulb, humidex)
+## from this channel's temperature + humidity.
+packages:
+  psychrometrics: !include
+    file: sensor-psychrometrics.yaml
+    vars:
+      id_prefix: ${id_prefix}
+      sensor_name: ${sensor_name}

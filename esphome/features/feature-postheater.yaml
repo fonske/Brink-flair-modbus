@@ -16,6 +16,7 @@ select:
       ${heater_none}: 0
       ${heater_pre}:  1
       ${heater_post}: 2
+    entity_category: config
     icon: mdi:radiator
 
 number:
@@ -31,5 +32,7 @@ number:
     step: 0.5
     multiply: 10
     unit_of_measurement: "°C"
+    device_class: temperature
+    entity_category: config
     mode: slider
     icon: mdi:thermometer

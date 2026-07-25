@@ -1,4 +1,8 @@
-## Option for M5stack ENV IV temperature, humidity and pressure sensor on i2c bus. I2C must be enabled.
+## LEGACY package — M5Stack ENV IV (SHT4x + BMP280) temperature, humidity and pressure on i2c. I2C must be enabled.
+## There is not yet a modernized ENV IV package (unlike ENV III -> sensor-m5stack-enviii.yaml). This file is kept
+## for existing ENV IV users. It uses the fixed brink_*_from_inside id scheme (NOT the brink_ext_<prefix>_* scheme
+## of the new packages), sits on bus_a @0x44/0x76 (no PaHUB), and defines brink_performance itself — so do NOT
+## combine it with feature-performance.yaml or another package that also defines brink_performance.
 sensor:
   - platform: sht4x
     temperature:
@@ -24,7 +28,8 @@ sensor:
       id: brink_pressure_from_inside
       oversampling: 16x
       device_class: atmospheric_pressure
-      state_class: measurement 
+      state_class: measurement
+      icon: "mdi:gauge"   # override HA's thermometer-lines default for atmospheric_pressure
     i2c_id: bus_a #or choose bus_b
     address: 0x76
     update_interval: 30s

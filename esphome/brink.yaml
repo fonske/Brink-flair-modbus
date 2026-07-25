@@ -8,7 +8,7 @@ substitutions:
   modbusaddress: "20"
 
 # In order to use other language or a different ESP chip, fix include file name below:
-# Currently supported languages are en, nl. 
+# Currently supported languages are de, en, nl.
 # ESP32 is a mh-et-live or wemos d32 mini, esp8266 is a wemos d1 mini, esp32s3 is a lilygo ESP32S3-T7
 # Be careful not to upload the wrong code to the wrong chip. This could brick your ESP chip.
 # Choose the correct type for your Brink model, so the correct max flow can be setup with a slider.
@@ -22,7 +22,7 @@ packages:
              esphome/labels/.brink-labels-en.yaml, 
              esphome/.brink.base.yaml, 
              esphome/boards/board-m5stack-atoms3-lite.yaml,
-#             esphome/sensors/sensor-enviv-i2c-m5stack.yaml,
+#             esphome/sensors/sensor-enviv-i2c-m5stack.yaml,  # legacy ENV IV, see options list below
 #             esphome/sensors/sensor-brink_hum_sensor.yaml,
 #             esphome/sensors/sensor-brink_co2_1_sensor.yaml
            ]
@@ -34,6 +34,7 @@ packages:
       # esphome/type/brink-400.yaml
       # esphome/type/brink-450.yaml
       # esphome/type/brink-600.yaml
+      # esphome/labels/.brink-labels-de.yaml
       # esphome/labels/.brink-labels-en.yaml
       # esphome/labels/.brink-labels-nl.yaml
       # esphome/.brink.base.yaml
@@ -47,8 +48,7 @@ packages:
       # esphome/boards/board-m5stack-atom-lite.yaml
       # esphome/sensors/sensor-scd41-i2c-dfrobot.yaml
       # esphome/sensors/sensor-scd41-i2c-m5stack.yaml
-      # esphome/sensors/sensor-enviii-i2c-m5stack.yaml
-      # esphome/sensors/sensor-enviv-i2c-m5stack.yaml
+      # esphome/sensors/sensor-enviv-i2c-m5stack.yaml  # LEGACY ENV IV (SHT4x+BMP280); no PaHUB, defines brink_performance
       # esphome/sensors/sensor-dht22.yaml
       # esphome/sensors/sensor-brink_hum_sensor.yaml
       # esphome/sensors/sensor-brink_co2_1_sensor.yaml
@@ -56,6 +56,31 @@ packages:
       # esphome/sensors/sensor-brink_co2_3_sensor.yaml
       # esphome/sensors/sensor-brink_co2_4_sensor.yaml
       # esphome/features/feature-postheater.yaml  # uncomment if a pre- or post-heater is installed
+      # esphome/features/feature-performance.yaml          # heat-recovery efficiency (temperature based), selectable sensors
+      # esphome/features/feature-performance-enthalpy.yaml # heat-recovery efficiency (enthalpy based), needs enthalpy sensors
+      # esphome/sensors/m5stack-pahub-tca9548a.yaml  # M5Stack PaHUB (TCA9548A) I2C multiplexer
+      # esphome/sensors/sensor-m5stack-enviii.yaml   # ENV III = SHT30 + QMP6988 (temp+hum+dewpoint+pressure), any I2C bus
+      # esphome/sensors/sensor-sht30.yaml    # only SHT30 (temp+hum+dewpoint, no pressure), any I2C bus
+      # esphome/sensors/sensor-qmp6988.yaml  # only QMP6988 (pressure), any I2C bus
+      # esphome/sensors/sensor-m5stack-envpro.yaml   # ENV Pro (BME688/BSEC2): temp+hum+pressure+air quality, any I2C bus
+
+# Example: PaHUB with several sensors, one per air stream.
+# Requires i2c enabled on the board (bus_a). Convert files: to a block list to pass per-file vars.
+# Pressure is enabled from here (from outside the repo) by choosing the file per channel:
+#   sensor-m5stack-enviii.yaml = with pressure (SHT30 + QMP6988), sensor-sht30.yaml = without.
+#    files:
+#      - esphome/type/brink-325.yaml
+#      - esphome/labels/.brink-labels-de.yaml
+#      - esphome/.brink.base.yaml
+#      - esphome/boards/board-m5stack-atom-lite.yaml
+#      - path: esphome/sensors/m5stack-pahub-tca9548a.yaml
+#        vars: { pahub_address: "0x71" }
+#      - path: esphome/sensors/sensor-m5stack-enviii.yaml   # extract air: temp + hum + pressure
+#        vars: { channel: pahub_ch0, id_prefix: extract, sensor_name: "${brink_air_extract}" }
+#      - path: esphome/sensors/sensor-sht30.yaml    # supply air: temp + hum only
+#        vars: { channel: pahub_ch1, id_prefix: supply,  sensor_name: "${brink_air_supply}" }
+#      - path: esphome/features/feature-performance.yaml
+#        vars: { perf_extract_temp: brink_ext_extract_temperature }
 
 # for developing/testing, uncomment local includes and comment out remote_package part.
 # packages:

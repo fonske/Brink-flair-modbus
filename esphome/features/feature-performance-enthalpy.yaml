@@ -1,0 +1,39 @@
+## Heat-recovery efficiency on an ENTHALPY basis (not just temperature), which also accounts for the
+## moisture/latent energy recovered by an enthalpy exchanger:
+##   eta = (supply_enthalpy - outside_enthalpy) / (extract_enthalpy - outside_enthalpy) * 100
+##
+## Enthalpy is only available from external sensors, so all three ids must point at enthalpy sensors
+## created by sensor-sht30 / sensor-m5stack-enviii / sensor-m5stack-envpro (brink_ext_<id_prefix>_enthalpy). You therefore need an
+## ENV III / ENV Pro on the supply, extract and outside air. Include this ONLY ONCE.
+##
+## When the bypass is open the air stream bypasses the heat exchanger, so there is no heat/enthalpy
+## recovery to report. In that state the sensor publishes NaN (Home Assistant: "unavailable") instead
+## of a meaningless value. Bypass detection uses the perf_bypass_status text sensor.
+##
+## vars (override to match your id_prefix; the defaults assume prefixes supply/extract/outside):
+##   perf_supply_enthalpy   - id of the supply-air enthalpy sensor (air blown into the dwelling)
+##   perf_outside_enthalpy  - id of the outside-air enthalpy sensor
+##   perf_extract_enthalpy  - id of the extract-air enthalpy sensor (air drawn from the dwelling)
+##   perf_bypass_status     - id of the bypass status text sensor (used to blank the value while open)
+defaults:
+  perf_supply_enthalpy: brink_ext_supply_enthalpy
+  perf_outside_enthalpy: brink_ext_outside_enthalpy
+  perf_extract_enthalpy: brink_ext_extract_enthalpy
+  perf_bypass_status: brink_bypass_status
+
+sensor:
+  - id: brink_performance_enthalpy
+    name: ${brink_performance_enthalpy}
+    platform: template
+    unit_of_measurement: "%"
+    accuracy_decimals: 1
+    state_class: measurement
+    update_interval: 30s
+    lambda: |-
+      // Bypass open: air bypasses the exchanger, no recovery -> report NaN (unavailable) instead of a bogus value.
+      if (id(${perf_bypass_status}).state == "${open}") {
+        return NAN;
+      }
+      // (supply_enthalpy - outside_enthalpy) / (extract_enthalpy - outside_enthalpy) * 100
+      return ((id(${perf_supply_enthalpy}).state - id(${perf_outside_enthalpy}).state)
+              / (id(${perf_extract_enthalpy}).state - id(${perf_outside_enthalpy}).state) * 100);

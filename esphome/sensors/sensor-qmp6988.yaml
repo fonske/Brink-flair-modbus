@@ -1,0 +1,30 @@
+## M5Stack ENV III pressure sensor (QMP6988 @0x70) as a reusable, parameterized channel package.
+## Optional companion to sensor-sht30.yaml / sensor-m5stack-enviii.yaml: include it once per channel where you
+## also want atmospheric pressure, using the same channel / id_prefix / sensor_name vars.
+##
+## Works WITH and WITHOUT the PaHUB multiplexer (see sensor-sht30.yaml for details).
+## NOTE: when used behind the PaHUB, keep the PaHUB address != 0x70, because the QMP6988 itself
+## sits at 0x70 (downstream conflict). See m5stack-pahub-tca9548a.yaml.
+##
+## vars:
+##   channel      - the I2C bus id the sensor is on (physical bus like bus_a, or a PaHUB channel)
+##   id_prefix    - short, language-independent ASCII key; id becomes brink_ext_<id_prefix>_pressure
+##   sensor_name  - display name, may come from the label files (e.g. ${brink_air_extract})
+defaults:
+  channel: bus_a
+  id_prefix: qmp6988    # make this unique per include when you use several
+  sensor_name: QMP6988
+
+sensor:
+  - platform: qmp6988
+    pressure:
+      name: "${label_ext} ${sensor_name} ${label_pressure}"
+      id: brink_ext_${id_prefix}_pressure
+      oversampling: 16x
+      device_class: atmospheric_pressure
+      state_class: measurement
+      icon: "mdi:gauge"   # override HA's thermometer-lines default for atmospheric_pressure
+    i2c_id: ${channel}
+    address: 0x70
+    update_interval: 30s
+    iir_filter: 2x
