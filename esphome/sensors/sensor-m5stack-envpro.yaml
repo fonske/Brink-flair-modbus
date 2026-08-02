@@ -32,11 +32,15 @@ sensor:
     temperature:
       name: "${label_ext} ${sensor_name} ${label_temperature}"
       id: brink_ext_${id_prefix}_temperature
+      device_class: temperature
+      state_class: measurement
       filters:
         - median
     humidity:
       name: "${label_ext} ${sensor_name} ${label_humidity}"
       id: brink_ext_${id_prefix}_humidity
+      device_class: humidity
+      state_class: measurement
       filters:
         - median
     pressure:

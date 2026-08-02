@@ -40,6 +40,7 @@ sensor:
     name: ${brink_performance}
     platform: template
     unit_of_measurement: "%"
+    state_class: measurement
     update_interval: 30s
     lambda: 'return ((id(brink_temp_to_inside).state - id(brink_temp_from_outside).state)/(id(brink_temp_from_inside).state - id(brink_temp_from_outside).state)*100);'
    # (temp_to_inside - temp_from_outside) / (temp_from_inside - temp_from_outside)
