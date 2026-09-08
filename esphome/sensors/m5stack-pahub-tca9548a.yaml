@@ -1,0 +1,28 @@
+## M5Stack PaHUB (TCA9548A) I2C multiplexer.
+## Lets you run up to 6 identical I2C sensors (same address) in parallel, each on its own channel.
+## The parent I2C bus must be enabled on the board (see board-m5stack-atom-lite.yaml, bus_a).
+##
+## Include this package ONCE. Then include a sensor package (e.g. sensor-m5stack-enviii.yaml) per channel
+## and point its `channel` var at one of the bus_ids below (pahub_ch0 ... pahub_ch5).
+##
+## vars (all optional, see defaults):
+##   pahub_id          - component id of the multiplexer
+##   pahub_address     - I2C address of the PaHUB. Do NOT use 0x70 together with ENV III, because the
+##                       ENV III's QMP6988 pressure sensor also sits at 0x70 (downstream conflict).
+##   pahub_parent_bus  - the physical I2C bus the PaHUB is connected to
+defaults:
+  pahub_id: pahub_1
+  pahub_address: "0x71"
+  pahub_parent_bus: bus_a
+
+tca9548a:
+  - id: ${pahub_id}
+    address: ${pahub_address}
+    i2c_id: ${pahub_parent_bus}
+    channels:
+      - { bus_id: pahub_ch0, channel: 0 }
+      - { bus_id: pahub_ch1, channel: 1 }
+      - { bus_id: pahub_ch2, channel: 2 }
+      - { bus_id: pahub_ch3, channel: 3 }
+      - { bus_id: pahub_ch4, channel: 4 }
+      - { bus_id: pahub_ch5, channel: 5 }

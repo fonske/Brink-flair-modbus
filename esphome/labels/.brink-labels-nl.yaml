@@ -54,6 +54,41 @@ substitutions:
   brink_temp_from_inside: Binnen aanzuig temperatuur
   brink_pressure_from_inside: Binnen aanzuig atm. druk
   brink_performance: Rendement
+  brink_performance_enthalpy: Enthalpie rendement
+  # namen van de luchtstromen voor externe sensoren (zie sensor-sht30/qmp6988/enviii.yaml)
+  brink_air_extract: Afvoerlucht
+  brink_air_supply: Toevoerlucht
+  brink_air_exhaust: Uitblaaslucht
+  brink_air_outside: Buitenlucht
+  # prefix voor externe (extra) sensoren; voorkomt naamconflict met de modbus-sensoren
+  # (bijv. "Zuluft Temperatur"). Zet op "" om uit te schakelen.
+  label_ext: Ext
+  # generieke, gelokaliseerde grootheden voor externe sensoren
+  label_temperature: Temperatuur
+  label_humidity: Luchtvochtigheid
+  label_pressure: Druk
+  label_dewpoint: Dauwpunt
+  label_absolute_humidity: Absolute vochtigheid
+  label_enthalpy: Enthalpie
+  label_wet_bulb: Natteboltemperatuur
+  label_humidex: Humidex
+  # ENV Pro (BME688 / BSEC2)
+  label_gas_resistance: Gasweerstand
+  label_iaq: IAQ
+  label_iaq_static: Statische IAQ
+  label_iaq_accuracy: IAQ nauwkeurigheid
+  label_co2_equivalent: CO2-equivalent
+  label_voc_equivalent: VOC-equivalent (adem)
+  label_iaq_classification: IAQ classificatie
+  label_iaq_static_classification: Statische IAQ classificatie
+  # IAQ classificatieniveaus
+  iaq_excellent: Uitstekend
+  iaq_good: Goed
+  iaq_lightly_polluted: Licht vervuild
+  iaq_moderately_polluted: Matig vervuild
+  iaq_heavily_polluted: Sterk vervuild
+  iaq_severely_polluted: Ernstig vervuild
+  iaq_extremely_polluted: Extreem vervuild
   brink_relay: Relais
   brink_heater_mode: Heater modus
   brink_heater_setpoint: Heater instelpunt
