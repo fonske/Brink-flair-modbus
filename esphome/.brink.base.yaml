@@ -578,10 +578,7 @@ select:
     on_value:
       then:
         - delay: 500ms
-        - lambda: |-
-            auto *controller = id(${name});
-            controller->queue_command(esphome::modbus_controller::ModbusCommandItem::create_read_command(
-              controller, esphome::modbus_controller::ModbusRegisterType::READ, 4050, 1));
+        - component.update: ${name}
 
 switch:
   - id: brink_bypass_boost
