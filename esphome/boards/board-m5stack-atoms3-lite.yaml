@@ -88,7 +88,7 @@ light:
     name: Status led
     icon: mdi:lightbulb
     internal: true # Hides from Home Assistant
-    rgb_order: GRB
+    channel_colors: GRB
     pin: 35
     num_leds: 4
     chipset: ws2812
