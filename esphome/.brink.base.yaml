@@ -59,7 +59,6 @@ modbus_controller:
   - id: ${name}
     ## Brink Modbus slaveaddress 20
     address: ${modbusaddress} 
-    command_throttle: 50ms
     setup_priority: -10
     update_interval: 15s
 
@@ -578,7 +577,18 @@ select:
     on_value:
       then:
         - delay: 500ms
-        - component.update: ${name}
+        - modbus_client.read_input_registers:
+            address: ${modbusaddress}
+            start_address: 4050
+            count: 1
+            on_response:
+              then:
+                - lambda: |-
+                    // Feed the raw register bytes through the text sensor's own parser
+                    // so the mapping (open/closed/opening/...) is not duplicated here.
+                    uint8_t raw[2] = { uint8_t(values[0] >> 8), uint8_t(values[0] & 0xFF) };
+                    static_cast<esphome::modbus_controller::SensorItem *>(id(brink_bypass_status))
+                        ->parse_and_publish(std::span<const uint8_t>(raw, 2));
 
 switch:
   - id: brink_bypass_boost
