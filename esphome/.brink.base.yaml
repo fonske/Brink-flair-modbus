@@ -637,11 +637,14 @@ button:
   - id: brink_reset_filter_button
     name: Filter reset
     platform: template
+    # Only write 1 to register 8010. The appliance needs several seconds to
+    # carry out the reset (measured ~9 s) and clears the
+    # register itself after it has been read back (Brink Modbus UWA2 manual,
+    # register 8010). Writing 0 a few seconds later cancelled the pending
+    # reset, so the filter counter was never cleared.
     on_press:
       then:
         - switch.turn_on: brink_reset_filter
-        - delay: 2s
-        - switch.turn_off: brink_reset_filter
         - text_sensor.template.publish:
             id: brink_filter_reset_on
             state: !lambda |-
